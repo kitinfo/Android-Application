@@ -1,22 +1,49 @@
 package de.kitinfo.app;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.util.Log;
 
+/**
+ * 
+ * IO class, all stuff associated with io should be in here. If something is
+ * missing, feel free to complete this class
+ * 
+ * @author Indidev
+ * 
+ */
 public class IOManager {
 
+	/**
+	 * query some events
+	 * 
+	 * @return events in json format
+	 */
 	public String queryTimeEvents() {
-		String data = "";
-
 		try {
+			return queryJSON(new URL("http://timers.kitinfo.de/timerapi.php"));
+		} catch (MalformedURLException e) {
+			Log.e("IOManager|queryTimeEvents", e.toString());
+		}
+		return "";
+	}
 
-			URL url = new URL("http://timers.kitinfo.de/timerapi.php");
-			Log.d("IOManager", "Connecting to " + url.toString());
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	/**
+	 * method to querry json data from an url
+	 * 
+	 * @return json data (you should post process this data!)
+	 */
+	public String queryJSON(URL url) {
+		String data = "";
+		Log.d("IOManager", "Connecting to " + url.toString());
+		HttpURLConnection con;
+		try {
+			con = (HttpURLConnection) url.openConnection();
 			Log.d("IOManager", "connected");
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -32,12 +59,11 @@ public class IOManager {
 
 			in.close();
 			con.disconnect();
-
-			// Log.d("ServerIOManager","Result was "+dataCrap);
-		} catch (Exception e) {
-			Log.d("ServerIOManager", "Could not connect (" + e.toString() + ")");
-
+		} catch (IOException e) {
+			Log.e("IOManager|queryJSON", e.toString());
 		}
+
+		// Log.d("ServerIOManager", "Result was " + data);
 
 		return data;
 

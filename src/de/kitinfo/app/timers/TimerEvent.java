@@ -8,7 +8,7 @@ import java.util.Date;
  * This class provides a data structure for a timer elements which represents an
  * event in the future or the past.
  * 
- * @author indidev
+ * @author Indidev
  * 
  */
 public class TimerEvent implements Serializable {
@@ -25,7 +25,7 @@ public class TimerEvent implements Serializable {
 	private int second;
 
 	/**
-	 * constructor
+	 * builds a new event
 	 * 
 	 * @param title
 	 *            title

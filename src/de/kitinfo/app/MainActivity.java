@@ -12,10 +12,17 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
-import de.kitinfo.app.TimeManager.TimeListener;
+import de.kitinfo.app.TimeManager.Updatable;
 import de.kitinfo.app.timers.TimerViewFragment;
 
-public class MainActivity extends FragmentActivity implements TimeListener {
+/**
+ * The MainActivity, in charge of handling the layout of the app and stuff like
+ * that,...
+ * 
+ * @author Indidev
+ * 
+ */
+public class MainActivity extends FragmentActivity implements Updatable {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -36,6 +43,10 @@ public class MainActivity extends FragmentActivity implements TimeListener {
 	 */
 	ViewPager mViewPager;
 
+	/**
+	 * PauseHandler to handle all kind of events,... well at the moment only
+	 * update events
+	 */
 	private final PauseHandler guiHandler = new PauseHandler() {
 
 		public void processMessage(Message msg) {
@@ -44,7 +55,7 @@ public class MainActivity extends FragmentActivity implements TimeListener {
 			case MSG_UPDATE:
 				Log.d("MainActivity | processMessage", "Counter: "
 						+ ReferenceManager.SLIDES_TO_UPDATE.size());
-				for (TimeListener event : ReferenceManager.SLIDES_TO_UPDATE) {
+				for (Updatable event : ReferenceManager.SLIDES_TO_UPDATE) {
 					if (event != null) {
 						event.update();
 						Log.d("MainActivity|processMessage",
@@ -137,6 +148,10 @@ public class MainActivity extends FragmentActivity implements TimeListener {
 		}
 	}
 
+	/**
+	 * update method of this class, only notifys the gui handler, to handle the
+	 * update
+	 */
 	public void update() {
 		guiHandler.sendEmptyMessage(MSG_UPDATE);
 		Log.d("MainActivity|update", "throw update message");

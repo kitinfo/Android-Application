@@ -9,6 +9,8 @@ import android.util.Log;
 /**
  * Message Handler class that supports buffering up of messages when the
  * activity is paused i.e. in the background.
+ * 
+ * @author cbdev
  */
 public abstract class PauseHandler extends Handler {
 

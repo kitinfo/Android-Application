@@ -9,6 +9,13 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+/**
+ * 
+ * JSON Parser to parse time events out of the timer api
+ * 
+ * @author mpease
+ * 
+ */
 public class JsonParser_TimeEvent {
 	public enum Tags {
 
@@ -28,6 +35,16 @@ public class JsonParser_TimeEvent {
 
 	}
 
+	/**
+	 * method to parse events in the json format to timer event objects and
+	 * store it into a list of events
+	 * 
+	 * @param data
+	 *            events in the json format (for more info, take a look at <a
+	 *            href="http://timers.kitinfo.de/timerapi.php">http://timers.
+	 *            kitinfo.de/timerapi.php</a> )
+	 * @return list of timer events
+	 */
 	public List<TimerEvent> parse(String data) {
 
 		List<TimerEvent> timerList = new LinkedList<TimerEvent>();

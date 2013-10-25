@@ -15,10 +15,16 @@ import android.widget.TextView;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
-import de.kitinfo.app.TimeManager.TimeListener;
+import de.kitinfo.app.TimeManager.Updatable;
 
-public class TimerViewFragment extends ListFragment implements TimeListener,
-		Slide {
+/**
+ * A Slide to display events in the future, well,... they could also be in the
+ * past
+ * 
+ * @author Indidev
+ * 
+ */
+public class TimerViewFragment extends ListFragment implements Updatable, Slide {
 
 	private List<TimerEvent> events;
 	private String jsonEvents;
@@ -31,7 +37,7 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 		ReferenceManager.TVF = this;
 
 		jsonEvents = "";
-		id = 0;
+		id = -1;
 
 		if (savedInstanceState != null) {
 			jsonEvents = savedInstanceState.getString("events", "");
@@ -57,12 +63,19 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 		outState.putInt("id", id);
 	}
 
+	/**
+	 * get some events on this frame, this should be called, if you want to set
+	 * events the first time
+	 * 
+	 * @param jsonEvents
+	 *            events in JSON format
+	 */
 	public void setEvents(String jsonEvents) {
 		this.jsonEvents = jsonEvents;
 		this.setEvents(new JsonParser_TimeEvent().parse(jsonEvents));
 	}
 
-	public void setEvents(List<TimerEvent> events) {
+	private void setEvents(List<TimerEvent> events) {
 		this.events = events;
 		updateList();
 	}
@@ -72,11 +85,18 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 		super.onViewCreated(view, savedInstanceState);
 	}
 
+	/**
+	 * invalidate all views, so they will be updated soon (at least i hope so)
+	 */
 	public void update() {
 		if ((getListAdapter() != null) && (true))
 			getListView().invalidateViews();
 	}
 
+	/**
+	 * updates the whole list, should be used when new events occured
+	 * (attention, resets the scroll amount)
+	 */
 	public void updateList() {
 		this.setListAdapter(new TimerListAdapter(events));
 	}
@@ -98,6 +118,9 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 		return String.format("%02d:%02d:%02d:%02d", day, hour, minute, second);
 	}
 
+	/**
+	 * returns the title of this Slide
+	 */
 	public String getTitle() {
 		return "Timers";
 	}
@@ -137,9 +160,12 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 			if (convertView != null) {
 				element = convertView; // reusing old view
 			} else {
+				// inflate new view
 				element = LayoutInflater.from(parent.getContext()).inflate(
 						R.layout.timer_event, null);
 			}
+
+			// initialize the view with the events parameters
 
 			TimerEvent event = events.get(position);
 
@@ -150,6 +176,8 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 
 			String time_left = event.getMessage();
 
+			// if event isn't in the past, set the right remaining time else its
+			// message will be displayed
 			if (event.getRemainingTime() >= 0) {
 				time_left = formatTime(event.getRemainingTime());
 			}
@@ -205,6 +233,13 @@ public class TimerViewFragment extends ListFragment implements TimeListener,
 		return 0;
 	}
 
+	/**
+	 * set the id of this fragment (should be setted if you want to display
+	 * another slide of this class)
+	 * 
+	 * @param id
+	 *            id for this slide
+	 */
 	public void setID(int id) {
 		this.id = id;
 	}

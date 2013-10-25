@@ -13,9 +13,6 @@ import java.util.concurrent.TimeUnit;
  * 
  * @author Indidev
  * 
- * 
- *         Code reviewed against commit df7e8d90aec8d4f0505576abfe5d22914b09fdee
- *         (cbdev) Open FIXMEs Failed
  */
 public class TimeManager implements Runnable {
 
@@ -35,19 +32,17 @@ public class TimeManager implements Runnable {
 	 */
 	private final ScheduledExecutorService scheduler;
 
-	private List<TimeListener> listeners;
+	private List<Updatable> listeners;
 
 	/**
 	 * Create a new TimeManager instance
 	 * 
 	 * @param timeInMillis
 	 *            Timer fire interval
-	 * @param smartApp
-	 *            Reference to the controller to notify
 	 */
 	public TimeManager(long timeInMillis) {
 		this.paused = true;
-		listeners = new LinkedList<TimeListener>();
+		listeners = new LinkedList<Updatable>();
 
 		scheduler = Executors.newScheduledThreadPool(1);
 
@@ -61,7 +56,7 @@ public class TimeManager implements Runnable {
 	@Override
 	public void run() {
 		if (!paused) {
-			for (TimeListener listener : listeners) {
+			for (Updatable listener : listeners) {
 				listener.update();
 			}
 		}
@@ -71,7 +66,7 @@ public class TimeManager implements Runnable {
 	 * Update the timer firing interval/update interval
 	 * 
 	 * @param timeInMillis
-	 *            New Interval length
+	 *            New interval length
 	 */
 	public void setInterval(long timeInMillis) {
 		timer.cancel(false); // lrn to code cbdev, false is true
@@ -102,26 +97,36 @@ public class TimeManager implements Runnable {
 	}
 
 	/**
-	 * register a TimeListener to be update on an event
+	 * register a listener to be update on an event
 	 * 
 	 * @param listener
 	 *            listener to update
 	 */
-	public void register(TimeListener listener) {
+	public void register(Updatable listener) {
 		listeners.add(listener);
 	}
 
 	/**
-	 * unregister a TimeListener
+	 * unregister a listener
 	 * 
 	 * @param listener
 	 *            TimeListener to unregister
 	 */
-	public void unregister(TimeListener listener) {
+	public void unregister(Updatable listener) {
 		listeners.remove(listener);
 	}
 
-	public interface TimeListener {
+	/**
+	 * ordinary interface for stuff to get updated
+	 * 
+	 * @author Indidev
+	 * 
+	 */
+	public interface Updatable {
+
+		/**
+		 * update method (should be self-explaining)
+		 */
 		public void update();
 	}
 
