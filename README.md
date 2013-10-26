@@ -13,6 +13,3 @@ Then, copy the project.properties file from the repo to the appropriate location
 workspace.
 
 Please add ./libs/gag.jar to your project's classpath in order to use extended annotations.
-
-Eclipse-specific configuration files can be found in ./eclipse-specific, these files may need
-to be updated to fit your personal configuration.
