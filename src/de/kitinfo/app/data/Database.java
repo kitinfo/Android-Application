@@ -112,4 +112,16 @@ public class Database extends SQLiteOpenHelper {
 
 	}
 
+
+	public Cursor rawQuery(String table, String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
+		
+		SQLiteDatabase db = getReadableDatabase();
+		
+		Cursor c = db.query(table, projection, selection, selectionArgs, null, null, sortOrder);
+		db.close();
+		
+		return c;
+	}
+
 }
