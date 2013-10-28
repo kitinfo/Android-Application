@@ -57,9 +57,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 			switch (msg.what) {
 			case MSG_UPDATE:
-				Log.d("MainActivity | processMessage", "Counter: "
-						+ ReferenceManager.SLIDES_TO_UPDATE.size());
-				for (Updatable event : ReferenceManager.SLIDES_TO_UPDATE) {
+				for (Updatable event : ReferenceManager.SLIDES) {
 					if (event != null) {
 						event.update();
 						Log.d("MainActivity|processMessage",
@@ -176,15 +174,14 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 	private class UpdateTask extends AsyncTask<Void, Void, List<TimerEvent>> {
 
-
 		@Override
 		protected List<TimerEvent> doInBackground(Void... params) {
 
-			
 			String timeEvents = new IOManager().queryTimeEvents();
 			publishProgress();
-			List<TimerEvent> timers = new JsonParser_TimeEvent().parse(timeEvents);
-			
+			List<TimerEvent> timers = new JsonParser_TimeEvent()
+					.parse(timeEvents);
+
 			new Storage(getApplicationContext()).saveTimers(timers);
 			return timers;
 		}

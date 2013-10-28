@@ -15,7 +15,6 @@ import android.widget.TextView;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
-import de.kitinfo.app.TimeManager.Updatable;
 
 /**
  * A Slide to display events in the future, well,... they could also be in the
@@ -24,7 +23,7 @@ import de.kitinfo.app.TimeManager.Updatable;
  * @author Indidev
  * 
  */
-public class TimerViewFragment extends ListFragment implements Updatable, Slide {
+public class TimerViewFragment extends ListFragment implements Slide {
 
 	private List<TimerEvent> events;
 	private String jsonEvents;
@@ -33,7 +32,6 @@ public class TimerViewFragment extends ListFragment implements Updatable, Slide 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ReferenceManager.register(this);
 		ReferenceManager.TVF = this;
 
 		jsonEvents = "";
@@ -53,7 +51,6 @@ public class TimerViewFragment extends ListFragment implements Updatable, Slide 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ReferenceManager.unregister(this);
 		ReferenceManager.TVF = null;
 	}
 
