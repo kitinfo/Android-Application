@@ -3,6 +3,7 @@ package de.kitinfo.app.timers;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * This class provides a data structure for a timer elements which represents an
@@ -16,13 +17,8 @@ public class TimerEvent implements Serializable {
 	private static final long serialVersionUID = 3387055649275802046L;
 	private String title;
 	private String message;
+	private long date;
 	private int id;
-	private int year;
-	private int month;
-	private int day;
-	private int hour;
-	private int minute;
-	private int second;
 
 	/**
 	 * builds a new event
@@ -51,12 +47,15 @@ public class TimerEvent implements Serializable {
 		this.title = title;
 		this.message = message;
 		this.id = id;
-		this.year = year;
-		this.month = month;
-		this.day = day;
-		this.hour = hour;
-		this.minute = minute;
-		this.second = second;
+		date = new GregorianCalendar(year, month, day, hour, minute, second).getTimeInMillis();
+		
+		}
+	
+	public TimerEvent(String title, String message, int id, long date) {
+		this.title = title;
+		this.message = message;
+		this.id = id;
+		this.date = date;
 	}
 
 	/**
@@ -69,7 +68,11 @@ public class TimerEvent implements Serializable {
 		// return day + "." + month + "." + year + " " + hour + ":" + minute;
 		return SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM,
 				SimpleDateFormat.SHORT).format(
-				new Date(year - 1900, month - 1, day, hour, minute, second));
+				new Date(date));
+	}
+	
+	public long getDateInLong() {
+		return date;
 	}
 
 	/**
@@ -77,10 +80,9 @@ public class TimerEvent implements Serializable {
 	 * 
 	 * @return the remaining time in seconds
 	 */
-	@SuppressWarnings("deprecation")
 	public long getRemainingTime() {
 
-		return ((new Date(year - 1900, month - 1, day, hour, minute, second))
+		return ((new Date(date))
 				.getTime() - System.currentTimeMillis()) / 1000;
 	}
 
