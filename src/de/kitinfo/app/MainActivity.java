@@ -1,5 +1,6 @@
 package de.kitinfo.app;
 
+import java.util.List;
 import java.util.Locale;
 
 import android.os.AsyncTask;
@@ -13,6 +14,9 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import de.kitinfo.app.TimeManager.Updatable;
+import de.kitinfo.app.data.Storage;
+import de.kitinfo.app.timers.JsonParser_TimeEvent;
+import de.kitinfo.app.timers.TimerEvent;
 import de.kitinfo.app.timers.TimerViewFragment;
 
 /**
@@ -170,20 +174,24 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		guiHandler.resume();
 	}
 
-	private class UpdateTask extends AsyncTask<Void, Void, Void> {
+	private class UpdateTask extends AsyncTask<Void, Void, List<TimerEvent>> {
 
-		String timeEvents;
 
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected List<TimerEvent> doInBackground(Void... params) {
 
-			timeEvents = new IOManager().queryTimeEvents();
-			return null;
+			
+			String timeEvents = new IOManager().queryTimeEvents();
+			publishProgress();
+			List<TimerEvent> timers = new JsonParser_TimeEvent().parse(timeEvents);
+			
+			new Storage(getApplicationContext()).saveTimers(timers);
+			return timers;
 		}
 
 		@Override
-		protected void onPostExecute(Void post) {
-			timerView.setEvents(timeEvents);
+		protected void onPostExecute(List<TimerEvent> timer) {
+			timerView.setEvents(timer);
 		}
 
 		@Override

@@ -75,7 +75,7 @@ public class TimerViewFragment extends ListFragment implements Updatable, Slide 
 		this.setEvents(new JsonParser_TimeEvent().parse(jsonEvents));
 	}
 
-	private void setEvents(List<TimerEvent> events) {
+	public void setEvents(List<TimerEvent> events) {
 		this.events = events;
 		updateList();
 	}
