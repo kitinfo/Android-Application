@@ -8,6 +8,7 @@
         android:minSdkVersion="12"
         android:targetSdkVersion="17" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="de.kitinfo.provider.WRITE_PERMISSION"/>
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider android:name=".data.StorageProvider" android:authorities="de.kitinfo.provider"></provider>
+        <provider android:name=".data.StorageProvider" android:authorities="de.kitinfo.provider" android:writePermission="de.kitinfo.provider.WRITE_PERMISSION"></provider>
     </application>
 
 </manifest>
