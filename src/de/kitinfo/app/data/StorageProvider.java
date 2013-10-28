@@ -3,6 +3,12 @@
  */
 package de.kitinfo.app.data;
 
+import java.util.List;
+
+import de.kitinfo.app.IOManager;
+import de.kitinfo.app.ReferenceManager;
+import de.kitinfo.app.timers.JsonParser_TimeEvent;
+import de.kitinfo.app.timers.TimerEvent;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -114,7 +120,7 @@ public class StorageProvider extends ContentProvider {
 		long row = db.rawInsert(um.table, values);
 				
 		
-		return Uri.parse(uri.toString() + "/" + row);
+		return Uri.parse(uri.toString() + "#" + row);
 	}
 
 	@Override
@@ -140,7 +146,24 @@ public class StorageProvider extends ContentProvider {
 		
 		Cursor c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
 		
+		if (c.isLast()) {
+			getTimerFromServer(uri);
+		}
+		c.close();
+		c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
+		
 		return c;
+	}
+	
+	
+	private void getTimerFromServer(Uri uri) {
+		String jsonData = new IOManager().queryTimeEvents();
+		List<TimerEvent> timer = new JsonParser_TimeEvent().parse(jsonData);
+		
+		for (TimerEvent te : timer) {
+			
+			insert(uri, Database.getContentValues(te));
+		}
 	}
 
 	@Override
