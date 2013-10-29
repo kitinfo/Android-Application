@@ -48,7 +48,7 @@ public class Database extends SQLiteOpenHelper {
 	public enum Columns {
 		
 		TIMER(4, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE }),
-		IGNORE_TIMER(1, new ColumnValues[]{ColumnValues.TIMER_IGNROE_ID});
+		IGNORE_TIMER(1, new ColumnValues[]{ColumnValues.TIMER_IGNORE_ID});
 		
 		private ColumnValues[] columns;
 		private int count;
@@ -73,7 +73,7 @@ public class Database extends SQLiteOpenHelper {
 		TIMER_TITLE("title", "text", 1, 0),
 		TIMER_MESSAGE("message", "text", 2, 0),
 		TIMER_DATE("date", "real", 3, 0),
-		TIMER_IGNROE_ID("id", "integer", 0, 1);
+		TIMER_IGNORE_ID("id", "integer", 0, 1);
 		
 		private String name;
 		private String type;

@@ -73,7 +73,7 @@ public class Storage {
 		Cursor c = resolver.query(uri, null, null, null, null);
 		
 		// convert to list
-		List<TimerEvent> timers = Database.convertTimerEvents(c);
+		List<TimerEvent> timers = convertTimerEvents(c);
 		
 		c.close();
 		
@@ -84,15 +84,9 @@ public class Storage {
 		
 		List<Integer> ids = new LinkedList<Integer>();
 		
-		if (cv == null) {
-			Log.w("Storage", "null");
-			return timers;
-			
-		}
-		
 		// add ids to list
 		while (cv.moveToNext()) {
-			ids.add(cv.getInt(cv.getColumnIndex(Database.ColumnValues.TIMER_IGNROE_ID.getName())));
+			ids.add(cv.getInt(cv.getColumnIndex(Database.ColumnValues.TIMER_IGNORE_ID.getName())));
 		}
 		cv.close();
 		
@@ -127,7 +121,7 @@ public class Storage {
 		Log.d("Storage", "Ignore timer: " + id);
 		ContentValues values = new ContentValues();
 		
-		values.put(Database.ColumnValues.TIMER_IGNROE_ID.getName(), "" + id);
+		values.put(Database.ColumnValues.TIMER_IGNORE_ID.getName(), "" + id);
 		
 		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
 		
@@ -141,7 +135,7 @@ public class Storage {
 	 */
 	public void rememberTimer(int id) {
 		
-		String where = Database.ColumnValues.TIMER_IGNROE_ID + "= ?";
+		String where = Database.ColumnValues.TIMER_IGNORE_ID + "= ?";
 		String[] selectionArgs = {"" + id};
 		
 		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
@@ -171,7 +165,7 @@ public class Storage {
 		// get all timers stand on ignore list
 		while (c.moveToNext()) {
 			for (TimerEvent t : fullTimerList) {
-				if (t.getID() == c.getInt(c.getColumnIndex(Database.ColumnValues.TIMER_IGNROE_ID.getName()))) {
+				if (t.getID() == c.getInt(c.getColumnIndex(Database.ColumnValues.TIMER_IGNORE_ID.getName()))) {
 					timerList.add(t);
 				}
 			}

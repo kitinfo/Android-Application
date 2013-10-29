@@ -1,6 +1,7 @@
 package de.kitinfo.app.timers;
 
 import java.util.List;
+import java.util.Locale;
 
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -125,6 +126,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 
 		// return day + ":" + hour + ":" + minute + ":" + second;
 		return String.format("%02d:%02d:%02d:%02d", day, hour, minute, second);
+		
 	}
 
 	/**

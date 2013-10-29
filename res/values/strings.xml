@@ -8,5 +8,7 @@
     <string name="title_section3">Section 3</string>
     <string name="left_until">left until</string>
     <string name="ignore_text">Ignore</string>
+    <string name="reset_app_title">Reset App</string>
+    <string name="reset_app_description">Resets the app to default</string>
 
 </resources>
