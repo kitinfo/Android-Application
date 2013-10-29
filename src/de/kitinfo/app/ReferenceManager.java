@@ -28,13 +28,23 @@ public class ReferenceManager {
 	}
 
 	/**
-	 * add a slide to the list (replaces a slide with the same id, so make sure
-	 * you set the id if you want so)
+	 * Add a slide to the list
 	 * 
 	 * @param s
-	 *            slide to add
+	 *            Slide to add
 	 */
 	public static void addSlide(Slide s) {
+		SLIDES.add(s);
+	}
+
+	/**
+	 * update a slide in the list (replaces a slide with the same id, so make
+	 * sure you set the id if you want so)
+	 * 
+	 * @param s
+	 *            slide to update
+	 */
+	public static void updateSlide(Slide s) {
 		boolean found = false;
 		for (int i = 0; i < SLIDES.size(); i++) {
 			if (SLIDES.get(i).getID() == s.getID()) {

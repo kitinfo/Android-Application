@@ -51,7 +51,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
-	private TimerViewFragment timerView;
+	private boolean initialized;
 
 	private static final int MSG_UPDATE = 0;
 
@@ -95,10 +95,17 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		super.onCreate(savedInstanceState);
 		ReferenceManager.MA = this;
 
+		initialized = false;
+		if (savedInstanceState != null)
+			initialized = savedInstanceState.getBoolean("initialized", false);
+
 		setContentView(R.layout.activity_main);
 
-		timerView = new TimerViewFragment();
-		ReferenceManager.addSlide(timerView);
+		if (!initialized) {
+			ReferenceManager.addSlide(new TimerViewFragment());
+			initialized = true;
+		}
+
 		new UpdateTask().execute();
 
 		// refresh each second
@@ -126,6 +133,11 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	}
 
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		outState.putBoolean("initialized", initialized);
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -225,7 +237,6 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		@Override
 		protected void onPostExecute(List<TimerEvent> timer) {
-			timerView.setEvents(timer);
 		}
 
 		@Override
