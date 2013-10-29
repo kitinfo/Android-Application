@@ -31,43 +31,43 @@ import de.kitinfo.app.data.Storage;
 public class TimerViewFragment extends ListFragment implements Slide {
 
 	private List<TimerEvent> events;
-	private String jsonEvents;
 	private int id;
+	private boolean invalidated;
 
 	// for context menu
 	private ActionMode mActionMode;
-	
+
 	int selectedId;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		invalidated = true;
 		ReferenceManager.TVF = this;
 		selectedId = -1;
 
-		jsonEvents = "";
 		id = -1;
 
 		if (savedInstanceState != null) {
-			jsonEvents = savedInstanceState.getString("events", "");
 			id = savedInstanceState.getInt("id", 0);
 		}
 
-		events = new JsonParser_TimeEvent().parse(jsonEvents);
+		events = new Storage(getActivity().getApplicationContext()).getTimers();
 
 		updateList();
 		Log.d("TimerViewFragment", "created Timer View: " + toString());
+		invalidated = false;
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		invalidated = true;
 		ReferenceManager.TVF = null;
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
-		outState.putString("events", jsonEvents);
 		outState.putInt("id", id);
 	}
 
@@ -79,12 +79,11 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	 *            events in JSON format
 	 */
 	public void setEvents(String jsonEvents) {
-		this.jsonEvents = jsonEvents;
 		this.setEvents(new JsonParser_TimeEvent().parse(jsonEvents));
 	}
 
 	public void setEvents(List<TimerEvent> events) {
-		
+
 		this.events = events;
 		updateList();
 	}
@@ -98,7 +97,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	 * invalidate all views, so they will be updated soon (at least i hope so)
 	 */
 	public void update() {
-		if ((getListAdapter() != null) && (true))
+		if (!invalidated && (getListAdapter() != null))
 			getListView().invalidateViews();
 	}
 
@@ -106,9 +105,9 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	 * updates the whole list, should be used when new events occured
 	 * (attention, resets the scroll amount)
 	 */
-	public void updateList() {	
+	public void updateList() {
 		this.setListAdapter(new TimerListAdapter(events));
-		
+
 	}
 
 	/**
@@ -142,7 +141,6 @@ public class TimerViewFragment extends ListFragment implements Slide {
 		public TimerListAdapter(List<TimerEvent> events) {
 			this.events = events;
 		}
-		
 
 		@Override
 		public int getCount() {
@@ -199,21 +197,21 @@ public class TimerViewFragment extends ListFragment implements Slide {
 			element.setOnLongClickListener(new View.OnLongClickListener() {
 
 				// Called when the user long-clicks on someView
-			    public boolean onLongClick(View view) {
-			        if (mActionMode != null) {
-			            return false;
-			        }
-			        selectedId = view.getId();
-			        view.setSelected(true);
-			        
-			        // Start the CAB using the ActionMode.Callback defined above
-			        mActionMode = getActivity().startActionMode(mActionModeCallback);
-			        
-			        
-			        return true;
-			    }
+				public boolean onLongClick(View view) {
+					if (mActionMode != null) {
+						return false;
+					}
+					selectedId = view.getId();
+					view.setSelected(true);
+
+					// Start the CAB using the ActionMode.Callback defined above
+					mActionMode = getActivity().startActionMode(
+							mActionModeCallback);
+
+					return true;
+				}
 			});
-			
+
 			return element;
 		}
 
@@ -272,58 +270,61 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	public void setID(int id) {
 		this.id = id;
 	}
-	
-	
+
 	private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
 
-	    // Called when the action mode is created; startActionMode() was called
-	    @Override
-	    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-	        // Inflate a menu resource providing context menu items
-	        MenuInflater inflater = mode.getMenuInflater();
-	        inflater.inflate(R.menu.timer_context_menu, menu);
-	        return true;
-	    }
+		// Called when the action mode is created; startActionMode() was called
+		@Override
+		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+			// Inflate a menu resource providing context menu items
+			MenuInflater inflater = mode.getMenuInflater();
+			inflater.inflate(R.menu.timer_context_menu, menu);
+			return true;
+		}
 
-	    // Called each time the action mode is shown. Always called after onCreateActionMode, but
-	    // may be called multiple times if the mode is invalidated.
-	    @Override
-	    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-	    	
-	        return false; // Return false if nothing is done
-	    }
+		// Called each time the action mode is shown. Always called after
+		// onCreateActionMode, but
+		// may be called multiple times if the mode is invalidated.
+		@Override
+		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
 
-	    // Called when the user selects a contextual menu item
-	    @Override
-	    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-	        switch (item.getItemId()) {
-	            case R.id.ignore_item:
-	            	ignoreItem();
-	                mode.finish(); // Action picked, so close the CAB
-	                return true;
-	            default:
-	                return false;
-	        }
-	    }
+			return false; // Return false if nothing is done
+		}
 
-	    // Called when the user exits the action mode
-	    @Override
-	    public void onDestroyActionMode(ActionMode mode) {
-	        mActionMode = null;
-	        checkIgnoreList();
-	    }
-	    
-	    public void ignoreItem() {
-	    	
-	    	//Log.d("Seleced", "Selected: " + selectedId + "," + getListAdapter().getItemId(selectedId));
-	    	
-	    	new Storage(getActivity().getApplicationContext()).ignoreTimer((int) getListAdapter().getItemId(selectedId));
-	    		
-	    }
+		// Called when the user selects a contextual menu item
+		@Override
+		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+			switch (item.getItemId()) {
+			case R.id.ignore_item:
+				ignoreItem();
+				mode.finish(); // Action picked, so close the CAB
+				return true;
+			default:
+				return false;
+			}
+		}
+
+		// Called when the user exits the action mode
+		@Override
+		public void onDestroyActionMode(ActionMode mode) {
+			mActionMode = null;
+			checkIgnoreList();
+		}
+
+		public void ignoreItem() {
+
+			// Log.d("Seleced", "Selected: " + selectedId + "," +
+			// getListAdapter().getItemId(selectedId));
+
+			new Storage(getActivity().getApplicationContext())
+					.ignoreTimer((int) getListAdapter().getItemId(selectedId));
+
+		}
 	};
-	
+
 	public void checkIgnoreList() {
-		setEvents(new Storage(getActivity().getApplicationContext()).getTimers());
+		setEvents(new Storage(getActivity().getApplicationContext())
+				.getTimers());
 	}
-	
+
 }
