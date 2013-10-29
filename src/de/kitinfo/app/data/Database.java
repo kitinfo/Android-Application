@@ -286,4 +286,10 @@ public class Database extends SQLiteOpenHelper {
 		return rows;
 	}
 
+
+	public void reset() {
+		
+		onUpgrade(getWritableDatabase(), DBVERSION, DBVERSION);
+	}
+
 }

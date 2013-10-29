@@ -1,8 +1,12 @@
 package de.kitinfo.app;
 
+import de.kitinfo.app.data.Storage;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -23,11 +27,22 @@ public class SettingsFragment extends PreferenceFragment {
 		super.onCreate(savedInstanceState);
 		
 		addPreferencesFromResource(R.xml.settings_layout);
+		Preference r = findPreference("reset_app");
+		r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				resetApp();
+				return true;
+			}
+		});
 	}
 	
 	
-	public void resetApp(View view) {
-		//TODO: Resets app
+	public void resetApp() {
+		Log.d("Settings", "do reset");
+		new Storage(getActivity().getApplicationContext()).reset();
+		ReferenceManager.MA.recreate();
 	}
 	
 	

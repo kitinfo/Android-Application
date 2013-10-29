@@ -1,7 +1,6 @@
 package de.kitinfo.app.timers;
 
 import java.util.List;
-import java.util.Locale;
 
 import android.database.DataSetObserver;
 import android.os.Bundle;

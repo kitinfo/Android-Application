@@ -193,4 +193,13 @@ public List<TimerEvent> convertTimerEvents(Cursor c) {
 		
 		return timers;
 	}
+
+public void reset() {
+	
+	ContentResolver resolver = ctx.getContentResolver();
+	Uri uri = Uri.parse(StorageContract.RESET_URI);
+	
+	resolver.delete(uri, null, null);
+	
+}
 }

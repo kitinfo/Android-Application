@@ -18,6 +18,8 @@ public class StorageContract {
 	
 	public static final String IGNORE_TIMER_URI = PROVIDER_URI + "/" + UriMatch.IGNORE.getTable();
 	
+	public static final String RESET_URI = PROVIDER_URI + "/" + UriMatch.RESET.getTable();
+	
 	
 	/**
 	 * 

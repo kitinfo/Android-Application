@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Locale;
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.media.audiofx.BassBoost.Settings;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ActionProvider;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import de.kitinfo.app.TimeManager.Updatable;
@@ -39,6 +37,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	public void openSettings() {
 		Intent settingsIntent = new Intent(this, SettingsActivity.class);
 		startActivity(settingsIntent);
+		
 	}
 	
 	/**
@@ -157,6 +156,22 @@ public class MainActivity extends FragmentActivity implements Updatable {
 				return true;
 			}
 		});
+		
+		item = menu.findItem(R.id.action_update);
+		item.setActionProvider(new ActionProvider(null) {
+			
+			@Override
+			public View onCreateActionView() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public boolean onPerformDefaultAction() {
+				new UpdateTask().execute();
+				return true;
+			}
+		});
 		return true;
 	}
 	
@@ -237,6 +252,8 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		@Override
 		protected void onPostExecute(List<TimerEvent> timer) {
+			update();
+			ReferenceManager.TVF.setEvents(timer);
 		}
 
 		@Override

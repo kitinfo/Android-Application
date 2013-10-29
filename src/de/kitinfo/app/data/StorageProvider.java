@@ -31,7 +31,8 @@ public class StorageProvider extends ContentProvider {
 		 * Use this for getting timers from database
 		 */
 		TIMERS(1, "timers"),
-		IGNORE(2, "ignore_timer");
+		IGNORE(2, "ignore_timer"),
+		RESET(3, "reset");
 		
 		private int code;
 		private String table;
@@ -81,6 +82,7 @@ public class StorageProvider extends ContentProvider {
 	public StorageProvider() {
 		matcher.addURI(AUTHORITY, "timers", 1);
 		matcher.addURI(AUTHORITY, "ignore_timer", 2);
+		matcher.addURI(AUTHORITY, "reset", 3);
 	}
 
 	@Override
@@ -91,8 +93,15 @@ public class StorageProvider extends ContentProvider {
 			return 0;
 		}
 		
-		Database db = new Database(getContext());		
-		return db.rawDelete(um.getTable(), selection, selectionArgs);
+		if (um == UriMatch.RESET) {
+			Database db = new Database(getContext());
+			db.reset();
+			return 0;
+		} else {
+		
+			Database db = new Database(getContext());		
+			return db.rawDelete(um.getTable(), selection, selectionArgs);
+		}
 	}
 
 	@Override
@@ -116,6 +125,10 @@ public class StorageProvider extends ContentProvider {
 		if (um == null) {
 			return null;
 		}
+		if (um == UriMatch.RESET) {
+			return null;
+		}
+		
 		
 		// insert values
 		Database db = new Database(getContext());
@@ -140,6 +153,10 @@ public class StorageProvider extends ContentProvider {
 		if (um == null) {
 			return null;
 		}
+		if (um == UriMatch.RESET) {
+			return null;
+		}
+		
 		if (selection != null) {
 			// check for sql injection
 			if (selection.contains(";")) {

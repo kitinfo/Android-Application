@@ -10,5 +10,6 @@
     <string name="ignore_text">Ignore</string>
     <string name="reset_app_title">Reset App</string>
     <string name="reset_app_description">Resets the app to default</string>
+    <string name="action_update">Update</string>
 
 </resources>
