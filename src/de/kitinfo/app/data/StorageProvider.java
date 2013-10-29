@@ -13,6 +13,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 
 /**
  * @author mpease
@@ -30,7 +31,7 @@ public class StorageProvider extends ContentProvider {
 		 * Use this for getting timers from database
 		 */
 		TIMERS(1, "timers"),
-		IGNORE(2, "ignoreTimer");
+		IGNORE(2, "ignore_timer");
 		
 		private int code;
 		private String table;
@@ -79,7 +80,7 @@ public class StorageProvider extends ContentProvider {
 	 */
 	public StorageProvider() {
 		matcher.addURI(AUTHORITY, "timers", 1);
-		matcher.addURI(AUTHORITY, "ignoreTimer", 2);
+		matcher.addURI(AUTHORITY, "ignore_timer", 2);
 	}
 
 	@Override
@@ -135,29 +136,33 @@ public class StorageProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 		
 		// find the right table
-		UriMatch match = UriMatch.findMatch(matcher.match(uri));
-		if (match == null) {
+		UriMatch um = UriMatch.findMatch(matcher.match(uri));
+		if (um == null) {
 			return null;
 		}
-		
-		// check for sql injection
-		if (selection.contains(";")) {
-			return null;
+		if (selection != null) {
+			// check for sql injection
+			if (selection.contains(";")) {
+				return null;
+			}
 		}
-		
+		Log.d("StorageProvider", "checks done");
 		// search in database
 		Database db = new Database(getContext());
-		Cursor c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
+		Cursor c = db.rawQuery(um.getTable(), projection, selection, selectionArgs, sortOrder);
 		
 		// check for values
 		if (c.isLast()) {
 			// get data from server
 			getTimerFromServer(uri);
 			c.close();
+			
+			Log.d("StorageProvider", "is last");
 			// new query
-			c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
+			Cursor cr = db.rawQuery(um.getTable(), projection, selection, selectionArgs, sortOrder);
+			return cr;
 		}
-		
+		Log.d("StorageProvider" , "give cursor" + c.getColumnCount());
 		return c;
 	}
 	

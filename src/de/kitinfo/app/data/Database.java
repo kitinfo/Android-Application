@@ -169,13 +169,6 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		
-		
-		db.execSQL("create table " + Tables.TIMER_TABLE.getTable() + 
-				"(tableID integer primary key autoincrement, " + 
-				", title text, message text,  date real)");
-		db.execSQL("create table " + Tables.TIMER_IGNORE_TABLE.getTable() + "(tableID integer primary key autoincrement, id integer)");
-
-		
 		for (Tables t : Tables.values()) {
 			
 			StringBuilder sb = new StringBuilder();
@@ -230,10 +223,13 @@ public class Database extends SQLiteOpenHelper {
 		
 		SQLiteDatabase db = getReadableDatabase();
 		
-		Cursor c = db.query(table, projection, selection, selectionArgs, null, null, sortOrder);
-		db.close();
-		
+		Cursor c = db.query(table, projection, selection, selectionArgs, null, null, sortOrder);		
 		return c;
+	}
+	
+	public void close() {
+		SQLiteDatabase db = getWritableDatabase();
+		db.close();
 	}
 
 
