@@ -6,7 +6,6 @@ package de.kitinfo.app.data;
 import java.util.List;
 
 import de.kitinfo.app.IOManager;
-import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.timers.JsonParser_TimeEvent;
 import de.kitinfo.app.timers.TimerEvent;
 import android.content.ContentProvider;
@@ -30,7 +29,8 @@ public class StorageProvider extends ContentProvider {
 		/**
 		 * Use this for getting timers from database
 		 */
-		TIMERS(1, "timers"); 
+		TIMERS(1, "timers"),
+		IGNORE(2, "ignoreTimer");
 		
 		private int code;
 		private String table;
@@ -79,20 +79,19 @@ public class StorageProvider extends ContentProvider {
 	 */
 	public StorageProvider() {
 		matcher.addURI(AUTHORITY, "timers", 1);
+		matcher.addURI(AUTHORITY, "ignoreTimer", 2);
 	}
 
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
 		
 		UriMatch um = UriMatch.findMatch(matcher.match(uri));
-		
 		if (um == null) {
 			return 0;
 		}
 		
-		Database db = new Database(getContext());
-		
-		return db.rawDelete(uri, selection, selectionArgs);
+		Database db = new Database(getContext());		
+		return db.rawDelete(um.getTable(), selection, selectionArgs);
 	}
 
 	@Override
@@ -110,16 +109,18 @@ public class StorageProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 		
+		// find right table
 		UriMatch um = UriMatch.findMatch(matcher.match(uri));
 		
 		if (um == null) {
 			return null;
 		}
 		
+		// insert values
 		Database db = new Database(getContext());
-		long row = db.rawInsert(um.table, values);
+		long row = db.rawInsert(um.getTable(), values);
 				
-		
+		// return uri with inserted row
 		return Uri.parse(uri.toString() + "#" + row);
 	}
 
@@ -133,33 +134,39 @@ public class StorageProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
 		
+		// find the right table
 		UriMatch match = UriMatch.findMatch(matcher.match(uri));
 		if (match == null) {
 			return null;
 		}
 		
+		// check for sql injection
 		if (selection.contains(";")) {
 			return null;
 		}
 		
+		// search in database
 		Database db = new Database(getContext());
-		
 		Cursor c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
 		
+		// check for values
 		if (c.isLast()) {
+			// get data from server
 			getTimerFromServer(uri);
+			c.close();
+			// new query
+			c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
 		}
-		c.close();
-		c = db.rawQuery(match.getTable(), projection, selection, selectionArgs, sortOrder);
 		
 		return c;
 	}
 	
-	
+	// gets data from server and insert it
 	private void getTimerFromServer(Uri uri) {
 		String jsonData = new IOManager().queryTimeEvents();
 		List<TimerEvent> timer = new JsonParser_TimeEvent().parse(jsonData);
 		
+		// for every timer
 		for (TimerEvent te : timer) {
 			
 			insert(uri, Database.getContentValues(te));

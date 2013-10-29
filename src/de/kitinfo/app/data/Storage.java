@@ -37,10 +37,22 @@ public class Storage {
 	public void addTimerEvent(TimerEvent te) {
 		ContentValues values = Database.getContentValues(te);
 		
-		Uri uri = Uri.parse("content://" + StorageProvider.AUTHORITY + "/timers");
+		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
 		ContentResolver resolver = ctx.getContentResolver();
 		resolver.insert(uri, values);
+	}
+	
+	
+	public void deleteTimerEvent(TimerEvent te) {
+		
+		Uri uri = Uri.parse(StorageContract.TIMER_URI);
+		
+		String where = Database.ColumnValues.TIMER_ID + "= ?";
+		String[] selectionArgs = {"" + te.getID()};
+
+		ContentResolver resolver = ctx.getContentResolver();
+		resolver.delete(uri, where, selectionArgs);
 	}
 	
 	public List<TimerEvent> getTimers() {
@@ -58,4 +70,33 @@ public class Storage {
 		return timers;
 	}
 	
+	/**
+	 * sets an Timer on ignore
+	 * @param id id of timer
+	 */
+	public void ignoreTimer(int id) {
+		ContentValues values = new ContentValues();
+		
+		values.put(Database.ColumnValues.TIMER_IGNROE_ID.getName(), "" + id);
+		
+		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
+		
+		ContentResolver resolver = ctx.getContentResolver();
+		resolver.insert(uri, values);
+	}
+	
+	/**
+	 * makes an ignored timer visible again.
+	 * @param id id of the timer
+	 */
+	public void rememberTimer(int id) {
+		
+		String where = Database.ColumnValues.TIMER_IGNROE_ID + "= ?";
+		String[] selectionArgs = {"" + id};
+		
+		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
+		
+		ContentResolver resolver = ctx.getContentResolver();
+		resolver.delete(uri, where, selectionArgs);
+	}
 }

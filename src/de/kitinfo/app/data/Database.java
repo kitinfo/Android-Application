@@ -22,13 +22,97 @@ import android.net.Uri;
  */
 public class Database extends SQLiteOpenHelper {
 
-	private static final String TIMER_TITLE = "title";
-	private static final String TIMER_MESSAGE = "message";
-	private static final String TIMER_ID = "id";
+	public enum Tables {
+		
+		TIMER_TABLE("timers", Columns.TIMER),
+		TIMER_IGNORE_TABLE("ignore_timer", Columns.IGNORE_TIMER);
+		
+		private String table;
+		private Columns columns;
+		
+		private Tables(String table, Columns colums) {
+			this.table = table;
+			this.columns = colums;
+		}
+		
+		public String getTable() {
+			return table;
+		}
+		
+		public Columns getColums() {
+			return columns;
+		}
+		
+	}
+	
+	public enum Columns {
+		
+		TIMER(4, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE }),
+		IGNORE_TIMER(1, new ColumnValues[]{ColumnValues.TIMER_IGNROE_ID});
+		
+		private ColumnValues[] columns;
+		private int count;
+		
+		private Columns(int count, ColumnValues[] columns) {
+			this.count = count;
+			this.columns = columns;
+		}
+		
+		public ColumnValues[] getColumns() {
+			return columns;
+		}
+		
+		public int getCount() {
+			return count;
+		}
+	}
+	
+	public enum ColumnValues {
+		
+		TIMER_ID("id", "integer", 0, 0),
+		TIMER_TITLE("title", "text", 1, 0),
+		TIMER_MESSAGE("message", "text", 2, 0),
+		TIMER_DATE("date", "real", 3, 0),
+		TIMER_IGNROE_ID("id", "integer", 0, 1);
+		
+		private String name;
+		private String type;
+		private int position;
+		private int tableID;
+		
+		private ColumnValues(String name, String type, int position, int tableID) {
+			this.name = name;
+			this.type = type;
+			this.position = position;
+			this.tableID = tableID;
+		}
+		
+		public int getPosition() {
+			return position;
+		}
+		
+		public String getName() {
+			return name;
+		}
+		
+		public String getType() {
+			return type;
+		}
+		
+		public ColumnValues fromPosition(int position, int tableID) {
+			
+			for (ColumnValues cv : values()) {
+				if (cv.getPosition() == position && tableID == cv.tableID) {
+					return cv;
+				}
+			}
+			return null;
+		}
+	}
+	
+	
 	private static final int DBVERSION = 1;
 	private static final String DBNAME = "kitinfo.db";
-	private final String TIMER_TABLE = "timers";
-	private static final String TIMER_DATE = "date";
 	
 	/**
 	 * @param context
@@ -39,7 +123,6 @@ public class Database extends SQLiteOpenHelper {
 	public Database(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
-		// TODO Auto-generated constructor stub
 	}
 	
 	
@@ -48,7 +131,7 @@ public class Database extends SQLiteOpenHelper {
 		SQLiteDatabase db = getWritableDatabase();
 		
 		db.beginTransaction();
-		db.insert(TIMER_TABLE, null, getContentValues(event));
+		db.insert(Tables.TIMER_TABLE.getTable(), null, getContentValues(event));
 		db.setTransactionSuccessful();
 		db.endTransaction();
 		db.close();
@@ -62,7 +145,7 @@ public class Database extends SQLiteOpenHelper {
 		
 		SQLiteDatabase db = getReadableDatabase();
 		
-		Cursor c = db.query(TIMER_TABLE, null, null, null, null, null, null);
+		Cursor c = db.query(Tables.TIMER_TABLE.getTable(), null, null, null, null, null, null);
 		
 		List<TimerEvent> events = convertTimerEvents(c);
 		c.close();
@@ -85,8 +168,38 @@ public class Database extends SQLiteOpenHelper {
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("create table " + TIMER_TABLE + "(tableID integer primary key autoincrement, id integer, title text, message text,  date real)");
+		
+		
+		db.execSQL("create table " + Tables.TIMER_TABLE.getTable() + 
+				"(tableID integer primary key autoincrement, " + 
+				", title text, message text,  date real)");
+		db.execSQL("create table " + Tables.TIMER_IGNORE_TABLE.getTable() + "(tableID integer primary key autoincrement, id integer)");
 
+		
+		for (Tables t : Tables.values()) {
+			
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("create table ");
+			sb.append(t.getTable());
+			sb.append("(tableID integer primary key autoincrement, ");
+			
+			for (int i = 0; i < t.getColums().getColumns().length; i++) {
+				for (ColumnValues cv : t.getColums().getColumns()) {
+					if (cv.getPosition() == i) {
+						sb.append(cv.getName());
+						sb.append(" ");
+						sb.append(cv.getType());
+						sb.append(", ");
+						break;
+					}
+				}
+			}
+			sb.delete(sb.lastIndexOf(", "), sb.length());
+			sb.append(")");
+			
+			db.execSQL(sb.toString());
+		}
 	}
 
 	/* (non-Javadoc)
@@ -94,7 +207,10 @@ public class Database extends SQLiteOpenHelper {
 	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("DROP TABLE IF EXISTS " + TIMER_TABLE);
+		
+		for (Tables t : Tables.values()) {
+			db.execSQL("DROP TABLE IF EXISTS " + t.getTable());
+		}
 		
 		onCreate(db);
 
@@ -133,10 +249,10 @@ public class Database extends SQLiteOpenHelper {
 		
 		ContentValues values = new ContentValues();
 		
-		values.put(TIMER_TITLE, event.getTitle());
-		values.put(TIMER_MESSAGE, event.getMessage());
-		values.put(TIMER_ID, event.getID());
-		values.put(TIMER_DATE, event.getDateInLong());
+		values.put(ColumnValues.TIMER_TITLE.getName(), event.getTitle());
+		values.put(ColumnValues.TIMER_MESSAGE.getName(), event.getMessage());
+		values.put(ColumnValues.TIMER_ID.getName(), event.getID());
+		values.put(ColumnValues.TIMER_DATE.getName(), event.getDateInLong());
 		
 		return values;
 	}
@@ -146,7 +262,11 @@ public class Database extends SQLiteOpenHelper {
 		List<TimerEvent> timers = new LinkedList<TimerEvent>();
 		
 		while (c.moveToNext()) {
-			TimerEvent te = new TimerEvent(c.getString(c.getColumnIndex(TIMER_TITLE)), c.getString(c.getColumnIndex(TIMER_MESSAGE)), c.getInt(c.getColumnIndex(TIMER_ID)), c.getLong(c.getColumnIndex(TIMER_DATE)));
+			TimerEvent te = new TimerEvent(
+					c.getString(c.getColumnIndex(ColumnValues.TIMER_TITLE.getName())), 
+					c.getString(c.getColumnIndex(ColumnValues.TIMER_MESSAGE.getName())), 
+					c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName())),
+					c.getLong(c.getColumnIndex(ColumnValues.TIMER_DATE.getName())));
 			timers.add(te);
 		}
 		
@@ -155,13 +275,13 @@ public class Database extends SQLiteOpenHelper {
 	}
 
 
-	public int rawDelete(Uri uri, String selection, String[] selectionArgs) {
+	public int rawDelete(String table, String selection, String[] selectionArgs) {
 		
 		SQLiteDatabase db = getWritableDatabase();
 		
 		db.beginTransaction();
 		
-		int rows = db.delete(TIMER_TABLE, selection, selectionArgs);
+		int rows = db.delete(table, selection, selectionArgs);
 		
 		db.setTransactionSuccessful();
 		db.endTransaction();
