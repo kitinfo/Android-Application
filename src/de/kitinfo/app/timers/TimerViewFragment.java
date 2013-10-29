@@ -6,7 +6,6 @@ import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,18 +43,18 @@ public class TimerViewFragment extends ListFragment implements Slide {
 		super.onCreate(savedInstanceState);
 		invalidated = true;
 		ReferenceManager.TVF = this;
+		ReferenceManager.updateSlide(this);
 		selectedId = -1;
 
 		id = -1;
 
 		if (savedInstanceState != null) {
-			id = savedInstanceState.getInt("id", 0);
+			id = savedInstanceState.getInt("id", -1);
 		}
 
 		events = new Storage(getActivity().getApplicationContext()).getTimers();
 
 		updateList();
-		Log.d("TimerViewFragment", "created Timer View: " + toString());
 		invalidated = false;
 	}
 
