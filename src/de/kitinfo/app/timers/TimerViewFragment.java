@@ -19,7 +19,6 @@ import android.widget.TextView;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
-import de.kitinfo.app.TimeManager.Updatable;
 import de.kitinfo.app.data.Storage;
 
 /**
@@ -29,7 +28,7 @@ import de.kitinfo.app.data.Storage;
  * @author Indidev
  * 
  */
-public class TimerViewFragment extends ListFragment implements Updatable, Slide {
+public class TimerViewFragment extends ListFragment implements Slide {
 
 	private List<TimerEvent> events;
 	private String jsonEvents;
@@ -43,7 +42,6 @@ public class TimerViewFragment extends ListFragment implements Updatable, Slide 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ReferenceManager.register(this);
 		ReferenceManager.TVF = this;
 		selectedId = -1;
 
@@ -64,7 +62,6 @@ public class TimerViewFragment extends ListFragment implements Updatable, Slide 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ReferenceManager.unregister(this);
 		ReferenceManager.TVF = null;
 	}
 

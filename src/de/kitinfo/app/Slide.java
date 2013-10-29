@@ -1,6 +1,7 @@
 package de.kitinfo.app;
 
 import android.support.v4.app.Fragment;
+import de.kitinfo.app.TimeManager.Updatable;
 
 /**
  * Each slide should implement this, it is very important,...
@@ -8,7 +9,7 @@ import android.support.v4.app.Fragment;
  * @author Indidev
  * 
  */
-public interface Slide {
+public interface Slide extends Updatable {
 
 	/**
 	 * get the title of a slide, this will be displayed as tab name
