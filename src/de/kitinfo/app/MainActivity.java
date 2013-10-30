@@ -191,6 +191,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 			@Override
 			public boolean onPerformDefaultAction() {
+
 				UserDialog dialog = new UserDialog(MainActivity.this);
 
 				final View v = getLayoutInflater().inflate(R.layout.timer_add,
