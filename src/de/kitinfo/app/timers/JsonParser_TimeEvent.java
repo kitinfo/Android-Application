@@ -65,7 +65,7 @@ public class JsonParser_TimeEvent {
 				String message = android.text.Html.fromHtml(
 						timerObj.getString(Tags.MESSAGE.toString())).toString();
 				int day = timerObj.getInt(Tags.DAY.toString());
-				int month = timerObj.getInt(Tags.MONTH.toString());
+				int month = timerObj.getInt(Tags.MONTH.toString()) -1;
 				int year = timerObj.getInt(Tags.YEAR.toString());
 				int hour = timerObj.getInt(Tags.HOUR.toString());
 				int minute = timerObj.getInt(Tags.MINUTE.toString());
