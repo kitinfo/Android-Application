@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
  * @author Indidev
  * 
  */
-public class TimerEvent implements Serializable {
+public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 
 	private static final long serialVersionUID = 3387055649275802046L;
 	private String title;
@@ -47,10 +47,11 @@ public class TimerEvent implements Serializable {
 		this.title = title;
 		this.message = message;
 		this.id = id;
-		date = new GregorianCalendar(year, month, day, hour, minute, second).getTimeInMillis();
-		
-		}
-	
+		date = new GregorianCalendar(year, month, day, hour, minute, second)
+				.getTimeInMillis();
+
+	}
+
 	public TimerEvent(String title, String message, int id, long date) {
 		this.title = title;
 		this.message = message;
@@ -67,10 +68,9 @@ public class TimerEvent implements Serializable {
 		// german time string
 		// return day + "." + month + "." + year + " " + hour + ":" + minute;
 		return SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM,
-				SimpleDateFormat.SHORT).format(
-				new Date(date));
+				SimpleDateFormat.SHORT).format(new Date(date));
 	}
-	
+
 	public long getDateInLong() {
 		return date;
 	}
@@ -82,8 +82,7 @@ public class TimerEvent implements Serializable {
 	 */
 	public long getRemainingTime() {
 
-		return ((new Date(date))
-				.getTime() - System.currentTimeMillis()) / 1000;
+		return ((new Date(date)).getTime() - System.currentTimeMillis()) / 1000;
 	}
 
 	/**
@@ -112,5 +111,10 @@ public class TimerEvent implements Serializable {
 	 */
 	public int getID() {
 		return id;
+	}
+
+	@Override
+	public int compareTo(TimerEvent another) {
+		return (int) (date - another.getDateInLong());
 	}
 }
