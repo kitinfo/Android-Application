@@ -1,12 +1,9 @@
 package de.kitinfo.app;
 
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
 import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -17,14 +14,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.ActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TimePicker;
 import de.kitinfo.app.TimeManager.Updatable;
 import de.kitinfo.app.data.Storage;
 import de.kitinfo.app.timers.JsonParser_TimeEvent;
@@ -42,7 +37,7 @@ import de.kitinfo.app.timers.TimerViewFragment;
 public class MainActivity extends FragmentActivity implements Updatable {
 
 	boolean addVisible;
-	
+
 	public void openSettings() {
 		Intent settingsIntent = new Intent(this, SettingsActivity.class);
 		startActivity(settingsIntent);
@@ -73,7 +68,6 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	 */
 	private final PauseHandler guiHandler = new PauseHandler() {
 
-		
 		public void processMessage(Message msg) {
 
 			switch (msg.what) {
@@ -130,6 +124,26 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		// mViewPager = new ViewPager(this);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+
+		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageSelected(int position) {
+				Slide curSlide = (Slide) mSectionsPagerAdapter
+						.getItem(position);
+
+			}
+
+			@Override
+			public void onPageScrolled(int position, float positionOffset,
+					int positionOffsetPixels) {
+
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int state) {
+			}
+		});
 
 		Log.d("MainActivity", "Main Activity created");
 
@@ -195,44 +209,6 @@ public class MainActivity extends FragmentActivity implements Updatable {
 			@Override
 			public boolean onPerformDefaultAction() {
 
-				UserDialog dialog = new UserDialog(MainActivity.this);
-
-				final View v = getLayoutInflater().inflate(R.layout.timer_add,
-						null);
-				((TimePicker) v.findViewById(R.id.timer_time))
-						.setIs24HourView(true);
-
-				dialog.openViewDialog(getString(R.string.add_custom_Event), v,
-						getString(R.string.cancel_button),
-						getString(R.string.save_button), new OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								String title = ((EditText) v
-										.findViewById(R.id.timer_event))
-										.getText().toString();
-								String message = ((EditText) v
-										.findViewById(R.id.timer_message))
-										.getText().toString();
-								int id = Integer.MIN_VALUE;
-								DatePicker date = (DatePicker) v
-										.findViewById(R.id.timer_date);
-								TimePicker time = (TimePicker) v
-										.findViewById(R.id.timer_time);
-
-								long fullDate = new GregorianCalendar(date
-										.getYear(), date.getMonth(), date
-										.getDayOfMonth(),
-										time.getCurrentHour(), time
-												.getCurrentMinute())
-										.getTimeInMillis();
-
-								TimerEvent event = new TimerEvent(title,
-										message, id, fullDate);
-							}
-						});
 				return true;
 			}
 		});

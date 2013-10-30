@@ -1,5 +1,6 @@
 package de.kitinfo.app;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import de.kitinfo.app.TimeManager.Updatable;
 
@@ -32,4 +33,20 @@ public interface Slide extends Updatable {
 	 * @return the slides id
 	 */
 	public int getID();
+
+	/**
+	 * whether the slide is expandable or not, if it is expandable, the
+	 * expandable item will be shown in the action bar
+	 * 
+	 * @return whether the slide is expandable
+	 */
+	public boolean isExpandable();
+
+	/**
+	 * add an Element (for example an event to timers)
+	 * 
+	 * @param context
+	 *            context, is maybe needed
+	 */
+	public void addElement(Context context);
 }
