@@ -36,6 +36,9 @@ import de.kitinfo.app.timers.TimerViewFragment;
  */
 public class MainActivity extends FragmentActivity implements Updatable {
 
+	private static final String TAG_INITIALIZED = "initialized";
+	private static final String TAG_CURRENT_SLIDE = "currentSlide";
+
 	boolean addVisible;
 
 	public void setAddVisibility(boolean visible) {
@@ -105,7 +108,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		initialized = false;
 		if (savedInstanceState != null)
-			initialized = savedInstanceState.getBoolean("initialized", false);
+			initialized = savedInstanceState.getBoolean(TAG_INITIALIZED, false);
 
 		setContentView(R.layout.activity_main);
 
@@ -130,6 +133,10 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		// mViewPager = new ViewPager(this);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+
+		if (savedInstanceState != null)
+			mViewPager.setCurrentItem(savedInstanceState.getInt(
+					TAG_CURRENT_SLIDE, 0));
 
 		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -168,7 +175,8 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
-		outState.putBoolean("initialized", initialized);
+		outState.putBoolean(TAG_INITIALIZED, initialized);
+		outState.putInt(TAG_CURRENT_SLIDE, mViewPager.getCurrentItem());
 	}
 
 	@Override
