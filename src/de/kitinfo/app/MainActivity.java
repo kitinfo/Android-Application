@@ -33,10 +33,14 @@ import de.kitinfo.app.timers.TimerViewFragment;
  * @author Indidev
  * 
  */
-@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class MainActivity extends FragmentActivity implements Updatable {
 
 	boolean addVisible;
+
+	public void setAddVisibility(boolean visible) {
+		addVisible = visible;
+		invalidateOptionsMenu();
+	}
 
 	public void openSettings() {
 		Intent settingsIntent = new Intent(this, SettingsActivity.class);
