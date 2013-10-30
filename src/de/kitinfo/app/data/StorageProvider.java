@@ -173,12 +173,10 @@ public class StorageProvider extends ContentProvider {
 			getTimerFromServer(uri);
 			c.close();
 			
-			Log.d("StorageProvider", "is last");
 			// new query
 			Cursor cr = db.rawQuery(um.getTable(), projection, selection, selectionArgs, sortOrder);
 			return cr;
 		}
-		Log.d("StorageProvider" , "give cursor" + c.getColumnCount());
 		return c;
 	}
 	
@@ -193,11 +191,19 @@ public class StorageProvider extends ContentProvider {
 			insert(uri, Database.getContentValues(te));
 		}
 	}
-
+	
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
-		// not implemented
+		
+		UriMatch um = UriMatch.findMatch(matcher.match(uri));
+		if (um == null) {
+			return 0;
+		}
+		
+		Database db = new Database(getContext());
+		db.rawUpdate(um.getTable(), values, selection, selectionArgs);
+		
 		return 0;
 	}
 

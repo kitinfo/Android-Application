@@ -11,10 +11,11 @@ import de.kitinfo.app.timers.TimerEvent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
 
 /**
  * @author mpease
@@ -24,8 +25,7 @@ public class Database extends SQLiteOpenHelper {
 
 	public enum Tables {
 		
-		TIMER_TABLE("timers", Columns.TIMER),
-		TIMER_IGNORE_TABLE("ignore_timer", Columns.IGNORE_TIMER);
+		TIMER_TABLE("timers", Columns.TIMER);
 		
 		private String table;
 		private Columns columns;
@@ -39,7 +39,7 @@ public class Database extends SQLiteOpenHelper {
 			return table;
 		}
 		
-		public Columns getColums() {
+		public Columns getColumns() {
 			return columns;
 		}
 		
@@ -47,8 +47,7 @@ public class Database extends SQLiteOpenHelper {
 	
 	public enum Columns {
 		
-		TIMER(4, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE }),
-		IGNORE_TIMER(1, new ColumnValues[]{ColumnValues.TIMER_IGNORE_ID});
+		TIMER(5, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE });
 		
 		private ColumnValues[] columns;
 		private int count;
@@ -58,7 +57,7 @@ public class Database extends SQLiteOpenHelper {
 			this.columns = columns;
 		}
 		
-		public ColumnValues[] getColumns() {
+		public ColumnValues[] getColumnValues() {
 			return columns;
 		}
 		
@@ -69,11 +68,11 @@ public class Database extends SQLiteOpenHelper {
 	
 	public enum ColumnValues {
 		
-		TIMER_ID("id", "integer", 0, 0),
+		TIMER_ID("id", "integer unique", 0, 0),
 		TIMER_TITLE("title", "text", 1, 0),
 		TIMER_MESSAGE("message", "text", 2, 0),
 		TIMER_DATE("date", "real", 3, 0),
-		TIMER_IGNORE_ID("id", "integer", 0, 1);
+		TIMER_IGNORE("ignore", "integer DEFAULT(0)", 4, 0);
 		
 		private String name;
 		private String type;
@@ -111,7 +110,7 @@ public class Database extends SQLiteOpenHelper {
 	}
 	
 	
-	private static final int DBVERSION = 1;
+	private static final int DBVERSION = 2;
 	private static final String DBNAME = "kitinfo.db";
 	
 	/**
@@ -125,13 +124,34 @@ public class Database extends SQLiteOpenHelper {
 		super(context, name, factory, version);
 	}
 	
+	/**
+	 * updates with raw data
+	 * @param table
+	 * @param values
+	 * @param whereClause
+	 * @param whereArgs
+	 * @return
+	 */
+	public int rawUpdate(String table, ContentValues values, String whereClause, String[] whereArgs) {
+		SQLiteDatabase db = getReadableDatabase();
+		
+		int i = db.update(table, values, whereClause, whereArgs);
+		
+		db.close();
+		return i;
+	}
+	
 	
 	public void insert(TimerEvent event) {
 		
 		SQLiteDatabase db = getWritableDatabase();
 		
 		db.beginTransaction();
-		db.insert(Tables.TIMER_TABLE.getTable(), null, getContentValues(event));
+		ContentValues cv = getContentValues(event);
+		
+		if (db.insert(Tables.TIMER_TABLE.getTable(), null, cv) == -1) {
+			db.update(Tables.TIMER_TABLE.getTable(), cv , "id = ?", new String[]{"" + event.getID()});
+		}
 		db.setTransactionSuccessful();
 		db.endTransaction();
 		db.close();
@@ -177,8 +197,8 @@ public class Database extends SQLiteOpenHelper {
 			sb.append(t.getTable());
 			sb.append("(tableID integer primary key autoincrement, ");
 			
-			for (int i = 0; i < t.getColums().getColumns().length; i++) {
-				for (ColumnValues cv : t.getColums().getColumns()) {
+			for (int i = 0; i < t.getColumns().getColumnValues().length; i++) {
+				for (ColumnValues cv : t.getColumns().getColumnValues()) {
 					if (cv.getPosition() == i) {
 						sb.append(cv.getName());
 						sb.append(" ");
@@ -234,10 +254,16 @@ public class Database extends SQLiteOpenHelper {
 
 
 	public long rawInsert(String table, ContentValues values) {
-		
 		SQLiteDatabase db = getReadableDatabase();
 		
-		return db.insert(table, null, values);
+		
+		
+		if (db.updateWithOnConflict(Tables.TIMER_TABLE.getTable(), values , "id = ?", new String[]{"" + values.getAsString(ColumnValues.TIMER_ID.getName())}, SQLiteDatabase.CONFLICT_IGNORE) < 1) {
+			db.insert(Tables.TIMER_TABLE.getTable(), null, values);
+		}
+		
+		db.close();
+		return 0;
 	}
 	
 	

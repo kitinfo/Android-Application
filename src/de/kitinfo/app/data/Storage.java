@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 import de.kitinfo.app.data.Database.ColumnValues;
+import de.kitinfo.app.data.Database.Columns;
 import de.kitinfo.app.timers.TimerEvent;
 
 public class Storage {
@@ -61,56 +62,33 @@ public class Storage {
 	 * @return list of timers
 	 */
 	public List<TimerEvent> getTimers() {
-				
+		return getTimers(0);
+	}
+	
+	
+	private List<TimerEvent> getTimers(int ignore) {
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
 		// get the content provider
 		ContentResolver resolver = ctx.getContentResolver();
 		
+		
+		String[] protection = {ColumnValues.TIMER_DATE.getName(),
+				ColumnValues.TIMER_ID.getName(),
+				ColumnValues.TIMER_MESSAGE.getName(),
+				ColumnValues.TIMER_TITLE.getName()};
+		String where = ColumnValues.TIMER_IGNORE.getName() + " = ?";
 		// get all timers
-		Cursor c = resolver.query(uri, null, null, null, null);
+		Cursor c = resolver.query(uri, protection, where, new String[]{"" + ignore}, null);
 		
 		// convert to list
 		List<TimerEvent> timers = convertTimerEvents(c);
 		
 		c.close();
 		
-		uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
+		Collections.sort(timers);
 		
-		// get all ids from ignored timers
-		Cursor cv = resolver.query(uri, null, null, null, null);
-		
-		List<Integer> ids = new LinkedList<Integer>();
-		
-		// add ids to list
-		while (cv.moveToNext()) {
-			ids.add(cv.getInt(cv.getColumnIndex(Database.ColumnValues.TIMER_IGNORE_ID.getName())));
-		}
-		cv.close();
-		
-		// new events
-		List<TimerEvent> newEvents = new LinkedList<TimerEvent>();
-		
-		// for every timer event
-		for (TimerEvent t : timers) {
-			boolean test = true;
-			
-			// check if id is in ignore list
-			for (int id : ids) {
-				if (id == t.getID()) {
-					test = false;
-				}
-			}
-			
-			// if don't, add to new event list
-			if (test) {
-				newEvents.add(t);
-			}
-		}
-		
-		Collections.sort(newEvents);
-		
-		return newEvents;
+		return timers;
 	}
 	
 	/**
@@ -118,15 +96,7 @@ public class Storage {
 	 * @param id id of timer
 	 */
 	public void ignoreTimer(int id) {
-		Log.d("Storage", "Ignore timer: " + id);
-		ContentValues values = new ContentValues();
-		
-		values.put(Database.ColumnValues.TIMER_IGNORE_ID.getName(), "" + id);
-		
-		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
-		
-		ContentResolver resolver = ctx.getContentResolver();
-		resolver.insert(uri, values);
+		updateIgnoreFlag(id, 1);
 	}
 	
 	/**
@@ -134,14 +104,20 @@ public class Storage {
 	 * @param id id of the timer
 	 */
 	public void rememberTimer(int id) {
-		
-		String where = Database.ColumnValues.TIMER_IGNORE_ID + "= ?";
+		updateIgnoreFlag(id, 0);
+	}
+	
+	private void updateIgnoreFlag(int id, int ignore) {
+		String where = Database.ColumnValues.TIMER_IGNORE + "= ?";
 		String[] selectionArgs = {"" + id};
+		
+		ContentValues cv = new ContentValues();
+		cv.put(ColumnValues.TIMER_IGNORE.getName(), ignore);
 		
 		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
 		
 		ContentResolver resolver = ctx.getContentResolver();
-		resolver.delete(uri, where, selectionArgs);
+		resolver.update(uri, cv, where, selectionArgs);
 	}
 	
 	/**
@@ -149,32 +125,7 @@ public class Storage {
 	 * @return ignored timers
 	 */
 	public List<TimerEvent> getIgnoredTimers() {
-		
-		List<TimerEvent> fullTimerList = getTimers();
-		
-		ContentResolver resolver = ctx.getContentResolver();
-		
-		// uri for ignored timers
-		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
-		
-		// get list of ignored timers
-		Cursor c = resolver.query(uri, null, null, null, null);
-		
-		List<TimerEvent> timerList = new LinkedList<TimerEvent>();
-		
-		// get all timers stand on ignore list
-		while (c.moveToNext()) {
-			for (TimerEvent t : fullTimerList) {
-				if (t.getID() == c.getInt(c.getColumnIndex(Database.ColumnValues.TIMER_IGNORE_ID.getName()))) {
-					timerList.add(t);
-				}
-			}
-		}	
-		c.close();
-				
-				
-		return timerList;
-		
+		return getTimers(1);
 	}
 	
 public List<TimerEvent> convertTimerEvents(Cursor c) {
@@ -213,8 +164,14 @@ public void reset() {
 		
 		Cursor c = resolver.query(uri, projection, null, null, orderBy);
 		
-		int id = c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName()));
-		
+		// get 
+		int id;
+		if(c.moveToNext()) {
+			id = c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName()));
+		} else {
+			id = -1;
+		}
+		c.close();
 		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id + 1, te.getDateInLong());
 		addTimerEvent(newTe);
 	}
