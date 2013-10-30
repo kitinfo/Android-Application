@@ -1,5 +1,6 @@
 package de.kitinfo.app.data;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,11 +9,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.provider.UserDictionary;
 import android.util.Log;
 import de.kitinfo.app.data.Database.ColumnValues;
-import de.kitinfo.app.timers.JsonParser_TimeEvent;
 import de.kitinfo.app.timers.TimerEvent;
 
 public class Storage {
@@ -109,6 +107,8 @@ public class Storage {
 				newEvents.add(t);
 			}
 		}
+		
+		Collections.sort(newEvents);
 		
 		return newEvents;
 	}
@@ -211,9 +211,12 @@ public void reset() {
 		String[] projection = {ColumnValues.TIMER_ID.getName()};
 		String orderBy = "Order by id ASC Limit 1";
 		
-		resolver.query(uri, projection, null, null, orderBy);
+		Cursor c = resolver.query(uri, projection, null, null, orderBy);
 		
+		int id = c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName()));
 		
+		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id + 1, te.getDateInLong());
+		addTimerEvent(newTe);
 	}
 
 }
