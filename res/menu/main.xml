@@ -12,5 +12,11 @@
         android:icon="@drawable/ic_action_refresh"
         android:showAsAction="always"
         android:title="@string/action_update" />
+    
+    <item android:id="@+id/action_add"
+        android:orderInCategory="98"
+        android:title="+"
+        android:showAsAction="ifRoom"
+		/>
 
 </menu>

@@ -1,8 +1,12 @@
 package de.kitinfo.app;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -18,6 +22,9 @@ import android.view.ActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
 import de.kitinfo.app.TimeManager.Updatable;
 import de.kitinfo.app.data.Storage;
 import de.kitinfo.app.timers.JsonParser_TimeEvent;
@@ -37,9 +44,9 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	public void openSettings() {
 		Intent settingsIntent = new Intent(this, SettingsActivity.class);
 		startActivity(settingsIntent);
-		
+
 	}
-	
+
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -103,10 +110,10 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		if (!initialized) {
 			ReferenceManager.addSlide(new TimerViewFragment());
 			initialized = true;
+
+			new UpdateTask().execute();
+
 		}
-
-		new UpdateTask().execute();
-
 		// refresh each second
 		ReferenceManager.TM = new TimeManager(1000);
 		ReferenceManager.TM.register(this);
@@ -143,12 +150,12 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		getMenuInflater().inflate(R.menu.main, menu);
 		MenuItem item = menu.findItem(R.id.action_settings);
 		item.setActionProvider(new ActionProvider(null) {
-			
+
 			@Override
 			public View onCreateActionView() {
 				return null;
 			}
-			
+
 			@Override
 			public boolean onPerformDefaultAction() {
 				Log.d("Action", "open Settings");
@@ -156,30 +163,84 @@ public class MainActivity extends FragmentActivity implements Updatable {
 				return true;
 			}
 		});
-		
+
 		item = menu.findItem(R.id.action_update);
 		item.setActionProvider(new ActionProvider(null) {
-			
+
 			@Override
 			public View onCreateActionView() {
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 			@Override
 			public boolean onPerformDefaultAction() {
 				new UpdateTask().execute();
 				return true;
 			}
 		});
+
+		item = menu.findItem(R.id.action_add);
+		item.setActionProvider(new ActionProvider(null) {
+
+			@Override
+			public View onCreateActionView() {
+				// TODO Automatisch generierter Methodenstub
+				return null;
+			}
+
+			@Override
+			public boolean onPerformDefaultAction() {
+				UserDialog dialog = new UserDialog(MainActivity.this);
+
+				final View v = getLayoutInflater().inflate(R.layout.timer_add,
+						null);
+				((TimePicker) v.findViewById(R.id.timer_time))
+						.setIs24HourView(true);
+
+				dialog.openViewDialog(getString(R.string.add_custom_Event), v,
+						getString(R.string.cancel_button),
+						getString(R.string.save_button), new OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+								String title = ((EditText) v
+										.findViewById(R.id.timer_event))
+										.getText().toString();
+								String message = ((EditText) v
+										.findViewById(R.id.timer_message))
+										.getText().toString();
+								int id = Integer.MIN_VALUE;
+								DatePicker date = (DatePicker) v
+										.findViewById(R.id.timer_date);
+								TimePicker time = (TimePicker) v
+										.findViewById(R.id.timer_time);
+
+								long fullDate = new GregorianCalendar(date
+										.getYear(), date.getMonth(), date
+										.getDayOfMonth(),
+										time.getCurrentHour(), time
+												.getCurrentMinute())
+										.getTimeInMillis();
+
+								TimerEvent event = new TimerEvent(title,
+										message, id, fullDate);
+							}
+						});
+				return true;
+			}
+		});
+
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		
+
 		item.getActionProvider().onPerformDefaultAction();
-		
+
 		return true;
 	}
 

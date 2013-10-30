@@ -46,7 +46,6 @@
             android:id="@+id/time_date"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:gravity="right"
     		android:layout_margin="5dp"/>
 

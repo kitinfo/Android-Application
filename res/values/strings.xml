@@ -11,5 +11,19 @@
     <string name="reset_app_title">Reset App</string>
     <string name="reset_app_description">Resets the app to default</string>
     <string name="action_update">Update</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+  	<string name="yes">yes</string>
+  	<string name="no">no</string>
+    <string name="ok">OK</string>
+    
+    <!-- TimerAdd -->
+    <string name="add_custom_Event">Add your own Event</string>
+    <string name="event">Event:</string>
+    <string name="event_hint">Title of the event</string>
+    <string name="message">Message:</string>
+    <string name="message_hint">Text if event is in the past</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
 
 </resources>
