@@ -1,7 +1,11 @@
 package de.kitinfo.app.timers;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,11 +17,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
+import de.kitinfo.app.UserDialog;
 import de.kitinfo.app.data.Storage;
 
 /**
@@ -124,7 +132,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 
 		// return day + ":" + hour + ":" + minute + ":" + second;
 		return String.format("%02d:%02d:%02d:%02d", day, hour, minute, second);
-		
+
 	}
 
 	/**
@@ -327,4 +335,50 @@ public class TimerViewFragment extends ListFragment implements Slide {
 				.getTimers());
 	}
 
+	@Override
+	public boolean isExpandable() {
+		return true;
+	}
+
+	@Override
+	public void addElement(Context context) {
+
+		UserDialog dialog = new UserDialog(context);
+
+		final View v = getActivity().getLayoutInflater().inflate(
+				R.layout.timer_add, null);
+		((TimePicker) v.findViewById(R.id.timer_time)).setIs24HourView(true);
+
+		dialog.openViewDialog(getString(R.string.add_custom_Event), v,
+				getString(R.string.cancel_button),
+				getString(R.string.save_button), new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+						String title = ((EditText) v
+								.findViewById(R.id.timer_event)).getText()
+								.toString();
+						String message = ((EditText) v
+								.findViewById(R.id.timer_message)).getText()
+								.toString();
+						int id = Integer.MIN_VALUE;
+						DatePicker date = (DatePicker) v
+								.findViewById(R.id.timer_date);
+						TimePicker time = (TimePicker) v
+								.findViewById(R.id.timer_time);
+
+						long fullDate = new GregorianCalendar(date.getYear(),
+								date.getMonth(), date.getDayOfMonth(), time
+										.getCurrentHour(), time
+										.getCurrentMinute()).getTimeInMillis();
+
+						TimerEvent event = new TimerEvent(title, message, id,
+								fullDate);
+
+						new Storage(getActivity().getApplicationContext())
+								.addCustomTimer(event);
+					}
+				});
+	}
 }
