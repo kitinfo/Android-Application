@@ -27,8 +27,8 @@ public class Storage {
 	}
 	
 	public void saveTimers(List<TimerEvent> timers) {
-		
 		for (TimerEvent te : timers) {
+			
 			addTimerEvent(te);
 		}
 		
@@ -209,7 +209,7 @@ public void reset() {
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
 		String[] projection = {ColumnValues.TIMER_ID.getName()};
-		String orderBy = "Order by id ASC Limit 1";
+		String orderBy = "id ASC Limit 1";
 		
 		Cursor c = resolver.query(uri, projection, null, null, orderBy);
 		
