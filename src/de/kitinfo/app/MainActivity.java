@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import de.kitinfo.app.TimeManager.Updatable;
 import de.kitinfo.app.data.Storage;
+import de.kitinfo.app.dummy.DummySlide;
 import de.kitinfo.app.timers.JsonParser_TimeEvent;
 import de.kitinfo.app.timers.TimerEvent;
 import de.kitinfo.app.timers.TimerViewFragment;
@@ -110,6 +111,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		if (!initialized) {
 			ReferenceManager.addSlide(new TimerViewFragment());
+			ReferenceManager.addSlide(new DummySlide());
 			initialized = true;
 
 			new UpdateTask().execute();
