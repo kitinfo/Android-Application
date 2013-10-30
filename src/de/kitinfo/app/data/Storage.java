@@ -87,7 +87,9 @@ public class Storage {
 		c.close();
 		
 		Collections.sort(timers);
-		
+		for (TimerEvent t : timers) {
+			Log.d("Timers", "ID: " + t.getID());
+		}
 		return timers;
 	}
 	
@@ -133,12 +135,14 @@ public List<TimerEvent> convertTimerEvents(Cursor c) {
 		List<TimerEvent> timers = new LinkedList<TimerEvent>();
 		
 		while (c.moveToNext()) {
+			
 			TimerEvent te = new TimerEvent(
 					c.getString(c.getColumnIndex(ColumnValues.TIMER_TITLE.getName())), 
 					c.getString(c.getColumnIndex(ColumnValues.TIMER_MESSAGE.getName())), 
 					c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName())),
 					c.getLong(c.getColumnIndex(ColumnValues.TIMER_DATE.getName())));
 			timers.add(te);
+			
 		}
 		
 		
@@ -165,14 +169,17 @@ public void reset() {
 		Cursor c = resolver.query(uri, projection, null, null, orderBy);
 		
 		// get 
-		int id;
+		int id = -1;
 		if(c.moveToNext()) {
 			id = c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName()));
-		} else {
+		}
+		
+		if (id >= 0) {
 			id = -1;
 		}
+		
 		c.close();
-		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id + 1, te.getDateInLong());
+		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id -1, te.getDateInLong());
 		addTimerEvent(newTe);
 	}
 

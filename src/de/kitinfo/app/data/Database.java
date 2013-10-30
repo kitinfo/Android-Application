@@ -11,8 +11,6 @@ import de.kitinfo.app.timers.TimerEvent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -256,13 +254,16 @@ public class Database extends SQLiteOpenHelper {
 	public long rawInsert(String table, ContentValues values) {
 		SQLiteDatabase db = getReadableDatabase();
 		
-		
+		db.beginTransaction();
 		
 		if (db.updateWithOnConflict(Tables.TIMER_TABLE.getTable(), values , "id = ?", new String[]{"" + values.getAsString(ColumnValues.TIMER_ID.getName())}, SQLiteDatabase.CONFLICT_IGNORE) < 1) {
 			db.insert(Tables.TIMER_TABLE.getTable(), null, values);
 		}
 		
+		db.setTransactionSuccessful();
+		db.endTransaction();
 		db.close();
+		
 		return 0;
 	}
 	
