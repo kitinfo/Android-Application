@@ -135,7 +135,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 			public void onPageSelected(int position) {
 				Slide curSlide = (Slide) mSectionsPagerAdapter
 						.getItem(position);
-
+				setAddVisibility(curSlide.isExpandable());
 			}
 
 			@Override
@@ -148,6 +148,10 @@ public class MainActivity extends FragmentActivity implements Updatable {
 			public void onPageScrollStateChanged(int state) {
 			}
 		});
+
+		Slide curSlide = (Slide) mSectionsPagerAdapter.getItem(mViewPager
+				.getCurrentItem());
+		setAddVisibility(curSlide.isExpandable());
 
 		Log.d("MainActivity", "Main Activity created");
 
@@ -190,7 +194,6 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 			@Override
 			public View onCreateActionView() {
-				// TODO Auto-generated method stub
 				return null;
 			}
 
@@ -212,7 +215,8 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 			@Override
 			public boolean onPerformDefaultAction() {
-
+				((Slide) mSectionsPagerAdapter.getItem(mViewPager
+						.getCurrentItem())).addElement(MainActivity.this);
 				return true;
 			}
 		});

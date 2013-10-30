@@ -376,9 +376,9 @@ public class TimerViewFragment extends ListFragment implements Slide {
 						TimerEvent event = new TimerEvent(title, message, id,
 								fullDate);
 
-						// TODO add event to database
+						new Storage(getActivity().getApplicationContext())
+								.addCustomTimer(event);
 					}
 				});
 	}
-
 }
