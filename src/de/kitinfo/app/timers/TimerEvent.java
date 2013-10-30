@@ -115,6 +115,6 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 
 	@Override
 	public int compareTo(TimerEvent another) {
-		return (int) (date - another.getDateInLong());
+		return (date - another.getDateInLong()) > 0 ? 1 : -1;
 	}
 }

@@ -88,7 +88,7 @@ public class Storage {
 		
 		Collections.sort(timers);
 		for (TimerEvent t : timers) {
-			Log.d("Timers", "ID: " + t.getID());
+			Log.d("Timers", "timestamp: " + t.getDateInLong());
 		}
 		return timers;
 	}
