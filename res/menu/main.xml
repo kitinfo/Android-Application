@@ -15,6 +15,7 @@
     
     <item android:id="@+id/action_add"
         android:orderInCategory="98"
+        android:icon="@drawable/ic_action_new"
         android:title="+"
         android:showAsAction="ifRoom"
 		/>

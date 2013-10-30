@@ -202,4 +202,18 @@ public void reset() {
 	resolver.delete(uri, null, null);
 	
 }
+
+	public void addCustomTimer(TimerEvent te) {
+		ContentResolver resolver = ctx.getContentResolver();
+		
+		Uri uri = Uri.parse(StorageContract.TIMER_URI);
+		
+		String[] projection = {ColumnValues.TIMER_ID.getName()};
+		String orderBy = "Order by id ASC Limit 1";
+		
+		resolver.query(uri, projection, null, null, orderBy);
+		
+		
+	}
+
 }

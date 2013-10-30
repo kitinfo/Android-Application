@@ -41,10 +41,11 @@ import de.kitinfo.app.timers.TimerViewFragment;
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class MainActivity extends FragmentActivity implements Updatable {
 
+	boolean addVisible;
+	
 	public void openSettings() {
 		Intent settingsIntent = new Intent(this, SettingsActivity.class);
 		startActivity(settingsIntent);
-
 	}
 
 	/**
@@ -72,6 +73,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	 */
 	private final PauseHandler guiHandler = new PauseHandler() {
 
+		
 		public void processMessage(Message msg) {
 
 			switch (msg.what) {
@@ -98,6 +100,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		addVisible = false;
 		super.onCreate(savedInstanceState);
 		ReferenceManager.MA = this;
 
@@ -181,11 +184,11 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		});
 
 		item = menu.findItem(R.id.action_add);
+		item.setVisible(addVisible);
 		item.setActionProvider(new ActionProvider(null) {
 
 			@Override
 			public View onCreateActionView() {
-				// TODO Automatisch generierter Methodenstub
 				return null;
 			}
 

@@ -163,7 +163,6 @@ public class StorageProvider extends ContentProvider {
 				return null;
 			}
 		}
-		Log.d("StorageProvider", "checks done");
 		// search in database
 		Database db = new Database(getContext());
 		Cursor c = db.rawQuery(um.getTable(), projection, selection, selectionArgs, sortOrder);
