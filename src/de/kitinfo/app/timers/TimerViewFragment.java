@@ -106,6 +106,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	public void update() {
 		if (!invalidated && (getListAdapter() != null))
 			getListView().invalidateViews();
+
 	}
 
 	/**
@@ -376,8 +377,14 @@ public class TimerViewFragment extends ListFragment implements Slide {
 						TimerEvent event = new TimerEvent(title, message, id,
 								fullDate);
 
-						new Storage(getActivity().getApplicationContext())
-								.addCustomTimer(event);
+						Storage s = new Storage(getActivity()
+								.getApplicationContext());
+
+						s.addCustomTimer(event);
+
+						events = s.getTimers();
+						updateList();
+
 					}
 				});
 	}

@@ -64,6 +64,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	private boolean initialized;
 
 	private static final int MSG_UPDATE = 0;
+	private static final int MSG_RELOAD_TIMERS = 1;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
@@ -89,6 +90,9 @@ public class MainActivity extends FragmentActivity implements Updatable {
 				}
 
 				break;
+			case MSG_RELOAD_TIMERS:
+				ReferenceManager.TVF.setEvents(new Storage(MainActivity.this)
+						.getTimers());
 			default:
 				Log.w("MainActivity/Handler", "Unknown message received");
 			}
@@ -306,13 +310,14 @@ public class MainActivity extends FragmentActivity implements Updatable {
 					.parse(timeEvents);
 
 			new Storage(getApplicationContext()).saveTimers(timers);
+			Log.d("UpdateTask", "saved " + timers.size() + " Timers");
 			return timers;
 		}
 
 		@Override
 		protected void onPostExecute(List<TimerEvent> timer) {
+			guiHandler.sendEmptyMessage(MSG_RELOAD_TIMERS);
 			update();
-			ReferenceManager.TVF.setEvents(timer);
 		}
 
 		@Override
