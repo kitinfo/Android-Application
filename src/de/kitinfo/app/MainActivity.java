@@ -1,6 +1,5 @@
 package de.kitinfo.app;
 
-import java.util.List;
 import java.util.Locale;
 
 import android.annotation.TargetApi;
@@ -21,10 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import de.kitinfo.app.TimeManager.Updatable;
-import de.kitinfo.app.data.Storage;
 import de.kitinfo.app.dummy.DummySlide;
-import de.kitinfo.app.timers.JsonParser_TimeEvent;
-import de.kitinfo.app.timers.TimerEvent;
 import de.kitinfo.app.timers.TimerViewFragment;
 
 /**
@@ -304,23 +300,21 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		guiHandler.resume();
 	}
 
-	private class UpdateTask extends AsyncTask<Void, Void, List<TimerEvent>> {
+	private class UpdateTask extends AsyncTask<Void, Void, Object> {
 
 		@Override
-		protected List<TimerEvent> doInBackground(Void... params) {
+		protected Object doInBackground(Void... params) {
 
-			String timeEvents = new IOManager().queryTimeEvents();
-			publishProgress();
-			List<TimerEvent> timers = new JsonParser_TimeEvent()
-					.parse(timeEvents);
+			for (int i = 0; i < ReferenceManager.SLIDES.size(); i++) {
+				ReferenceManager.SLIDES.get(i).updateContent(MainActivity.this);
+				publishProgress();
+			}
 
-			new Storage(getApplicationContext()).saveTimers(timers);
-			Log.d("UpdateTask", "saved " + timers.size() + " Timers");
-			return timers;
+			return null;
 		}
 
 		@Override
-		protected void onPostExecute(List<TimerEvent> timer) {
+		protected void onPostExecute(Object x) {
 			guiHandler.sendEmptyMessage(MSG_RELOAD_CONTENT);
 			update();
 		}

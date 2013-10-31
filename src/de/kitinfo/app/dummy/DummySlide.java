@@ -50,4 +50,8 @@ public class DummySlide extends Fragment implements Slide {
 	public void setID(int id) {
 	}
 
+	@Override
+	public void querryData(Context context) {
+	}
+
 }

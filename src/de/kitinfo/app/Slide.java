@@ -66,4 +66,9 @@ public interface Slide extends Updatable {
 	 *            needed for i.e. datastore actions
 	 */
 	public void updateContent(Context context);
+
+	/**
+	 * querry data if needed
+	 */
+	public void querryData(Context context);
 }

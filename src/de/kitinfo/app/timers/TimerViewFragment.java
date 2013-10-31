@@ -1,5 +1,7 @@
 package de.kitinfo.app.timers;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import de.kitinfo.app.IOManager;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
@@ -37,7 +41,7 @@ import de.kitinfo.app.data.Storage;
  */
 public class TimerViewFragment extends ListFragment implements Slide {
 
-	private final String TITLE = "Timers";
+	private final String title = "Timers";
 	private List<TimerEvent> events;
 	private int id;
 	private boolean invalidated;
@@ -48,13 +52,19 @@ public class TimerViewFragment extends ListFragment implements Slide {
 
 	int selectedId;
 
+	/**
+	 * constructor and shit
+	 */
+	public TimerViewFragment() {
+		invalidated = true;
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		mActionModeCallback = new MActionModeCallback();
 
-		invalidated = true;
 		ReferenceManager.TVF = this;
 		ReferenceManager.updateSlide(this);
 		selectedId = -1;
@@ -127,7 +137,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	 * returns the title of this Slide
 	 */
 	public String getTitle() {
-		return TITLE;
+		return title;
 	}
 
 	@Override
@@ -154,6 +164,23 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	public void updateContent(Context context) {
 		events = new Storage(context).getTimers();
 		updateList();
+	}
+
+	@Override
+	public void querryData(Context context) {
+		try {
+			String timeEvents = new IOManager().queryJSON(new URL(
+					"http://timers.kitinfo.de/timerapi.php"));
+			List<TimerEvent> timers = new JsonParser_TimeEvent()
+					.parse(timeEvents);
+
+			new Storage(context).saveTimers(timers);
+
+			Log.d("UpdateTask", "saved " + timers.size() + " Timers");
+
+		} catch (MalformedURLException e) {
+			Log.e("IOManager|queryTimeEvents", e.toString());
+		}
 	}
 
 	@Override
