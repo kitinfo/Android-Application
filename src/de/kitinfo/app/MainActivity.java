@@ -64,7 +64,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	private boolean initialized;
 
 	private static final int MSG_UPDATE = 0;
-	private static final int MSG_RELOAD_TIMERS = 1;
+	private static final int MSG_RELOAD_CONTENT = 1;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
@@ -84,15 +84,16 @@ public class MainActivity extends FragmentActivity implements Updatable {
 				for (Updatable event : ReferenceManager.SLIDES) {
 					if (event != null) {
 						event.update();
-						Log.d("MainActivity|processMessage",
-								"updated some shit: " + event.toString());
+						// Log.d("MainActivity|processMessage",
+						// "updated some shit: " + event.toString());
 					}
 				}
 
 				break;
-			case MSG_RELOAD_TIMERS:
-				ReferenceManager.TVF.setEvents(new Storage(MainActivity.this)
-						.getTimers());
+			case MSG_RELOAD_CONTENT:
+				for (Slide slide : ReferenceManager.SLIDES) {
+					slide.updateContent(MainActivity.this);
+				}
 			default:
 				Log.w("MainActivity/Handler", "Unknown message received");
 			}
@@ -117,13 +118,11 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		setContentView(R.layout.activity_main);
 
 		if (!initialized) {
-			ReferenceManager.addSlide(new TimerViewFragment());
-			ReferenceManager.addSlide(new DummySlide());
-			initialized = true;
-
+			addSlides();
 			new UpdateTask().execute();
-
+			initialized = true;
 		}
+
 		// refresh each second
 		ReferenceManager.TM = new TimeManager(1000);
 		ReferenceManager.TM.register(this);
@@ -164,6 +163,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		Slide curSlide = (Slide) mSectionsPagerAdapter.getItem(mViewPager
 				.getCurrentItem());
+
 		setAddVisibility(curSlide.isExpandable());
 
 		Log.d("MainActivity", "Main Activity created");
@@ -181,6 +181,11 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	public void onSaveInstanceState(Bundle outState) {
 		outState.putBoolean(TAG_INITIALIZED, initialized);
 		outState.putInt(TAG_CURRENT_SLIDE, mViewPager.getCurrentItem());
+	}
+
+	private void addSlides() {
+		ReferenceManager.addSlide(new TimerViewFragment());
+		ReferenceManager.addSlide(new DummySlide());
 	}
 
 	@Override
@@ -316,7 +321,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		@Override
 		protected void onPostExecute(List<TimerEvent> timer) {
-			guiHandler.sendEmptyMessage(MSG_RELOAD_TIMERS);
+			guiHandler.sendEmptyMessage(MSG_RELOAD_CONTENT);
 			update();
 		}
 

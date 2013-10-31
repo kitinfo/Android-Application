@@ -35,6 +35,15 @@ public interface Slide extends Updatable {
 	public int getID();
 
 	/**
+	 * set the id of this fragment (should be setted if you want to display
+	 * another slide of this class)
+	 * 
+	 * @param id
+	 *            id for this slide
+	 */
+	public void setID(int id);
+
+	/**
 	 * whether the slide is expandable or not, if it is expandable, the
 	 * expandable item will be shown in the action bar
 	 * 
@@ -46,7 +55,15 @@ public interface Slide extends Updatable {
 	 * add an Element (for example an event to timers)
 	 * 
 	 * @param context
-	 *            context, is maybe needed
+	 *            context, is maybe needed (i.e. for datastore actions)
 	 */
 	public void addElement(Context context);
+
+	/**
+	 * tell the slide to update its content (fetch from datastore,...)
+	 * 
+	 * @param context
+	 *            needed for i.e. datastore actions
+	 */
+	public void updateContent(Context context);
 }
