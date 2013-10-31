@@ -306,7 +306,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		protected Object doInBackground(Void... params) {
 
 			for (int i = 0; i < ReferenceManager.SLIDES.size(); i++) {
-				ReferenceManager.SLIDES.get(i).updateContent(MainActivity.this);
+				ReferenceManager.SLIDES.get(i).querryData(MainActivity.this);
 				publishProgress();
 			}
 

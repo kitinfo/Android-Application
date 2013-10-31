@@ -274,8 +274,8 @@ public class TimerViewFragment extends ListFragment implements Slide {
 			// Log.d("Seleced", "Selected: " + selectedId + "," +
 			// getListAdapter().getItemId(selectedId));
 
-			new Storage(getActivity()).ignoreTimer((int) getListAdapter()
-					.getItemId(selectedId));
+			new Storage(getActivity()).ignoreTimer(events.get(selectedId)
+					.getID());
 
 		}
 	}
