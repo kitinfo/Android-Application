@@ -117,4 +117,27 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 	public int compareTo(TimerEvent another) {
 		return (date - another.getDateInLong()) > 0 ? 1 : -1;
 	}
+	@Override
+	public boolean equals(Object o) {
+		
+		// null check
+		if (o == null) {
+			return false;
+		}
+		
+		// save reference
+		if (o == this) {
+			return true;
+		}
+		// not the right class
+		if (o.getClass() != getClass()) {
+			return false;
+		}
+		if (((TimerEvent) o).getID() == getID()) {
+			return true;
+		}
+		
+		return false;
+		
+	}
 }

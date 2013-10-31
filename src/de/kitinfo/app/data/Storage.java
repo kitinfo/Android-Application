@@ -27,15 +27,43 @@ public class Storage {
 		this.ctx = ctx;
 	}
 	
+	/**
+	 * Saves a list of timers to database. If id is in database, we update them.
+	 * @param timers list of timer event objects
+	 */
 	public void saveTimers(List<TimerEvent> timers) {
+		
+		List<TimerEvent> databaseList = getTimers();
+		databaseList.addAll(getIgnoredTimers());
+		
+		List<TimerEvent> withoutCustomTimers = new LinkedList<TimerEvent>();
+		
+		// remove custom timer
+		for (TimerEvent t : databaseList) {
+			if (t.getID() >= 0) {
+				withoutCustomTimers.add(t);
+			}
+		}
+		
+		// add timers to database
 		for (TimerEvent te : timers) {
 			
 			addTimerEvent(te);
+			// remove timer because we have update them, don't care if not in list
+			withoutCustomTimers.remove(te);
+		}
+		
+		// delete timers not in list from server
+		for (TimerEvent t : withoutCustomTimers) {
+			deleteTimerEvent(t);
 		}
 		
 	}
 	
-
+	/**
+	 * adds a timer event to database.
+	 * @param te timer event object
+	 */
 	public void addTimerEvent(TimerEvent te) {
 		ContentValues values = Database.getContentValues(te);
 		
@@ -45,7 +73,10 @@ public class Storage {
 		resolver.insert(uri, values);
 	}
 	
-	
+	/**
+	 * delete the given timerevent
+	 * @param te timer event object
+	 */
 	public void deleteTimerEvent(TimerEvent te) {
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
@@ -66,6 +97,10 @@ public class Storage {
 	}
 	
 	
+	/* 
+	 * returns timer with ignore status
+	 * @param ignore 1 for get the ignored timers, 0 for getting the others
+	 */
 	private List<TimerEvent> getTimers(int ignore) {
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
@@ -109,6 +144,11 @@ public class Storage {
 		updateIgnoreFlag(id, 0);
 	}
 	
+	/*
+	 *  updates the ignore flag of a timer
+	 *  @param id id of the timer event
+	 *  @param ignore 1 for ignoring the timer, 0 for not ignoring the timer
+	 */
 	private void updateIgnoreFlag(int id, int ignore) {
 		String where = Database.ColumnValues.TIMER_ID.getName() + "= ?";
 		String[] selectionArgs = {"" + id};
@@ -130,6 +170,11 @@ public class Storage {
 		return getTimers(1);
 	}
 	
+	/**
+	 * converts timer events from cursor to his object structure.
+	 * @param c cursor with timer events
+	 * @return list of timer event objects
+	 */
 public List<TimerEvent> convertTimerEvents(Cursor c) {
 		
 		List<TimerEvent> timers = new LinkedList<TimerEvent>();
@@ -149,6 +194,9 @@ public List<TimerEvent> convertTimerEvents(Cursor c) {
 		return timers;
 	}
 
+/**
+ * resets the database.
+ */
 public void reset() {
 	
 	ContentResolver resolver = ctx.getContentResolver();
@@ -157,7 +205,10 @@ public void reset() {
 	resolver.delete(uri, null, null);
 	
 }
-
+	/**
+	 * Adds a custom timer to database.
+	 * @param te timer event
+	 */
 	public void addCustomTimer(TimerEvent te) {
 		ContentResolver resolver = ctx.getContentResolver();
 		
