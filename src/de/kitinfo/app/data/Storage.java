@@ -110,13 +110,13 @@ public class Storage {
 	}
 	
 	private void updateIgnoreFlag(int id, int ignore) {
-		String where = Database.ColumnValues.TIMER_IGNORE + "= ?";
+		String where = Database.ColumnValues.TIMER_ID.getName() + "= ?";
 		String[] selectionArgs = {"" + id};
 		
 		ContentValues cv = new ContentValues();
 		cv.put(ColumnValues.TIMER_IGNORE.getName(), ignore);
 		
-		Uri uri = Uri.parse(StorageContract.IGNORE_TIMER_URI);
+		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
 		ContentResolver resolver = ctx.getContentResolver();
 		resolver.update(uri, cv, where, selectionArgs);
