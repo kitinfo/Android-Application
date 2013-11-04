@@ -30,6 +30,9 @@ public class StatusFragment extends Fragment implements Slide {
 	public StatusFragment() {
 		invalidated = true;
 		this.id = -2;
+		nickList = "";
+		lastMessage = "";
+		nickCount = "0";
 	}
 
 	@Override
@@ -81,8 +84,8 @@ public class StatusFragment extends Fragment implements Slide {
 
 			((TextView) v.findViewById(R.id.status_user_online))
 					.setText(nickList);
-			((TextView) v.findViewById(R.id.status_activity))
-					.setText(nickCount);
+			((TextView) v.findViewById(R.id.status_activity)).setText(nickCount
+					+ " " + getString(R.string.online));
 			((TextView) v.findViewById(R.id.status_last_message))
 					.setText(lastMessage);
 
@@ -127,10 +130,15 @@ public class StatusFragment extends Fragment implements Slide {
 	public void querryData(Context context) {
 		try {
 			nickCount = new IOManager().queryJSON(new URL(NICK_COUNT_URL));
-			lastMessage = new IOManager().queryJSON(new URL(LAST_MESSAGE_URL));
+
+			lastMessage = new JsonParser_Status()
+					.parseLastMessage(new IOManager().queryJSON(new URL(
+							LAST_MESSAGE_URL)));
+
 			String nicks = new IOManager().queryJSON(new URL(NICK_LIST_URL));
 
 			nickList = "";
+
 			for (String nick : new JsonParser_Status().parseNames(nicks)) {
 				nickList += "\n" + nick;
 			}

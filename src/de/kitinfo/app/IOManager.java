@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.util.Log;
@@ -18,20 +17,6 @@ import android.util.Log;
  * 
  */
 public class IOManager {
-
-	/**
-	 * query some events
-	 * 
-	 * @return events in json format
-	 */
-	public String queryTimeEvents() {
-		try {
-			return queryJSON(new URL("http://timers.kitinfo.de/timerapi.php"));
-		} catch (MalformedURLException e) {
-			Log.e("IOManager|queryTimeEvents", e.toString());
-		}
-		return "";
-	}
 
 	/**
 	 * method to querry json data from an url

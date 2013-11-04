@@ -1,6 +1,12 @@
 package de.kitinfo.app.status;
 
 import java.util.Arrays;
+import java.util.Comparator;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
 
 /**
  * 
@@ -12,7 +18,7 @@ import java.util.Arrays;
 public class JsonParser_Status {
 	public enum Tags {
 
-		CHANNEL("channel"), USER("user"), TIME("time"), MESSAGE("message");
+		CHANNEL("channel"), USER("user"), TIME("time");
 
 		private String tag;
 
@@ -26,58 +32,60 @@ public class JsonParser_Status {
 
 	}
 
+	/**
+	 * parse names out of json
+	 * 
+	 * @param data
+	 *            json string
+	 * @return sorted list of nicknames
+	 */
 	public String[] parseNames(String data) {
 		data = data.replace("[\"", "");
 		data = data.replace("\"]", "");
 
 		String[] nicks = data.split("\",\"");
-		Arrays.sort(nicks);
+		Arrays.sort(nicks, new StringComperator());
 		return nicks;
 	}
+
 	/**
-	 * method to parse events in the json format to timer event objects and
-	 * store it into a list of events
+	 * parse last message data
 	 * 
 	 * @param data
-	 *            events in the json format (for more info, take a look at <a
-	 *            href="http://timers.kitinfo.de/timerapi.php">http://timers.
-	 *            kitinfo.de/timerapi.php</a> )
-	 * @return list of timer events
+	 *            data to parse
+	 * @return parsed input (channel : user @ time)
 	 */
-	// public List<TimerEvent> parse(String data) {
-	//
-	// List<TimerEvent> timerList = new LinkedList<TimerEvent>();
-	//
-	// JSONObject dataObject;
-	// try {
-	// dataObject = new JSONObject(data);
-	//
-	// JSONArray timersArr = dataObject.getJSONArray("timers");
-	//
-	// for (int i = 0; i < timersArr.length(); i++) {
-	//
-	// JSONObject timerObj = timersArr.getJSONObject(i);
-	//
-	// int id = timerObj.getInt(Tags.ID.toString());
-	// String event = android.text.Html.fromHtml(
-	// timerObj.getString(Tags.EVENT.toString())).toString();
-	// String message = android.text.Html.fromHtml(
-	// timerObj.getString(Tags.MESSAGE.toString())).toString();
-	// int day = timerObj.getInt(Tags.DAY.toString());
-	// int month = timerObj.getInt(Tags.MONTH.toString()) - 1;
-	// int year = timerObj.getInt(Tags.YEAR.toString());
-	// int hour = timerObj.getInt(Tags.HOUR.toString());
-	// int minute = timerObj.getInt(Tags.MINUTE.toString());
-	// int second = timerObj.getInt(Tags.SECOND.toString());
-	//
-	// TimerEvent timer = new TimerEvent(event, message, id, year,
-	// month, day, hour, minute, second);
-	//
-	// timerList.add(timer);
-	// }
-	// } catch (JSONException e) {
-	// Log.e("JsonParser_TimeEvent|parse", e.toString());
-	// }
-	// return timerList;
-	// }
+	public String parseLastMessage(String data) {
+		String message = "";
+
+		JSONObject dataObject;
+		try {
+			dataObject = new JSONObject(data);
+
+			String channel = android.text.Html.fromHtml(
+					dataObject.getString(Tags.CHANNEL.toString())).toString();
+
+			String user = android.text.Html.fromHtml(
+					dataObject.getString(Tags.USER.toString())).toString();
+
+			String time = android.text.Html.fromHtml(
+					dataObject.getString(Tags.TIME.toString())).toString();
+
+			message = channel + " : " + user + "@" + time;
+
+		} catch (JSONException e) {
+			Log.e("JsonParser_Status|parseLastMessage", e.toString());
+		}
+
+		return message;
+	}
+
+	private class StringComperator implements Comparator<String> {
+
+		@Override
+		public int compare(String lhs, String rhs) {
+			return lhs.toLowerCase().compareTo(rhs.toLowerCase());
+		}
+
+	}
 }
