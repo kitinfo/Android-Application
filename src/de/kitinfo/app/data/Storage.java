@@ -81,7 +81,7 @@ public class Storage {
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
-		String where = Database.ColumnValues.TIMER_ID + "= ?";
+		String where = Database.ColumnValues.TIMER_ID.getName() + " = ?";
 		String[] selectionArgs = {"" + te.getID()};
 
 		ContentResolver resolver = ctx.getContentResolver();

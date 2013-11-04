@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import de.kitinfo.app.data.JSONParser;
 import android.util.Log;
 
 /**
@@ -16,7 +17,7 @@ import android.util.Log;
  * @author mpease
  * 
  */
-public class JsonParser_TimeEvent {
+public class JsonParser_TimeEvent implements JSONParser<TimerEvent> {
 	public enum Tags {
 
 		ID("id"), TIMERS("timers"), EVENT("event"), MESSAGE("message"), DAY(
