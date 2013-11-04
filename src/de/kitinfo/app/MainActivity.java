@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import de.kitinfo.app.TimeManager.Updatable;
 import de.kitinfo.app.dummy.DummySlide;
+import de.kitinfo.app.mensa.MensaFragment;
 import de.kitinfo.app.status.StatusFragment;
 import de.kitinfo.app.timers.TimerViewFragment;
 
@@ -188,6 +189,10 @@ public class MainActivity extends FragmentActivity implements Updatable {
 
 		s = new StatusFragment();
 		s.setID(2);
+		ReferenceManager.addSlide(s);
+
+		s = new MensaFragment();
+		s.setID(3);
 		ReferenceManager.addSlide(s);
 
 		ReferenceManager.addSlide(new DummySlide());
