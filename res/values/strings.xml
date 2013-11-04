@@ -25,5 +25,10 @@
     <string name="message_hint">Text if event is in the past</string>
     <string name="date">Date:</string>
     <string name="time">Time:</string>
-
+    
+    <!-- status -->
+    <string name="status_current_activity">"Crrent Activity:</string>
+    <string name="status_last_message">Last Message:</string>
+    <string name="status_current_users">Current User online:</string>
+	<string name="online">Online</string>
 </resources>

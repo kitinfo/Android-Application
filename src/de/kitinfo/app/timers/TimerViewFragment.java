@@ -41,6 +41,7 @@ import de.kitinfo.app.data.Storage;
  */
 public class TimerViewFragment extends ListFragment implements Slide {
 
+	private static final String API_URL = "http://api.kitinfo.de/timers/index.php";
 	private final String title = "Timers";
 	private List<TimerEvent> events;
 	private int id;
@@ -78,13 +79,11 @@ public class TimerViewFragment extends ListFragment implements Slide {
 		events = new Storage(getActivity().getApplicationContext()).getTimers();
 
 		updateList();
-		invalidated = false;
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		invalidated = true;
 		ReferenceManager.TVF = null;
 	}
 
@@ -94,8 +93,18 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	}
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = super.onCreateView(inflater, container, savedInstanceState);
+		invalidated = false;
+		return v;
+
+	}
+
+	@Override
+	public void onDestroyView() {
+		invalidated = true;
+		super.onDestroyView();
 	}
 
 	/**
@@ -169,8 +178,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	@Override
 	public void querryData(Context context) {
 		try {
-			String timeEvents = new IOManager().queryJSON(new URL(
-					"http://timers.kitinfo.de/timerapi.php"));
+			String timeEvents = new IOManager().queryJSON(new URL(API_URL));
 			List<TimerEvent> timers = new JsonParser_TimeEvent()
 					.parse(timeEvents);
 

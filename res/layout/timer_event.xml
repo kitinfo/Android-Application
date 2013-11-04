@@ -32,10 +32,10 @@
         android:textStyle="bold"
     	android:layout_margin="5dp"
     	android:textColor="#313739" 
-        	android:shadowColor="#000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="2"/>
+        android:shadowColor="#000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
