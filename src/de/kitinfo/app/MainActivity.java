@@ -93,7 +93,8 @@ public class MainActivity extends FragmentActivity implements Updatable {
 					slide.updateContent(MainActivity.this);
 				}
 			default:
-				Log.w("MainActivity/Handler", "Unknown message received");
+				Log.w("MainActivity/Handler", "Unknown message received: "
+						+ msg.what);
 			}
 		}
 
@@ -304,12 +305,14 @@ public class MainActivity extends FragmentActivity implements Updatable {
 	@Override
 	public void onPause() {
 		super.onPause();
+		ReferenceManager.TM.stopTimer();
 		guiHandler.pause();
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
+		ReferenceManager.TM.startTimer();
 		this.update();
 		guiHandler.resume();
 	}

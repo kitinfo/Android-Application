@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import de.kitinfo.app.TimeConverter;
+
 /**
  * This class provides a data structure for a timer elements which represents an
  * event in the future or the past.
@@ -67,8 +69,8 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 	public String getDate() {
 		// german time string
 		// return day + "." + month + "." + year + " " + hour + ":" + minute;
-		return SimpleDateFormat.getDateTimeInstance(SimpleDateFormat.MEDIUM,
-				SimpleDateFormat.SHORT).format(new Date(date));
+		return TimeConverter.toLocalTime(date, SimpleDateFormat.MEDIUM,
+				SimpleDateFormat.SHORT);
 	}
 
 	public long getDateInLong() {
@@ -117,14 +119,15 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 	public int compareTo(TimerEvent another) {
 		return (date - another.getDateInLong()) > 0 ? 1 : -1;
 	}
+
 	@Override
 	public boolean equals(Object o) {
-		
+
 		// null check
 		if (o == null) {
 			return false;
 		}
-		
+
 		// save reference
 		if (o == this) {
 			return true;
@@ -136,8 +139,8 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 		if (((TimerEvent) o).getID() == getID()) {
 			return true;
 		}
-		
+
 		return false;
-		
+
 	}
 }
