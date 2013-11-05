@@ -7,8 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.kitinfo.app.data.JSONParser;
 import android.util.Log;
+import de.kitinfo.app.data.JSONParser;
 
 /**
  * 
@@ -17,7 +17,7 @@ import android.util.Log;
  * @author mpease
  * 
  */
-public class JsonParser_TimeEvent implements JSONParser<TimerEvent> {
+public class JsonParser_TimeEvent implements JSONParser<List<TimerEvent>> {
 	public enum Tags {
 
 		ID("id"), TIMERS("timers"), EVENT("event"), MESSAGE("message"), DAY(
@@ -66,7 +66,7 @@ public class JsonParser_TimeEvent implements JSONParser<TimerEvent> {
 				String message = android.text.Html.fromHtml(
 						timerObj.getString(Tags.MESSAGE.toString())).toString();
 				int day = timerObj.getInt(Tags.DAY.toString());
-				int month = timerObj.getInt(Tags.MONTH.toString()) -1;
+				int month = timerObj.getInt(Tags.MONTH.toString()) - 1;
 				int year = timerObj.getInt(Tags.YEAR.toString());
 				int hour = timerObj.getInt(Tags.HOUR.toString());
 				int minute = timerObj.getInt(Tags.MINUTE.toString());

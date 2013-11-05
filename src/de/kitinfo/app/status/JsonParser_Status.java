@@ -117,7 +117,7 @@ public class JsonParser_Status {
 				try {
 					d = s.parse(datestring);
 				} catch (ParseException e) {
-					Log.e("JsonParser_Status|parseRFC...", e.toString());
+					Log.e("JsonParser_Status|parseRFC_1...", e.toString());
 				}
 			}
 			return d;
@@ -145,11 +145,6 @@ public class JsonParser_Status {
 																		// fractional
 																		// seconds)
 			s.setLenient(true);
-			try {
-				d = s.parse(datestring);
-			} catch (ParseException e) {
-				Log.e("JsonParser_Status|parseRFC...", e.toString());
-			}
 		}
 		return d;
 	}

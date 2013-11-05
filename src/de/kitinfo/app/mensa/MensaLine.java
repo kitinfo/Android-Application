@@ -10,6 +10,7 @@ public class MensaLine {
 
 	public MensaLine(String name) {
 		meals = new LinkedList<MensaMeal>();
+		this.name = name;
 	}
 
 	public void addMeal(MensaMeal meal) {

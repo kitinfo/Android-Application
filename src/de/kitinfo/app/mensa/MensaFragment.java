@@ -1,9 +1,14 @@
 package de.kitinfo.app.mensa;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import de.kitinfo.app.IOManager;
 import de.kitinfo.app.Slide;
+import de.kitinfo.app.TimeConverter;
 
 public class MensaFragment extends Fragment implements Slide {
 
@@ -59,7 +64,27 @@ public class MensaFragment extends Fragment implements Slide {
 
 	@Override
 	public void querryData(Context context) {
-		new JsonParser_Mensa().parseMensaData(new IOManager()
+		List<MensaDay> mensaDays = new JsonParser_Mensa().parse(new IOManager()
 				.queryJSON(API_URL));
+
+		for (MensaDay day : mensaDays) {
+			if (day.getDateTime() == TimeConverter.getDayInMillis(System
+					.currentTimeMillis())) {
+				Log.d("MensaFragment|querryData",
+						"Today's ("
+								+ TimeConverter.toLocalTime(day.getDateTime(),
+										SimpleDateFormat.MEDIUM,
+										SimpleDateFormat.SHORT) + ") meals:");
+
+				for (MensaLine line : day.getLines()) {
+					Log.d("MensaFragment|querryData",
+							"Line : " + line.getName());
+
+					for (MensaMeal meal : line.getMeals()) {
+						Log.d("MensaFragment|querryData", "Meal : " + meal);
+					}
+				}
+			}
+		}
 	}
 }

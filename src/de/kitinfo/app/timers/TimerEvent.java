@@ -3,7 +3,6 @@ package de.kitinfo.app.timers;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import de.kitinfo.app.TimeConverter;
 
@@ -49,8 +48,7 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 		this.title = title;
 		this.message = message;
 		this.id = id;
-		date = new GregorianCalendar(year, month, day, hour, minute, second)
-				.getTimeInMillis();
+		date = TimeConverter.getMillis(year, month, day, hour, minute, second);
 
 	}
 
