@@ -1,8 +1,5 @@
 package de.kitinfo.app.status;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,7 +66,6 @@ public class StatusFragment extends Fragment implements Slide {
 	public void onDestroy() {
 		invalidated = true;
 		super.onDestroy();
-		ReferenceManager.TVF = null;
 	}
 
 	@Override
@@ -128,25 +124,20 @@ public class StatusFragment extends Fragment implements Slide {
 
 	@Override
 	public void querryData(Context context) {
-		try {
-			nickCount = new IOManager().queryJSON(new URL(NICK_COUNT_URL));
+		nickCount = new IOManager().queryJSON(NICK_COUNT_URL);
 
-			lastMessage = new JsonParser_Status()
-					.parseLastMessage(new IOManager().queryJSON(new URL(
-							LAST_MESSAGE_URL)));
+		lastMessage = new JsonParser_Status().parseLastMessage(new IOManager()
+				.queryJSON(LAST_MESSAGE_URL));
 
-			String nicks = new IOManager().queryJSON(new URL(NICK_LIST_URL));
+		String nicks = new IOManager().queryJSON(NICK_LIST_URL);
 
-			nickList = "";
+		nickList = "";
 
-			for (String nick : new JsonParser_Status().parseNames(nicks)) {
-				nickList += "\n" + nick;
-			}
-
-			nickList = nickList.trim();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
+		for (String nick : new JsonParser_Status().parseNames(nicks)) {
+			nickList += "\n" + nick;
 		}
+
+		nickList = nickList.trim();
 	}
 
 }

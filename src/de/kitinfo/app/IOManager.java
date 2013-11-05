@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.util.Log;
@@ -17,6 +18,16 @@ import android.util.Log;
  * 
  */
 public class IOManager {
+
+	public String queryJSON(String url) {
+		String json = "";
+		try {
+			json = queryJSON(new URL(url));
+		} catch (MalformedURLException e) {
+			Log.e("IOManager|queryJSON", e.toString());
+		}
+		return json;
+	}
 
 	/**
 	 * method to querry json data from an url

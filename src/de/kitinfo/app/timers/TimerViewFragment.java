@@ -1,7 +1,5 @@
 package de.kitinfo.app.timers;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -66,7 +64,6 @@ public class TimerViewFragment extends ListFragment implements Slide {
 
 		mActionModeCallback = new MActionModeCallback();
 
-		ReferenceManager.TVF = this;
 		ReferenceManager.updateSlide(this);
 		selectedId = -1;
 
@@ -84,7 +81,6 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ReferenceManager.TVF = null;
 	}
 
 	@Override
@@ -177,18 +173,12 @@ public class TimerViewFragment extends ListFragment implements Slide {
 
 	@Override
 	public void querryData(Context context) {
-		try {
-			String timeEvents = new IOManager().queryJSON(new URL(API_URL));
-			List<TimerEvent> timers = new JsonParser_TimeEvent()
-					.parse(timeEvents);
+		String timeEvents = new IOManager().queryJSON(API_URL);
+		List<TimerEvent> timers = new JsonParser_TimeEvent().parse(timeEvents);
 
-			new Storage(context).saveTimers(timers);
+		new Storage(context).saveTimers(timers);
 
-			Log.d("UpdateTask", "saved " + timers.size() + " Timers");
-
-		} catch (MalformedURLException e) {
-			Log.e("IOManager|queryTimeEvents", e.toString());
-		}
+		Log.d("UpdateTask", "saved " + timers.size() + " Timers");
 	}
 
 	@Override

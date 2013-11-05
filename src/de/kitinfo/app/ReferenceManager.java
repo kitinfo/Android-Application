@@ -3,8 +3,6 @@ package de.kitinfo.app;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.kitinfo.app.timers.TimerViewFragment;
-
 /**
  * provides the current references to the most objects (still beta, don't hate
  * me for that...)
@@ -20,8 +18,6 @@ public class ReferenceManager {
 	public static MainActivity MA;
 	public static List<Slide> SLIDES;
 	public static TimeManager TM;
-
-	public static TimerViewFragment TVF;
 
 	private ReferenceManager() {
 		SLIDES = new LinkedList<Slide>();

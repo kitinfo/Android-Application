@@ -2,6 +2,7 @@ package de.kitinfo.app.mensa;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import de.kitinfo.app.IOManager;
 import de.kitinfo.app.Slide;
 
 public class MensaFragment extends Fragment implements Slide {
@@ -58,7 +59,7 @@ public class MensaFragment extends Fragment implements Slide {
 
 	@Override
 	public void querryData(Context context) {
-		// TODO Automatisch generierter Methodenstub
-
+		new JsonParser_Mensa().parseMensaData(new IOManager()
+				.queryJSON(API_URL));
 	}
 }
