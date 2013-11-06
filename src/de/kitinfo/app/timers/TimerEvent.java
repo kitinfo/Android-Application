@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import de.kitinfo.app.TimeConverter;
+import de.kitinfo.app.TimeFunctions;
 
 /**
  * This class provides a data structure for a timer elements which represents an
@@ -48,7 +48,7 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 		this.title = title;
 		this.message = message;
 		this.id = id;
-		date = TimeConverter.getMillis(year, month, day, hour, minute, second);
+		date = TimeFunctions.getMillis(year, month, day, hour, minute, second);
 
 	}
 
@@ -67,7 +67,7 @@ public class TimerEvent implements Serializable, Comparable<TimerEvent> {
 	public String getDate() {
 		// german time string
 		// return day + "." + month + "." + year + " " + hour + ":" + minute;
-		return TimeConverter.toLocalTime(date, SimpleDateFormat.MEDIUM,
+		return TimeFunctions.toLocalTime(date, SimpleDateFormat.MEDIUM,
 				SimpleDateFormat.SHORT);
 	}
 

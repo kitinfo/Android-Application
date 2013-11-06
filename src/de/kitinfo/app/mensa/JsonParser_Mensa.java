@@ -17,6 +17,8 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 	private HashMap<String, String> lineConverter = new LineConverter();
 
 	private class LineConverter extends HashMap<String, String> {
+		private static final long serialVersionUID = 8900650536337523L;
+
 		private LineConverter() {
 			this.put("l1", "Linie 1");
 			this.put("l2", "Linie 2");
@@ -36,10 +38,9 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 
 		MENSA("adenauerring"), NODATA("nodata"), BIO("bio"), FISH("fish"), PORK(
 				"pork"), BEEF("cow"), N_T_BEEF("cow_aw"), VEGAN("vegan"), VEGGIE(
-				"veg"), INFO("info"), PRICE("price_4"), NAME("meal"), HINT(
+				"veg"), INFO("info"), PRICE("price_1"), NAME("meal"), HINT(
 				"dish"), ADD("add"), CLOSING_END("closing_end"), CLOSING_START(
-				"closing_start"), SINGLE_PRICE("price_1"), PRICE_FLAG(
-				"price_flag");
+				"closing_start");
 
 		private String tag;
 
@@ -118,27 +119,24 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 							boolean nTBeef = mealObject
 									.getBoolean(Tags.N_T_BEEF.toString());
 
-							float price;
+							float price = (float) mealObject
+									.getDouble(Tags.PRICE.toString());
 
-							String priceFlag = mealObject
-									.getString(Tags.PRICE_FLAG.toString());
-
-							if ("0".equals(priceFlag))
-								price = (float) mealObject.getDouble(Tags.PRICE
-										.toString());
-							else
-								price = (float) mealObject
-										.getDouble(Tags.SINGLE_PRICE.toString());
-
-							String name = android.text.Html.fromHtml(
-									mealObject.getString(Tags.NAME.toString()))
-									.toString();
-							String hint = android.text.Html.fromHtml(
-									mealObject.getString(Tags.HINT.toString()))
-									.toString();
-							String info = android.text.Html.fromHtml(
-									mealObject.getString(Tags.INFO.toString()))
-									.toString();
+							String name = android.text.Html
+									.fromHtml(
+											mealObject.getString(Tags.NAME
+													.toString())).toString()
+									.trim();
+							String hint = android.text.Html
+									.fromHtml(
+											mealObject.getString(Tags.HINT
+													.toString())).toString()
+									.trim();
+							String info = android.text.Html
+									.fromHtml(
+											mealObject.getString(Tags.INFO
+													.toString())).toString()
+									.trim();
 
 							List<String> adds = new LinkedList<String>();
 

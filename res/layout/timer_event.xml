@@ -9,7 +9,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:layout_marginTop="15dp"
-    android:background="@drawable/timer_background"
+    android:background="@drawable/item_background"
     android:orientation="vertical" >
 
     <TextView

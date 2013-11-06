@@ -26,7 +26,7 @@ import de.kitinfo.app.IOManager;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
-import de.kitinfo.app.TimeConverter;
+import de.kitinfo.app.TimeFunctions;
 import de.kitinfo.app.UserDialog;
 import de.kitinfo.app.data.Storage;
 
@@ -191,7 +191,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 						TimePicker time = (TimePicker) v
 								.findViewById(R.id.timer_time);
 
-						long fullDate = TimeConverter.getMillis(date.getYear(),
+						long fullDate = TimeFunctions.getMillis(date.getYear(),
 								date.getMonth(), date.getDayOfMonth(),
 								time.getCurrentHour(), time.getCurrentMinute());
 
@@ -313,8 +313,8 @@ public class TimerViewFragment extends ListFragment implements Slide {
 			// if event isn't in the past, set the right remaining time else its
 			// message will be displayed
 			if (event.getRemainingTime() >= 0) {
-				time_left = TimeConverter.formatTime(event.getRemainingTime(),
-						TimeConverter.Format.DAY_HOUR_MINUTE_SECOND);
+				time_left = TimeFunctions.formatTime(event.getRemainingTime(),
+						TimeFunctions.Format.DAY_HOUR_MINUTE_SECOND);
 			}
 
 			((TextView) element.findViewById(R.id.time_left))
