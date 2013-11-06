@@ -23,7 +23,10 @@ public class Database extends SQLiteOpenHelper {
 
 	public enum Tables {
 		
-		TIMER_TABLE("timers", Columns.TIMER);
+		TIMER_TABLE("timers", Columns.TIMER),
+		MENSA("mensa", Columns.MENSA),
+		MENSA_LINE("mensa_line", Columns.MENSA_LINE),
+		MENSA_MEAL("mensa_meal", Columns.MENSA_MEAL);
 		
 		private String table;
 		private Columns columns;
@@ -45,7 +48,10 @@ public class Database extends SQLiteOpenHelper {
 	
 	public enum Columns {
 		
-		TIMER(5, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE });
+		TIMER(5, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE }),
+		MENSA(4, new ColumnValues[]{ColumnValues.MENSA_DATABASEID, ColumnValues.MENSA_ID, ColumnValues.MENSA_NAME, ColumnValues.MENSA_DATE}),
+		MENSA_LINE(3, new ColumnValues[]{ColumnValues.LINE_ID, ColumnValues.LINE_NAME, ColumnValues.LINE_MENSA}),
+		MENSA_MEAL(3, new ColumnValues[]{ColumnValues.MEAL_ID, ColumnValues.MEAL_LINE, ColumnValues.MEAL_VALUE});
 		
 		private ColumnValues[] columns;
 		private int count;
@@ -70,7 +76,17 @@ public class Database extends SQLiteOpenHelper {
 		TIMER_TITLE("title", "text", 1, 0),
 		TIMER_MESSAGE("message", "text", 2, 0),
 		TIMER_DATE("date", "real", 3, 0),
-		TIMER_IGNORE("ignore", "integer DEFAULT(0)", 4, 0);
+		TIMER_IGNORE("ignore", "integer DEFAULT(0)", 4, 0),
+		MENSA_DATABASEID("dbid", "integer unique", 0, 1),
+		MENSA_ID("id", "integer", 1, 1),
+		MENSA_NAME("name", "text", 2, 1),
+		MENSA_DATE("date", "real", 3, 1),
+		LINE_ID("id", "integer unique", 2, 2),
+		LINE_NAME("line_name", "text", 3, 2),
+		LINE_MENSA("mensaid", "integer", 4, 2),
+		MEAL_ID("id", "integer unique", 0, 3),
+		MEAL_LINE("line", "integer", 1, 3),
+		MEAL_VALUE("value", "text", 2, 3);
 		
 		private String name;
 		private String type;
@@ -108,7 +124,7 @@ public class Database extends SQLiteOpenHelper {
 	}
 	
 	
-	private static final int DBVERSION = 2;
+	private static final int DBVERSION = 3;
 	private static final String DBNAME = "kitinfo.db";
 	
 	/**

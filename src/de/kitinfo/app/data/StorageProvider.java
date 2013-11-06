@@ -3,6 +3,7 @@
  */
 package de.kitinfo.app.data;
 
+import de.kitinfo.app.data.Database.Tables;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -24,7 +25,12 @@ public class StorageProvider extends ContentProvider {
 		/**
 		 * Use this for getting timers from database
 		 */
-		TIMERS(1, "timers"), IGNORE(2, "ignore_timer"), RESET(3, "reset");
+		TIMERS(1, Tables.TIMER_TABLE.getTable()),
+		IGNORE(2, "ignore_timer"),
+		RESET(3, "reset"),
+		MENSA(4, Tables.MENSA.getTable()),
+		MENSA_LINE(5, Tables.MENSA_LINE.getTable()),
+		MENSA_MEAL(6, Tables.MENSA_MEAL.getTable());
 
 		private int code;
 		private String table;
@@ -75,9 +81,10 @@ public class StorageProvider extends ContentProvider {
 	 * new StorageProvider object
 	 */
 	public StorageProvider() {
-		matcher.addURI(AUTHORITY, "timers", 1);
-		matcher.addURI(AUTHORITY, "ignore_timer", 2);
-		matcher.addURI(AUTHORITY, "reset", 3);
+		
+		for (UriMatch um : UriMatch.values()) {
+			matcher.addURI(AUTHORITY, um.getTable(), um.getCode());
+		}
 	}
 
 	@Override
