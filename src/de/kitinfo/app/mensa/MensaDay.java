@@ -1,5 +1,6 @@
 package de.kitinfo.app.mensa;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class MensaDay implements Comparable<MensaDay> {
 	}
 
 	public List<MensaLine> getLines() {
+		Collections.sort(lines);
 		return lines;
 	}
 

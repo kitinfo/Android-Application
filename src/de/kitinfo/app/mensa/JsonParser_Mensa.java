@@ -24,7 +24,7 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 			this.put("l2", "Linie 2");
 			this.put("l3", "Linie 3");
 			this.put("l45", "Linie 4/5");
-			this.put("update", "L6 Update");
+			this.put("update", "Linie 6 (Update)");
 			this.put("abend", "Abend");
 			this.put("aktion", "Curry Queen");
 			this.put("nmtisch", "Cafeteria ab 14:30");
