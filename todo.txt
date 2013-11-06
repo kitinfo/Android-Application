@@ -1,1 +1,3 @@
 Raise audio/vibration alert on timer elapse / pre timer elapse
+visualize selection in timers
+add multiselection in timers
