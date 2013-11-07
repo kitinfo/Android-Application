@@ -1,6 +1,5 @@
 package de.kitinfo.app.timers;
 
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.content.Context;
@@ -27,6 +26,7 @@ import de.kitinfo.app.IOManager;
 import de.kitinfo.app.R;
 import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
+import de.kitinfo.app.TimeFunctions;
 import de.kitinfo.app.UserDialog;
 import de.kitinfo.app.data.Storage;
 
@@ -121,24 +121,6 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	}
 
 	/**
-	 * format the given time to a readable string
-	 * 
-	 * @param time
-	 *            time in seconds
-	 * @return time string: (dd:hh:mm:ss)
-	 */
-	public String formatTime(long time) {
-		long day = time / 86400;
-		long hour = (time % 86400) / 3600;
-		long minute = (time % 3600) / 60;
-		long second = time % 60;
-
-		// return day + ":" + hour + ":" + minute + ":" + second;
-		return String.format("%02d:%02d:%02d:%02d", day, hour, minute, second);
-
-	}
-
-	/**
 	 * returns the title of this Slide
 	 */
 	public String getTitle() {
@@ -209,10 +191,9 @@ public class TimerViewFragment extends ListFragment implements Slide {
 						TimePicker time = (TimePicker) v
 								.findViewById(R.id.timer_time);
 
-						long fullDate = new GregorianCalendar(date.getYear(),
-								date.getMonth(), date.getDayOfMonth(), time
-										.getCurrentHour(), time
-										.getCurrentMinute()).getTimeInMillis();
+						long fullDate = TimeFunctions.getMillis(date.getYear(),
+								date.getMonth(), date.getDayOfMonth(),
+								time.getCurrentHour(), time.getCurrentMinute());
 
 						TimerEvent event = new TimerEvent(title, message, id,
 								fullDate);
@@ -332,7 +313,8 @@ public class TimerViewFragment extends ListFragment implements Slide {
 			// if event isn't in the past, set the right remaining time else its
 			// message will be displayed
 			if (event.getRemainingTime() >= 0) {
-				time_left = formatTime(event.getRemainingTime());
+				time_left = TimeFunctions.formatTime(event.getRemainingTime(),
+						TimeFunctions.Format.DAY_HOUR_MINUTE_SECOND);
 			}
 
 			((TextView) element.findViewById(R.id.time_left))

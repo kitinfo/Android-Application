@@ -1,2 +1,4 @@
 Raise audio/vibration alert on timer elapse / pre timer elapse
 Timers/Mensa lines as widgets!
+visualize selection in timers
+add multiselection in timers

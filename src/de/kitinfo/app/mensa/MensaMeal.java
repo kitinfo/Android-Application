@@ -1,6 +1,7 @@
 package de.kitinfo.app.mensa;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class MensaMeal implements Serializable {
 
@@ -20,9 +21,11 @@ public class MensaMeal implements Serializable {
 
 	private float price;
 
+	private List<String> adds;
+
 	public MensaMeal(boolean veggie, boolean vegan, boolean bio, boolean pork,
 			boolean fish, boolean beef, boolean nTBeef, String name,
-			String hint, String info, float price) {
+			String hint, String info, float price, List<String> adds) {
 
 		this.vegan = vegan;
 		this.veggie = veggie;
@@ -35,7 +38,7 @@ public class MensaMeal implements Serializable {
 		this.hint = hint;
 		this.info = info;
 		this.price = price;
-
+		this.adds = adds;
 	}
 
 	/**
@@ -113,5 +116,24 @@ public class MensaMeal implements Serializable {
 	 */
 	public float getPrice() {
 		return price;
+	}
+
+	/**
+	 * @return adds of this meal
+	 * @return
+	 */
+	public List<String> getAdds() {
+		return adds;
+	}
+
+	@Override
+	public String toString() {
+		String addsString = "";
+		for (String add : adds) {
+			addsString += add + ",";
+		}
+		addsString = "(" + addsString.substring(0, addsString.length() - 1)
+				+ ")";
+		return addsString + "  " + name + " - " + hint + " for: " + price + "€";
 	}
 }

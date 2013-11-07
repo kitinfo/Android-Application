@@ -3,13 +3,14 @@ package de.kitinfo.app.mensa;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MensaLine {
+public class MensaLine implements Comparable<MensaLine> {
 
 	private String name;
 	private List<MensaMeal> meals;
 
 	public MensaLine(String name) {
 		meals = new LinkedList<MensaMeal>();
+		this.name = name;
 	}
 
 	public void addMeal(MensaMeal meal) {
@@ -22,6 +23,11 @@ public class MensaLine {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(MensaLine other) {
+		return this.name.toLowerCase().compareTo(other.getName().toLowerCase());
 	}
 
 }
