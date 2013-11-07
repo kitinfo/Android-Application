@@ -1,6 +1,7 @@
 package de.kitinfo.app;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -75,15 +76,14 @@ public class TimeFunctions {
 
 	public static long getDayInMillis(long datetime) {
 
-		Date date = new Date(datetime);
+		Calendar calendar = GregorianCalendar.getInstance();
+		calendar.setTimeInMillis(datetime);
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
 
-		datetime /= 86400000;
-		datetime *= 86400000;
-
-		// minus 1 hour
-		datetime -= 3600000;
-
-		return datetime;
+		return calendar.getTimeInMillis();
 	}
 
 	public static boolean isSameDay(long datetime1, long datetime2) {
