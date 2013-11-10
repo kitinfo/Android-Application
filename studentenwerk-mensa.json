@@ -1,0 +1,2962 @@
+{
+"adenauerring":{
+"1383174000":{
+"l1":[{"nodata":true}],
+"l2":[{"nodata":true}],
+"l3":[{"nodata":true}],
+"l45":[{"nodata":true}],
+"schnitzelbar":[{"nodata":true}],
+"update":[{"nodata":true}],
+"abend":[{"nodata":true}],
+"aktion":[{"nodata":true}],
+"heisstheke":[{"nodata":true}],
+"nmtisch":[{"nodata":true}]}
+,"1383260400":{
+"l1":[{"closing_start":1383260400,"closing_end":1383260400}],
+"l2":[{"closing_start":1383260400,"closing_end":1383260400}],
+"l3":[{"closing_start":1383260400,"closing_end":1383260400}],
+"l45":[{"closing_start":1383260400,"closing_end":1383260400}],
+"schnitzelbar":[{"closing_start":1383260400,"closing_end":1383260400}],
+"update":[{"closing_start":1383260400,"closing_end":1383260400}],
+"abend":[{"closing_start":1383260400,"closing_end":1383260400}],
+"aktion":[{"closing_start":1383260400,"closing_end":1383260400}],
+"heisstheke":[{"closing_start":1383260400,"closing_end":1383260400}],
+"nmtisch":[{"closing_start":1383260400,"closing_end":1383260400
+}]}
+,"1383519600":{
+"l1":[{"meal":"Kartoffeltaschen mit Frischk\u00e4sef\u00fcllung",
+"dish":"mit Rahmgem\u00fcse und Schaumkuss",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Gebratene H\u00e4hnchenkeule",
+"dish":"mit Pommes frites und Schaumkuss",
+"add":["23"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"MSC-Woche",
+"dish":"pochiertes Hokifilet mit Krebsso\u00dfe Erbsenschoten, Kirschtomaten und Bandnudeln",
+"add":["12"],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3.75,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Schwarzw\u00e4lder Kirschcreme",
+"dish":"Schokokuchen",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Karotten-Gurkensalat",
+"dish":"Italiasalat Blattsalat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Becherdessert Pudding mit Sahne",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.55,"price_2":0.75,"price_3":0.55,"price_4":0.55,"price_flag":0
+}
+,
+{
+"meal":"Becherdessert Fruchtjoghurt",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0.7,"price_3":0.5,"price_4":0.5,"price_flag":0
+}
+,
+{
+"meal":"frisches Obst",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0.7,"price_3":0.5,"price_4":0.5,"price_flag":0
+}
+,
+{
+"meal":"Lauchcremesuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0
+}
+,
+{
+"meal":"Ketchup",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l3":[{"meal":"Schweinebraten",
+"dish":"mit Waldpilzso\u00dfe und Reis",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.55,"price_2":5.6,"price_3":3.75,"price_4":2.95,"price_flag":0
+}
+,
+{
+"meal":"Tortellini-Gem\u00fcsepfanne",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Fr\u00fcchtequark",
+"dish":"Berliner",
+"add":["1"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Karottensalat",
+"dish":"Kretasalat Blattsalat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Becherdessert Pudding mit Sahne",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.55,"price_2":0.75,"price_3":0.55,"price_4":0.55,"price_flag":0
+}
+,
+{
+"meal":"Becherdessert Fruchtjoghurt",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0.7,"price_3":0.5,"price_4":0.5,"price_flag":0
+}
+,
+{
+"meal":"frisches Obst",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0.7,"price_3":0.5,"price_4":0.5,"price_flag":0
+}
+,
+{
+"meal":"Ketchup",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Rinderroulade",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":true,"vegan":false,"veg":false,"info":"",
+"price_1":2.3,"price_2":5.05,"price_3":3.4,"price_4":2.65,"price_flag":0
+}
+,
+{
+"meal":"Panierter Hirtenk\u00e4se",
+"dish":"mit Tzatziki",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2,"price_2":4.4,"price_3":2.95,"price_4":2.3,"price_flag":0
+}
+,
+{
+"meal":"Sp\u00e4tzle",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Fr\u00fcchtequark",
+"dish":"Berliner",
+"add":["1"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Karottensalat",
+"dish":"Kretasalat Blattsalat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Rotkraut",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Kr\u00e4uterreis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Becherdessert Pudding mit Sahne",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.55,"price_2":0.75,"price_3":0.55,"price_4":0.55,"price_flag":0
+}
+,
+{
+"meal":"frisches Obst",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0.7,"price_3":0.5,"price_4":0.5,"price_flag":0
+}
+,
+{
+"meal":"Becherdessert Fruchtjoghurt",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0.7,"price_3":0.5,"price_4":0.5,"price_flag":0
+}
+,
+{
+"meal":"Kartoffelsuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0
+}
+,
+{
+"meal":"Ketchup",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok: Currywok mit Rindfleisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Spanferkelrollbraten mit Bierso\u00dfe und Bayrisch Kraut",
+"dish":"",
+"add":["12"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Schw\u00e4bischer Wurstsalat",
+"dish":"",
+"add":["5"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Feldsalat mit Kracherle und K\u00fcrbisw\u00fcrfeln",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"Schnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"1 Paar Wei\u00dfw\u00fcrste mit Brezel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Backcamembert mit Preiselbeeren u. Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Frikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza- Krustigette mit Tomate und Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Tomatenstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"H\u00e4hnchenschnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1383606000":{
+"l1":[{"meal":"Schw\u00e4bische Kn\u00f6pflepfanne mit Gem\u00fcse und Champignons",
+"dish":"und Dessert",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Schaschlikspie\u00df",
+"dish":"mit Paprikaso\u00dfe, Reis und Dessert",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"MSC-Woche",
+"dish":"Schlemmerfilet Bordelaise mit Kr\u00e4uterso\u00dfe Petersilienkartoffeln und Salat",
+"add":[""],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Stracciatella-Creme",
+"dish":"Donauwelle",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Karottengem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Klare Gem\u00fcsesuppe mit Einlage",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Kaiserschmarren",
+"dish":"mit Apfelmus",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.35,"price_2":5.15,"price_3":3.45,"price_4":2.7,"price_flag":0
+}
+,
+{
+"meal":"Himbeer-Sahnecreme",
+"dish":"Apfeltasche",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gurkensalat",
+"dish":"Italiasalat Blattsalat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0}],
+"l45":[{"meal":"Fagottini",
+"dish":"mit Tomaten-Rahmso\u00dfe und Reibek\u00e4se",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.95,"price_2":4.3,"price_3":2.9,"price_4":2.25,"price_flag":0
+}
+,
+{
+"meal":"Kasseler R\u00fccken",
+"dish":"mit Bratenso\u00dfe",
+"add":["4",
+"5"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.9,"price_2":4.2,"price_3":2.8,"price_4":2.2,"price_flag":0
+}
+,
+{
+"meal":"Himbeer-Sahnecreme",
+"dish":"Italiasalat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gurkensalat",
+"dish":"Italiasalat Blattsalat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Sauerkraut",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Hausgemachtes Kartoffelp\u00fcree",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Zucchini-Creme-Suppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok: Thai Green Curry mit Schweinefleisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schweinefilet mit Weinbrandso\u00dfe",
+"dish":"",
+"add":["12"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bunter Salatteller mit Schinken- und K\u00e4sestreifen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Blattsalate mit Gorgonzola",
+"dish":"",
+"add":["LAB"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"Frikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bockwurst mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizzafleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vegetarischer Wrap",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Schinken-K\u00e4se-Croissant",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bl\u00e4tterteig K\u00e4setasche",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"Gefl\u00fcgelfrikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza- Krustigette mit Tomate und Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1383692400":{
+"l1":[{"meal":"Gem\u00fcsemaultaschen",
+"dish":"mit R\u00f6stzwiebeln, hausgemachter Kartoffelsalat und Fruchtjoghurt",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Linseneintopf",
+"dish":"auf Wunsch mit Wienerle oder vegetarische Wurst, Baguettebr\u00f6tchen und Fruchtjoghurt",
+"add":["4",
+"5"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"MSC-Woche",
+"dish":"Gebratener Wildlachs mit Honig-Senf-Dillso\u00dfe und Kartoffeln",
+"add":[""],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3.75,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Hackfleisch Risotto",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":true,"vegan":false,"veg":false,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Makkaroniauflauf mit Schinken",
+"dish":"und Tomatenso\u00dfe",
+"add":["4",
+"5"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Getreide-K\u00e4se-Krusties",
+"dish":"mit Blattspinatgem\u00fcse",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.9,"price_2":4.2,"price_3":2.8,"price_4":2.2,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Kartoffeln",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"H\u00e4hnchenschnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Gefl\u00fcgelfrikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Italo- Snack Tomate\/Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.75,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bauernwurst mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Fleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Schinken-K\u00e4se-Croissant",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"K\u00e4se-Seele",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Spinatstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1383778800":{
+"l1":[{"meal":"Spaghetti",
+"dish":"Napoli auf Wunsch mit Reibek\u00e4se, Salat und Obst",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Spaghetti",
+"dish":"Carbonara mit Reibek\u00e4se, Salat und Obst",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"MSC-Woche",
+"dish":"Backfisch auf rotem Thaicurry mit Duftreis",
+"add":[""],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3.25,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Solidarit\u00e4tsessen",
+"dish":"Mexikanische Reispfanne mit Tomatensalsa",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.2,"price_2":4.85,"price_3":3.25,"price_4":2.55,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Schwedische K\u00f6ttbullar",
+"dish":"Rahmso\u00dfe Preiselbeeren",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.8,"price_2":3.95,"price_3":2.65,"price_4":2.1,"price_flag":0
+}
+,
+{
+"meal":"Tofu-Schnitte Currywurst Style",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.8,"price_2":3.95,"price_3":2.65,"price_4":2.1,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Dampfkartoffeln",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"Schnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Gefl\u00fcgelfrikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"1 Paar Wiener mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Fleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza Krustigette",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Quiche mit mediterranem Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"Schinken-K\u00e4se-Croissant",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bl\u00e4tterteig K\u00e4setasche",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1383865200":{
+"l1":[{"meal":"2 Tellerr\u00f6sti",
+"dish":"mit mediterranem Gem\u00fcse und Schokoladenpudding",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Scharfe Sombreropfanne mit Kalbfleischb\u00e4llchen",
+"dish":"und Schokoladenpudding",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"MSC-Woche",
+"dish":"Fischst\u00e4bchen mit hausgemachter Kartoffelsalat und Ketchup oder Mayo",
+"add":["9"],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.45,"price_2":5.4,"price_3":3.6,"price_4":2.85,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Bami Goreng mit H\u00e4hnchenfleisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Schweineschnitzel Toskana",
+"dish":"mit Zitronenscheibe",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":4.4,"price_3":2.95,"price_4":2.3,"price_flag":0
+}
+,
+{
+"meal":"vegetarisches Moussaka",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.7,"price_2":3.75,"price_3":2.5,"price_4":1.95,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"mediterraner Kartoffelsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"nodata":true}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"H\u00e4hnchenschnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Frikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"K\u00e4seknacker mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.95,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Fleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Wrap D\u00f6ner",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Spinatstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"nodata":true}]}
+,"1384124400":{
+"l1":[{"meal":"Oberl\u00e4nder Bratwurst",
+"dish":"mit Pommes, Ketchup und Salat",
+"add":["4",
+"5",
+"9"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Makkaroni",
+"dish":"mit Gem\u00fcsebolognese, auf Wunsch mit Reibek\u00e4se und Salat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"Ungarisches Rindergulasch",
+"dish":"",
+"add":["12"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":true,"vegan":false,"veg":false,"info":"",
+"price_1":2.3,"price_2":5.05,"price_3":3.4,"price_4":2.65,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Dampfkartoffeln",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Pasta alla San Giovaniello mit Sardellen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Paniertes H\u00e4hnchenbrustfilet",
+"dish":"mit gr\u00fcner Pfeffer-Rahmso\u00dfe",
+"add":["23"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":4.4,"price_3":2.95,"price_4":2.3,"price_flag":0
+}
+,
+{
+"meal":"Farfalle",
+"dish":"Napoli, auf Wunsch mit Reibek\u00e4se",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.7,"price_2":3.75,"price_3":2.5,"price_4":1.95,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Nudelsalat",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"Schnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"1 Paar Wiener mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza- Krustigette mit Tomate und Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Schinken-K\u00e4se-Croissant",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bl\u00e4tterteig K\u00e4setasche",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"H\u00e4hnchenschnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1384210800":{
+"l1":[{"meal":"5 Kartoffelpuffer",
+"dish":"mit Apfelmus, Tagessuppe und Salat",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Gefl\u00fcgelfrikadelle",
+"dish":"mit Zwiebelso\u00dfe, Kartoffelp\u00fcree und Salat",
+"add":["23"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"Krustenbraten vom Schwein",
+"dish":"mit Bierso\u00dfe",
+"add":["12"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.9,"price_2":4.2,"price_3":2.8,"price_4":2.2,"price_flag":0
+}
+,
+{
+"meal":"Kartoffelkn\u00f6del",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Maccheroni alla Norma",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Ged\u00e4mpftes Kabeljaufilet",
+"dish":"auf Gem\u00fcsestreifen mit Wei\u00dfweinso\u00dfe",
+"add":["12"],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.3,"price_2":5.05,"price_3":3.4,"price_4":2.65,"price_flag":0
+}
+,
+{
+"meal":"Spinatsp\u00e4tzle",
+"dish":"mit frischen Champignons",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Petersilienkartoffeln",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"H\u00e4hnchenschnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"K\u00e4seknacker mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.95,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Fleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vegetarischer Wrap",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Spinatstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Schinken-K\u00e4se-Croissant",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"Gefl\u00fcgelfrikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza- Krustigette mit Tomate und Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1384297200":{
+"l1":[{"meal":"Vegetarisches Schnitzel",
+"dish":"mit Broccoliso\u00dfe, Duftreis und Sahnefruchtjoghurt",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Chili con Carne",
+"dish":"mit Baguettebr\u00f6tchen und Sahnefruchtjoghurt",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":true,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"Gebratenes Putensteak",
+"dish":"mit Curry-Bananenso\u00dfe",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":4.6,"price_3":3.1,"price_4":2.45,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Duftreis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Weizenrisotto Pfanne",
+"dish":"mit Piri Piri",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Holzf\u00e4llersteak vom Schweinekamm mit Zwiebel und Speck",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":4.4,"price_3":2.95,"price_4":2.3,"price_flag":0
+}
+,
+{
+"meal":"Tofu Crossies mit Frischk\u00e4sef\u00fcllung",
+"dish":"und Lauchgem\u00fcse",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.95,"price_2":4.3,"price_3":2.9,"price_4":2.25,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Teigwaren",
+"dish":"",
+"add":[""],
+"bio":true,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.73,"price_2":0.93,"price_3":0.73,"price_4":0.73,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"Schnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Gefl\u00fcgelfrikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"K\u00e4se-Seele",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Italo- Snack Tomate\/Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.75,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bockwurst mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Fleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"K\u00e4se-Seele",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Spinatstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1384383600":{
+"l1":[{"meal":"Tortellini",
+"dish":"Milanese mit Reibek\u00e4se, Salat und Obst",
+"add":["4",
+"5"],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"Tortellini",
+"dish":"mit Pestoso\u00dfe, Reibek\u00e4se, Salat und Obst",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"Lasagne Bolognese",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.35,"price_2":5.15,"price_3":3.45,"price_4":2.7,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Solidarit\u00e4tsessen",
+"dish":"Vegetarische Chinapfanne mit Sweet Chilli So\u00dfe",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":2.2,"price_2":4.85,"price_3":3.25,"price_4":2.55,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"2 St. H\u00e4hnchenkeulen",
+"dish":"",
+"add":["23"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":4.85,"price_3":3.25,"price_4":2.55,"price_flag":0
+}
+,
+{
+"meal":"2 St. Snackrollen Pomodoro",
+"dish":"mit Jalapenos-Tomatensugo",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.9,"price_2":4.2,"price_3":2.8,"price_4":2.2,"price_flag":0
+}
+,
+{
+"meal":"Country Potatoes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Nudelsalat",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Baguettebr\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"meal":"Abendessen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.71,"price_2":1.4,"price_3":0.98,"price_4":0.82,"price_flag":2}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"1 Paar Wei\u00dfw\u00fcrste mit Brezel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Backcamembert mit Preiselbeeren u. Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizzafleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Quiche mit mediterranem Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza Krustigette",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Tomatenstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"meal":"Schinken-K\u00e4se-Croissant",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bl\u00e4tterteig K\u00e4setasche",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}]}
+,"1384470000":{
+"l1":[{"meal":"Putenrahmgeschnetzeltes",
+"dish":"mit Teigwaren und M\u00fcsli-Joghurt",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0
+}
+,
+{
+"meal":"3 Gem\u00fcsefrikadellen",
+"dish":"mit Tomatenso\u00dfe, Reis und M\u00fcsli-Joghurt",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.5,"price_2":3.65,"price_3":3,"price_4":2.8,"price_flag":0}],
+"l2":[{"meal":"Paniertes Schollenfilet",
+"dish":"mit Zitronenschmand",
+"add":[""],
+"bio":false,"fish":true,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":4.85,"price_3":3.25,"price_4":2.55,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"hausgemachter Kartoffelsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Dampfkartoffeln",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"l3":[{"meal":"Westernpfanne mit H\u00e4hnchenbruststreifen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.05,"price_2":4.5,"price_3":3,"price_4":2.35,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Tagesangebot siehe Tageskarte",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"l45":[{"meal":"Badischer Sauerbraten",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":true,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":4.85,"price_3":3.25,"price_4":2.55,"price_flag":0
+}
+,
+{
+"meal":"Gnocchi mit Gem\u00fcseragout",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.95,"price_2":4.3,"price_3":2.9,"price_4":2.25,"price_flag":0
+}
+,
+{
+"meal":"Sp\u00e4tzle",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.9,"price_2":1.1,"price_3":0.9,"price_4":0.9,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Blattsalat",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.75,"price_2":0.95,"price_3":0.75,"price_4":0.75,"price_flag":0
+}
+,
+{
+"meal":"Gem\u00fcse",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":0.7,"price_2":0.9,"price_3":0.7,"price_4":0.7,"price_flag":0
+}
+,
+{
+"meal":"Tagessuppe",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":0.45,"price_2":0.65,"price_3":0.45,"price_4":0.45,"price_flag":0}],
+"schnitzelbar":[{"meal":"Schweine- und H\u00e4hnchenschnitzel, vegetarische Leckereien,",
+"dish":"Salatbuffet und Pommes - alles zur Wahl zu einem Preis",
+"add":["9"],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":1.68,"price_3":1.16,"price_4":0.97,"price_flag":2
+}
+,
+{
+"meal":"Magnum Aktion an der Schnitzelbar",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.95,"price_2":1.15,"price_3":0.95,"price_4":0.95,"price_flag":0}],
+"update":[{"meal":"Wok",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.84,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Hamburger-, Salat-, Buffet",
+"dish":"",
+"add":["9"],
+"bio":false,"fish":false,"pork":true,"cow":true,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Schlemmerteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":4.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Vorspeisenteller",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":3,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Vorspeisenteller vegetarisch",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":2.8,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"abend":[{"nodata":true}],
+"aktion":[{"meal":"Salatbuffet",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"pro 100g",
+"price_1":0.79,"price_2":0,"price_3":0,"price_4":0,"price_flag":2
+}
+,
+{
+"meal":"Currywurst oder Currywurst vegan",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"ab",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":1
+}
+,
+{
+"meal":"Belgische Pommes",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":true,"veg":false,"info":"",
+"price_1":1.15,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Diverse Desserts ab 0,50 EUR bis",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":0.5,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"heisstheke":[{"meal":"H\u00e4hnchenschnitzel mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.2,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Frikadelle mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":2.1,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Bauernwurst mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.7,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Fleischk\u00e4se mit Br\u00f6tchen",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":true,"cow":false,"cow_aw":false,"vegan":false,"veg":false,"info":"",
+"price_1":1.65,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Pizza- Krustigette mit Tomate und Mozzarella",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.6,"price_2":0,"price_3":0,"price_4":0,"price_flag":0
+}
+,
+{
+"meal":"Spinatstrudel",
+"dish":"",
+"add":[""],
+"bio":false,"fish":false,"pork":false,"cow":false,"cow_aw":false,"vegan":false,"veg":true,"info":"",
+"price_1":1.35,"price_2":0,"price_3":0,"price_4":0,"price_flag":0}],
+"nmtisch":[{"nodata":true}]}
+
+}
+,"date":1383665639,"import_date":1383665584
+}
+

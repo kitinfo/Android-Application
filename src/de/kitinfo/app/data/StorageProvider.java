@@ -28,9 +28,8 @@ public class StorageProvider extends ContentProvider {
 		TIMERS(1, Tables.TIMER_TABLE.getTable()),
 		IGNORE(2, "ignore_timer"),
 		RESET(3, "reset"),
-		MENSA(4, Tables.MENSA.getTable()),
-		MENSA_LINE(5, Tables.MENSA_LINE.getTable()),
-		MENSA_MEAL(6, Tables.MENSA_MEAL.getTable());
+		MENSA_LINE(4, Tables.MENSA_LINE.getTable()),
+		MENSA_MEAL(5, Tables.MENSA_MEAL.getTable());
 
 		private int code;
 		private String table;
@@ -88,22 +87,32 @@ public class StorageProvider extends ContentProvider {
 	}
 
 	@Override
-	public int delete(Uri uri, String selection, String[] selectionArgs) {
-
+	public int delete(Uri uri, String selection, String[] selectionArgs) {		
+		
 		UriMatch um = UriMatch.findMatch(matcher.match(uri));
 		if (um == null) {
 			return 0;
 		}
+		
+		
 
 		if (um == UriMatch.RESET) {
 			Database db = new Database(getContext());
 			db.reset();
 			return 0;
-		} else {
-
-			Database db = new Database(getContext());
-			return db.rawDelete(um.getTable(), selection, selectionArgs);
 		}
+
+		if (uri.getEncodedFragment().equals(UriMatch.RESET.getTable())) {
+			Database db = new Database(getContext());
+			Tables t = Tables.fromString(um.getTable());
+			db.drop(t);
+			db.create(t);
+			return 0;
+		}
+		
+		Database db = new Database(getContext());
+		return db.rawDelete(um.getTable(), selection, selectionArgs);
+		
 	}
 
 	@Override

@@ -20,8 +20,6 @@ public class StorageContract {
 	
 	public static final String RESET_URI = PROVIDER_URI + "/" + UriMatch.RESET.getTable();
 	
-	public static final String MENSA_URI = PROVIDER_URI + "/" + UriMatch.MENSA.getTable();
-	
 	public static final String MENSA_LINE_URI = PROVIDER_URI + "/" + UriMatch.MENSA_LINE.getTable();
 	
 	public static final String MEAL_URI = PROVIDER_URI + "/" + UriMatch.MENSA_MEAL.getTable();

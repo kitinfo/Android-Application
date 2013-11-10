@@ -146,7 +146,7 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 								adds.add(addsArray.getString(j));
 							}
 
-							MensaMeal meal = new MensaMeal(veggie, vegan, bio,
+							MensaMeal meal = new MensaMeal(-1, veggie, vegan, bio,
 									pork, fish, beef, nTBeef, name, hint, info,
 									price, adds);
 

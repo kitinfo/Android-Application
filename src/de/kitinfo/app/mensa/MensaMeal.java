@@ -7,6 +7,8 @@ public class MensaMeal implements Serializable {
 
 	private static final long serialVersionUID = 6318652233903651125L;
 
+	private int id;
+	
 	private boolean veggie;
 	private boolean vegan;
 	private boolean bio;
@@ -23,10 +25,11 @@ public class MensaMeal implements Serializable {
 
 	private List<String> adds;
 
-	public MensaMeal(boolean veggie, boolean vegan, boolean bio, boolean pork,
+	public MensaMeal(int id, boolean veggie, boolean vegan, boolean bio, boolean pork,
 			boolean fish, boolean beef, boolean nTBeef, String name,
 			String hint, String info, float price, List<String> adds) {
 
+		this.id = id;
 		this.vegan = vegan;
 		this.veggie = veggie;
 		this.bio = bio;
@@ -39,6 +42,10 @@ public class MensaMeal implements Serializable {
 		this.info = info;
 		this.price = price;
 		this.adds = adds;
+	}
+	
+	public int getID() {
+		return id;
 	}
 
 	/**

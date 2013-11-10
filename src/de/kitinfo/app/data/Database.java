@@ -29,9 +29,8 @@ public class Database extends SQLiteOpenHelper {
 	public enum Tables {
 		
 		TIMER_TABLE("timers", new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE }),
-		MENSA("mensa", new ColumnValues[]{ColumnValues.MENSA_ID, ColumnValues.MENSA_DATE}),
 		MENSA_LINE("mensa_line", new ColumnValues[]{ColumnValues.LINE_ID, ColumnValues.LINE_NAME, ColumnValues.LINE_MENSA}),
-		MENSA_MEAL("mensa_meal", new ColumnValues[]{ColumnValues.MEAL_ID, ColumnValues.MEAL_LINE, ColumnValues.MEAL_NAME, ColumnValues.MEAL_INFO, ColumnValues.MEAL_HINT, ColumnValues.MEAL_PRICE, ColumnValues.MEAL_ADDS, ColumnValues.MENSA_DATE});
+		MENSA_MEAL("mensa_meal", new ColumnValues[]{ColumnValues.MEAL_ID, ColumnValues.MEAL_LINE, ColumnValues.MEAL_NAME, ColumnValues.MEAL_INFO, ColumnValues.MEAL_HINT, ColumnValues.MEAL_PRICE, ColumnValues.MEAL_ADDS, ColumnValues.MEAL_DATE});
 		
 		private String table;
 		private ColumnValues[] columns;
@@ -48,6 +47,15 @@ public class Database extends SQLiteOpenHelper {
 		 */
 		public String getTable() {
 			return table;
+		}
+		
+		public static Tables fromString(String s) {
+			for (Tables t : values()) {
+				if (t.getTable().equals(s)) {
+					return t;
+				}
+			}
+			return null;
 		}
 		
 		/**
@@ -76,8 +84,6 @@ public class Database extends SQLiteOpenHelper {
 		TIMER_MESSAGE("message", "text", 2, 0),
 		TIMER_DATE("date", "real", 3, 0),
 		TIMER_IGNORE("ignore", "integer DEFAULT(0)", 4, 0),
-		MENSA_ID("id", "integer", 0, 1),
-		MENSA_DATE("date", "real", 1, 1),
 		LINE_ID("id", "integer unique", 0, 2),
 		LINE_NAME("line_name", "text", 1, 2),
 		LINE_MENSA("mensaid", "integer", 2, 2),
@@ -87,7 +93,9 @@ public class Database extends SQLiteOpenHelper {
 		MEAL_INFO("info", "text", 3, 3),
 		MEAL_NAME("name", "name", 4, 3),
 		MEAL_PRICE("price", "real", 5, 3),
-		MEAL_ADDS("adds", "string", 6, 3);
+		MEAL_ADDS("adds", "string", 6, 3),
+		MEAL_TAGS("tags", "string", 7, 3),
+		MEAL_DATE("date", "real", 8, 3);
 		
 		private String name;
 		private String type;
@@ -174,42 +182,6 @@ public class Database extends SQLiteOpenHelper {
 		db.close();
 		return i;
 	}
-	
-	/*
-	public void insert(TimerEvent event) {
-		
-		SQLiteDatabase db = getWritableDatabase();
-		
-		db.beginTransaction();
-		ContentValues cv = getContentValues(event);
-		
-		if (db.insert(Tables.TIMER_TABLE.getTable(), null, cv) == -1) {
-			db.update(Tables.TIMER_TABLE.getTable(), cv , "id = ?", new String[]{"" + event.getID()});
-		}
-		db.setTransactionSuccessful();
-		db.endTransaction();
-		db.close();
-	}
-	*/
-	/*
-	/**
-	 * Return all timer events in database.
-	 * @return list of timer events
-	 */
-	/*
-	public List<TimerEvent> getEvents() {
-		
-		SQLiteDatabase db = getReadableDatabase();
-		
-		Cursor c = db.query(Tables.TIMER_TABLE.getTable(), null, null, null, null, null, null);
-		
-		List<TimerEvent> events = convertTimerEvents(c);
-		c.close();
-		db.close();
-		
-		return events;
-	}
-	*/
 
 	/**
 	 * creates the database object.
@@ -228,27 +200,7 @@ public class Database extends SQLiteOpenHelper {
 		
 		for (Tables t : Tables.values()) {
 			
-			StringBuilder sb = new StringBuilder();
-			
-			sb.append("create table ");
-			sb.append(t.getTable());
-			sb.append("(tableID integer primary key autoincrement, ");
-			
-			for (int i = 0; i < t.getSizeOfColumns(); i++) {
-				for (ColumnValues cv : t.getColumns()) {
-					if (cv.getPosition() == i) {
-						sb.append(cv.getName());
-						sb.append(" ");
-						sb.append(cv.getType());
-						sb.append(", ");
-						break;
-					}
-				}
-			}
-			sb.delete(sb.lastIndexOf(", "), sb.length());
-			sb.append(")");
-			
-			db.execSQL(sb.toString());
+			create(t, db);
 		}
 	}
 
@@ -313,39 +265,7 @@ public class Database extends SQLiteOpenHelper {
 		
 		return 0;
 	}
-	
-	/*
-	public static ContentValues getContentValues(TimerEvent event) {
-		
-		ContentValues values = new ContentValues();
-		
-		values.put(ColumnValues.TIMER_TITLE.getName(), event.getTitle());
-		values.put(ColumnValues.TIMER_MESSAGE.getName(), event.getMessage());
-		values.put(ColumnValues.TIMER_ID.getName(), event.getID());
-		values.put(ColumnValues.TIMER_DATE.getName(), event.getDateInLong());
-		
-		return values;
-	}
-	*/
-	
-	/*
-	public static List<TimerEvent> convertTimerEvents(Cursor c) {
-		
-		List<TimerEvent> timers = new LinkedList<TimerEvent>();
-		
-		while (c.moveToNext()) {
-			TimerEvent te = new TimerEvent(
-					c.getString(c.getColumnIndex(ColumnValues.TIMER_TITLE.getName())), 
-					c.getString(c.getColumnIndex(ColumnValues.TIMER_MESSAGE.getName())), 
-					c.getInt(c.getColumnIndex(ColumnValues.TIMER_ID.getName())),
-					c.getLong(c.getColumnIndex(ColumnValues.TIMER_DATE.getName())));
-			timers.add(te);
-		}
-		
-		
-		return timers;
-	}
-*/
+
 	/**
 	 * Deletes data from given sql infos
 	 * @param table the table we want to delete from
@@ -374,6 +294,40 @@ public class Database extends SQLiteOpenHelper {
 	public void reset() {
 		
 		onUpgrade(getWritableDatabase(), DBVERSION, DBVERSION);
+	}
+
+	public void drop(Tables table) {
+		SQLiteDatabase db = getWritableDatabase();
+		db.execSQL("DROP TABLE IF EXISTS " + table);
+	}
+
+	public void create(Tables t, SQLiteDatabase db) {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("create table ");
+		sb.append(t.getTable());
+		sb.append("(tableID integer primary key autoincrement, ");
+		
+		for (int i = 0; i < t.getSizeOfColumns(); i++) {
+			for (ColumnValues cv : t.getColumns()) {
+				if (cv.getPosition() == i) {
+					sb.append(cv.getName());
+					sb.append(" ");
+					sb.append(cv.getType());
+					sb.append(", ");
+					break;
+				}
+			}
+		}
+		sb.delete(sb.lastIndexOf(", "), sb.length());
+		sb.append(")");
+
+		db.execSQL(sb.toString());	
+	}
+	
+	public void create(Tables t) {
+		SQLiteDatabase db = getWritableDatabase();
+		create(t, db);
 	}
 
 }

@@ -28,7 +28,6 @@ import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
 import de.kitinfo.app.TimeFunctions;
 import de.kitinfo.app.UserDialog;
-import de.kitinfo.app.data.Storage;
 
 /**
  * A Slide to display events in the future, well,... they could also be in the
@@ -73,7 +72,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 			id = savedInstanceState.getInt("id", -1);
 		}
 
-		events = new Storage(getActivity().getApplicationContext()).getTimers();
+		events = new Storage_Timer(getActivity().getApplicationContext()).getAll();
 
 		updateList();
 	}
@@ -149,7 +148,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 
 	@Override
 	public void updateContent(Context context) {
-		events = new Storage(context).getTimers();
+		events = new Storage_Timer(context).getAll();
 		updateList();
 	}
 
@@ -158,9 +157,9 @@ public class TimerViewFragment extends ListFragment implements Slide {
 		String timeEvents = new IOManager().queryJSON(API_URL);
 		List<TimerEvent> timers = new JsonParser_TimeEvent().parse(timeEvents);
 
-		new Storage(context).saveTimers(timers);
+		new Storage_Timer(context).add(timers);
 
-		Log.d("UpdateTask", "saved " + timers.size() + " Timers");
+		Log.v("UpdateTask", "saved " + timers.size() + " Timers");
 	}
 
 	@Override
@@ -198,7 +197,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 						TimerEvent event = new TimerEvent(title, message, id,
 								fullDate);
 
-						Storage s = new Storage(getActivity()
+						Storage_Timer s = new Storage_Timer(getActivity()
 								.getApplicationContext());
 
 						s.addCustomTimer(event);
@@ -253,7 +252,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 			// Log.d("Seleced", "Selected: " + selectedId + "," +
 			// getListAdapter().getItemId(selectedId));
 
-			new Storage(getActivity()).ignoreTimer(events.get(selectedId)
+			new Storage_Timer(getActivity()).ignoreTimer(events.get(selectedId)
 					.getID());
 
 		}

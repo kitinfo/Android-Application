@@ -1,4 +1,4 @@
-package de.kitinfo.app.data;
+package de.kitinfo.app.timers;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -10,42 +10,34 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
+import de.kitinfo.app.data.Database;
+import de.kitinfo.app.data.StorageContract;
+import de.kitinfo.app.data.StorageInterface;
 import de.kitinfo.app.data.Database.ColumnValues;
-import de.kitinfo.app.timers.TimerEvent;
 
-public class Storage {
+public class Storage_Timer implements StorageInterface<TimerEvent> {
+
+	private Context ctx;
 	
-	Context ctx;
-	
-	
-	/**
-	 * implements a storage system
-	 * @param ctx the app context
-	 */
-	public Storage(Context ctx) {
+	public Storage_Timer(Context ctx) {
 		this.ctx = ctx;
 	}
 	
-	/**
-	 * Saves a list of timers to database. If id is in database, we update them.
-	 * @param timers list of timer event objects
-	 */
-	public void saveTimers(List<TimerEvent> timers) {
-		
-		List<TimerEvent> databaseList = getTimers();
+	@Override
+	public void add(List<TimerEvent> t) {
+		List<TimerEvent> databaseList = getAll();
 		databaseList.addAll(getIgnoredTimers());
-		
 		List<TimerEvent> withoutCustomTimers = new LinkedList<TimerEvent>();
 		
 		// remove custom timer
-		for (TimerEvent t : databaseList) {
-			if (t.getID() >= 0) {
-				withoutCustomTimers.add(t);
+		for (TimerEvent te : databaseList) {
+			if (te.getID() >= 0) {
+				withoutCustomTimers.add(te);
 			}
 		}
 		
 		// add timers to database
-		for (TimerEvent te : timers) {
+		for (TimerEvent te : t) {
 			
 			addTimerEvent(te);
 			// remove timer because we have update them, don't care if not in list
@@ -53,11 +45,34 @@ public class Storage {
 		}
 		
 		// delete timers not in list from server
-		for (TimerEvent t : withoutCustomTimers) {
-			deleteTimerEvent(t);
-		}
-		
+		delete(withoutCustomTimers);
 	}
+
+	@Override
+	public int delete(List<TimerEvent> t) {
+		
+		int count = 0;
+		for (TimerEvent te : t) {
+			count += deleteTimerEvent(te);
+		}
+		return count;
+	}
+	
+	/**
+	 * delete the given timerevent
+	 * @param te timer event object
+	 */
+	public int deleteTimerEvent(TimerEvent te) {
+		
+		Uri uri = Uri.parse(StorageContract.TIMER_URI);
+		
+		String where = Database.ColumnValues.TIMER_ID.getName() + " = ?";
+		String[] selectionArgs = {"" + te.getID()};
+
+		ContentResolver resolver = ctx.getContentResolver();
+		return resolver.delete(uri, where, selectionArgs);
+	}
+
 	
 	/**
 	 * adds a timer event to database.
@@ -83,30 +98,6 @@ public class Storage {
 		
 		return values;
 	}
-	
-	/**
-	 * delete the given timerevent
-	 * @param te timer event object
-	 */
-	public void deleteTimerEvent(TimerEvent te) {
-		
-		Uri uri = Uri.parse(StorageContract.TIMER_URI);
-		
-		String where = Database.ColumnValues.TIMER_ID.getName() + " = ?";
-		String[] selectionArgs = {"" + te.getID()};
-
-		ContentResolver resolver = ctx.getContentResolver();
-		resolver.delete(uri, where, selectionArgs);
-	}
-	
-	/**
-	 * returns all timers that don't be ignored.
-	 * @return list of timers
-	 */
-	public List<TimerEvent> getTimers() {
-		return getTimers(0);
-	}
-	
 	
 	/* 
 	 * returns timer with ignore status
@@ -186,7 +177,7 @@ public class Storage {
 	 * @param c cursor with timer events
 	 * @return list of timer event objects
 	 */
-public List<TimerEvent> convertTimerEvents(Cursor c) {
+	public List<TimerEvent> convertTimerEvents(Cursor c) {
 		
 		List<TimerEvent> timers = new LinkedList<TimerEvent>();
 		
@@ -204,18 +195,19 @@ public List<TimerEvent> convertTimerEvents(Cursor c) {
 		
 		return timers;
 	}
-
-/**
- * resets the database.
- */
-public void reset() {
 	
-	ContentResolver resolver = ctx.getContentResolver();
-	Uri uri = Uri.parse(StorageContract.RESET_URI);
+	/**
+	 * resets the database
+	 */
+	public void reset() {
+		
+		ContentResolver resolver = ctx.getContentResolver();
+		Uri uri = Uri.parse(StorageContract.RESET_URI);
+		
+		resolver.delete(uri, null, null);
+		
+	}
 	
-	resolver.delete(uri, null, null);
-	
-}
 	/**
 	 * Adds a custom timer to database.
 	 * @param te timer event
@@ -243,5 +235,27 @@ public void reset() {
 		c.close();
 		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id -1, te.getDateInLong());
 		addTimerEvent(newTe);
+	}
+
+	@Override
+	public void add(TimerEvent t) {
+		
+	}
+
+	@Override
+	public List<TimerEvent> getAll() {
+		return getTimers(0);
+	}
+
+	@Override
+	public int delete(TimerEvent t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public TimerEvent get(TimerEvent t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
