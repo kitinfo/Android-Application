@@ -21,55 +21,54 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class Database extends SQLiteOpenHelper {
 
+	/**
+	 * enum for getting easy access to database structure of tables
+	 * @author mpease
+	 *
+	 */
 	public enum Tables {
 		
-		TIMER_TABLE("timers", Columns.TIMER),
-		MENSA("mensa", Columns.MENSA),
-		MENSA_LINE("mensa_line", Columns.MENSA_LINE),
-		MENSA_MEAL("mensa_meal", Columns.MENSA_MEAL);
+		TIMER_TABLE("timers", new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE }),
+		MENSA("mensa", new ColumnValues[]{ColumnValues.MENSA_ID, ColumnValues.MENSA_DATE}),
+		MENSA_LINE("mensa_line", new ColumnValues[]{ColumnValues.LINE_ID, ColumnValues.LINE_NAME, ColumnValues.LINE_MENSA}),
+		MENSA_MEAL("mensa_meal", new ColumnValues[]{ColumnValues.MEAL_ID, ColumnValues.MEAL_LINE, ColumnValues.MEAL_NAME, ColumnValues.MEAL_INFO, ColumnValues.MEAL_HINT, ColumnValues.MEAL_PRICE, ColumnValues.MEAL_ADDS, ColumnValues.MENSA_DATE});
 		
 		private String table;
-		private Columns columns;
+		private ColumnValues[] columns;
 		
-		private Tables(String table, Columns colums) {
+		// constructor
+		private Tables(String table, ColumnValues[] colums) {
 			this.table = table;
 			this.columns = colums;
 		}
 		
+		/**
+		 * Returns the table name
+		 * @return name of the table
+		 */
 		public String getTable() {
 			return table;
 		}
 		
-		public Columns getColumns() {
+		/**
+		 * returns an array with objects presets the columns of the table
+		 * @return array of columns
+		 */
+		public ColumnValues[] getColumns() {
 			return columns;
+		}
+		
+		public int getSizeOfColumns() {
+			return columns.length;
 		}
 		
 	}
 	
-	public enum Columns {
-		
-		TIMER(5, new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE }),
-		MENSA(4, new ColumnValues[]{ColumnValues.MENSA_DATABASEID, ColumnValues.MENSA_ID, ColumnValues.MENSA_NAME, ColumnValues.MENSA_DATE}),
-		MENSA_LINE(3, new ColumnValues[]{ColumnValues.LINE_ID, ColumnValues.LINE_NAME, ColumnValues.LINE_MENSA}),
-		MENSA_MEAL(3, new ColumnValues[]{ColumnValues.MEAL_ID, ColumnValues.MEAL_LINE, ColumnValues.MEAL_VALUE});
-		
-		private ColumnValues[] columns;
-		private int count;
-		
-		private Columns(int count, ColumnValues[] columns) {
-			this.count = count;
-			this.columns = columns;
-		}
-		
-		public ColumnValues[] getColumnValues() {
-			return columns;
-		}
-		
-		public int getCount() {
-			return count;
-		}
-	}
-	
+	/**
+	 * enum for easy access to the database structure of columns
+	 * @author mpease
+	 *
+	 */
 	public enum ColumnValues {
 		
 		TIMER_ID("id", "integer unique", 0, 0),
@@ -77,22 +76,25 @@ public class Database extends SQLiteOpenHelper {
 		TIMER_MESSAGE("message", "text", 2, 0),
 		TIMER_DATE("date", "real", 3, 0),
 		TIMER_IGNORE("ignore", "integer DEFAULT(0)", 4, 0),
-		MENSA_DATABASEID("dbid", "integer unique", 0, 1),
-		MENSA_ID("id", "integer", 1, 1),
-		MENSA_NAME("name", "text", 2, 1),
-		MENSA_DATE("date", "real", 3, 1),
-		LINE_ID("id", "integer unique", 2, 2),
-		LINE_NAME("line_name", "text", 3, 2),
-		LINE_MENSA("mensaid", "integer", 4, 2),
+		MENSA_ID("id", "integer", 0, 1),
+		MENSA_DATE("date", "real", 1, 1),
+		LINE_ID("id", "integer unique", 0, 2),
+		LINE_NAME("line_name", "text", 1, 2),
+		LINE_MENSA("mensaid", "integer", 2, 2),
 		MEAL_ID("id", "integer unique", 0, 3),
 		MEAL_LINE("line", "integer", 1, 3),
-		MEAL_VALUE("value", "text", 2, 3);
+		MEAL_HINT("hint", "text", 2, 3),
+		MEAL_INFO("info", "text", 3, 3),
+		MEAL_NAME("name", "name", 4, 3),
+		MEAL_PRICE("price", "real", 5, 3),
+		MEAL_ADDS("adds", "string", 6, 3);
 		
 		private String name;
 		private String type;
 		private int position;
 		private int tableID;
 		
+		// constructor
 		private ColumnValues(String name, String type, int position, int tableID) {
 			this.name = name;
 			this.type = type;
@@ -100,18 +102,34 @@ public class Database extends SQLiteOpenHelper {
 			this.tableID = tableID;
 		}
 		
+		/**
+		 * Return the position in column
+		 * @return
+		 */
 		public int getPosition() {
 			return position;
 		}
 		
+		/**
+		 * get the name of the column
+		 * @return
+		 */
 		public String getName() {
 			return name;
 		}
-		
+		/**
+		 * returns the type of the database object
+		 * @return type of the column
+		 */
 		public String getType() {
 			return type;
 		}
-		
+		/**
+		 * get the object from position in database table
+		 * @param position position in table
+		 * @param tableID id of the table
+		 * @return object for this position
+		 */
 		public ColumnValues fromPosition(int position, int tableID) {
 			
 			for (ColumnValues cv : values()) {
@@ -128,10 +146,11 @@ public class Database extends SQLiteOpenHelper {
 	private static final String DBNAME = "kitinfo.db";
 	
 	/**
-	 * @param context
-	 * @param name
-	 * @param factory
-	 * @param version
+	 * creates the databse
+	 * @param context the context of the app (for getting the database filepath)
+	 * @param name name of the database
+	 * @param factory if we want some special cursors
+	 * @param version version of the database
 	 */
 	public Database(Context context, String name, CursorFactory factory,
 			int version) {
@@ -140,22 +159,23 @@ public class Database extends SQLiteOpenHelper {
 	
 	/**
 	 * updates with raw data
-	 * @param table
-	 * @param values
-	 * @param whereClause
-	 * @param whereArgs
-	 * @return
+	 * @param table the table
+	 * @param values content values
+	 * @param whereClause where we want to update
+	 * @param whereArgs what args
+	 * @return number of rows affected
 	 */
 	public int rawUpdate(String table, ContentValues values, String whereClause, String[] whereArgs) {
 		SQLiteDatabase db = getReadableDatabase();
-		
+		db.beginTransaction();
 		int i = db.update(table, values, whereClause, whereArgs);
-		
+		db.setTransactionSuccessful();
+		db.endTransaction();
 		db.close();
 		return i;
 	}
 	
-	
+	/*
 	public void insert(TimerEvent event) {
 		
 		SQLiteDatabase db = getWritableDatabase();
@@ -170,11 +190,13 @@ public class Database extends SQLiteOpenHelper {
 		db.endTransaction();
 		db.close();
 	}
-	
+	*/
+	/*
 	/**
 	 * Return all timer events in database.
 	 * @return list of timer events
 	 */
+	/*
 	public List<TimerEvent> getEvents() {
 		
 		SQLiteDatabase db = getReadableDatabase();
@@ -187,6 +209,7 @@ public class Database extends SQLiteOpenHelper {
 		
 		return events;
 	}
+	*/
 
 	/**
 	 * creates the database object.
@@ -211,8 +234,8 @@ public class Database extends SQLiteOpenHelper {
 			sb.append(t.getTable());
 			sb.append("(tableID integer primary key autoincrement, ");
 			
-			for (int i = 0; i < t.getColumns().getColumnValues().length; i++) {
-				for (ColumnValues cv : t.getColumns().getColumnValues()) {
+			for (int i = 0; i < t.getSizeOfColumns(); i++) {
+				for (ColumnValues cv : t.getColumns()) {
 					if (cv.getPosition() == i) {
 						sb.append(cv.getName());
 						sb.append(" ");
@@ -261,12 +284,20 @@ public class Database extends SQLiteOpenHelper {
 		return c;
 	}
 	
+	/**
+	 * close the database object
+	 */
 	public void close() {
 		SQLiteDatabase db = getWritableDatabase();
 		db.close();
 	}
 
-
+	/**
+	 * inserts a line to given table
+	 * @param table the tables we want to insert data
+	 * @param values values in ContentValues style
+	 * @return 0 (maybe i fix it later)
+	 */
 	public long rawInsert(String table, ContentValues values) {
 		SQLiteDatabase db = getReadableDatabase();
 		
@@ -283,7 +314,7 @@ public class Database extends SQLiteOpenHelper {
 		return 0;
 	}
 	
-	
+	/*
 	public static ContentValues getContentValues(TimerEvent event) {
 		
 		ContentValues values = new ContentValues();
@@ -295,7 +326,9 @@ public class Database extends SQLiteOpenHelper {
 		
 		return values;
 	}
+	*/
 	
+	/*
 	public static List<TimerEvent> convertTimerEvents(Cursor c) {
 		
 		List<TimerEvent> timers = new LinkedList<TimerEvent>();
@@ -312,8 +345,14 @@ public class Database extends SQLiteOpenHelper {
 		
 		return timers;
 	}
-
-
+*/
+	/**
+	 * Deletes data from given sql infos
+	 * @param table the table we want to delete from
+	 * @param selection a selection string (use ? in selection)
+	 * @param selectionArgs arguments for the selection (?-s)
+	 * @return return affected rows
+	 */
 	public int rawDelete(String table, String selection, String[] selectionArgs) {
 		
 		SQLiteDatabase db = getWritableDatabase();
@@ -329,7 +368,9 @@ public class Database extends SQLiteOpenHelper {
 		return rows;
 	}
 
-
+	/**
+	 * resets the database
+	 */
 	public void reset() {
 		
 		onUpgrade(getWritableDatabase(), DBVERSION, DBVERSION);

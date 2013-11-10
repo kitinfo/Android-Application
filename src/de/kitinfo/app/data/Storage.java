@@ -11,11 +11,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 import de.kitinfo.app.data.Database.ColumnValues;
-import de.kitinfo.app.data.Database.Columns;
+import de.kitinfo.app.mensa.Mensa;
+import de.kitinfo.app.mensa.MensaDay;
+import de.kitinfo.app.mensa.MensaLine;
+import de.kitinfo.app.mensa.MensaMeal;
 import de.kitinfo.app.timers.TimerEvent;
 
 public class Storage {
 	
+	private static final char ADDS_SPLIT_SYMBOL = ';';
 	Context ctx;
 	
 	
@@ -65,12 +69,24 @@ public class Storage {
 	 * @param te timer event object
 	 */
 	public void addTimerEvent(TimerEvent te) {
-		ContentValues values = Database.getContentValues(te);
+		ContentValues values = getContentValues(te);
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
 		ContentResolver resolver = ctx.getContentResolver();
 		resolver.insert(uri, values);
+	}
+	
+	public ContentValues getContentValues(TimerEvent event) {
+		
+		ContentValues values = new ContentValues();
+		
+		values.put(ColumnValues.TIMER_TITLE.getName(), event.getTitle());
+		values.put(ColumnValues.TIMER_MESSAGE.getName(), event.getMessage());
+		values.put(ColumnValues.TIMER_ID.getName(), event.getID());
+		values.put(ColumnValues.TIMER_DATE.getName(), event.getDateInLong());
+		
+		return values;
 	}
 	
 	/**
@@ -233,5 +249,152 @@ public void reset() {
 		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id -1, te.getDateInLong());
 		addTimerEvent(newTe);
 	}
+	
+	/**
+	 * adds an mensa day to database
+	 * @param day 
+	 * @param m what mensa (@see Mensa)
+	 */
+	public void addMensaDay(MensaDay day, Mensa m) {
+		long date = day.getDateTime();
+		List<MensaLine> lines = day.getLines();
+		
+		// get uris from contract
+		Uri mensaUri = Uri.parse(StorageContract.MENSA_URI);
+		Uri mensaLineUri = Uri.parse(StorageContract.MENSA_LINE_URI);
+		Uri mensaMealUri = Uri.parse(StorageContract.MEAL_URI);
+		
+		// mensa date
+		ContentValues values = new ContentValues();
+		values.put(ColumnValues.MENSA_DATE.getName(), date);
+		values.put(ColumnValues.MENSA_ID.getName(), m.ordinal());
+		
+		String where = ColumnValues.MENSA_DATE + " = ?";
+		String[] selectionArgs = {String.valueOf(date)};
+		
+		updateOrInsert(mensaUri, values, where, selectionArgs);
+		
+		// insert mensa lines
+		for (MensaLine ml : lines) {
+			values = new ContentValues();
+			
+			values.put(ColumnValues.LINE_MENSA.getName(), m.ordinal());
+			values.put(ColumnValues.LINE_NAME.getName(), ml.getName());
+			int id = getMensaLineID(ml);
+			values.put(ColumnValues.LINE_ID.getName(), id);
+			
+			where = ColumnValues.LINE_ID.getName() + " = ? AND " + ColumnValues.LINE_MENSA.getName() + " = ?";
+			String[] lineArgs = {String.valueOf(id), String.valueOf(m.ordinal())};
+			
+			updateOrInsert(mensaLineUri, values, where, lineArgs);
+			
+			List<MensaMeal> meals = ml.getMeals();
+			
+			// insert meals
+			for (MensaMeal mm : meals) {
+				values = new ContentValues();
+				
+				StringBuilder adds = new StringBuilder();
+				
+				// we split our adds with ;
+				for (String s : mm.getAdds()) {
+					adds.append(s);
+					adds.append(ADDS_SPLIT_SYMBOL);
+				}
+				// put values in list
+				values.put(ColumnValues.MEAL_LINE.getName(), getMensaLineID(ml));
+				values.put(ColumnValues.MEAL_HINT.getName(), mm.getHint());
+				values.put(ColumnValues.MEAL_INFO.getName(), mm.getInfo());
+				values.put(ColumnValues.MEAL_NAME.getName(), mm.getName());
+				values.put(ColumnValues.MEAL_PRICE.getName(), mm.getPrice());
+				values.put(ColumnValues.MEAL_ADDS.getName(), adds.toString());
+				values.put(ColumnValues.MENSA_DATE.getName(), day.getDateTime());
+				
+				where = ColumnValues.MENSA_DATE.getName() + " = ? AND " + ColumnValues.MEAL_LINE.getName() + " = ?";
+				String[] selectionArgs2 = {"" + day.getDateTime(), "" + ml.getID()};
+				
+				updateOrInsert(mensaMealUri, values, where, selectionArgs2);
+			}
+		}
+	}
+	
+	/**
+	 * Returns the id of a mensa line
+	 * @param line object of line
+	 * @return id in database
+	 */
+	public int getMensaLineID(MensaLine line) {
+		
+		// if line has an id :)
+		if (line.getID() >= 0) {
+			return line.getID();
+		}
+		
+		// is there an object that fits to this data
+		ContentResolver resolver = ctx.getContentResolver();
+		
+		Uri uri = Uri.parse(StorageContract.MENSA_LINE_URI);
+		String[] projection =  {ColumnValues.LINE_ID.getName()};
+		String selection = ColumnValues.LINE_MENSA.getName() + " = ? AND " + ColumnValues.LINE_NAME.getName() + " = ?"; 
+		String[] selectionArgs = {line.getMensaID() + "", line.getName()};
+		
+		Cursor c = resolver.query(uri, projection, selection, selectionArgs, null);
+		
+		int id;
+		if (c.moveToNext()) {
+			id = c.getInt(c.getColumnIndex(ColumnValues.LINE_ID.getName()));
+			
+		}
+		// no object in database that fits, get next free id
+		id = getNextMensaLineID();
+		c.close();
+		return id;
+	}
+
+	/*
+	 * returns the next id for an line
+	 * @return next line id
+	 */
+	private int getNextMensaLineID() {
+		
+		ContentResolver resolver = ctx.getContentResolver();
+		
+		// get highest id
+		Uri uri = Uri.parse(StorageContract.MENSA_LINE_URI);
+		String[] projection = {ColumnValues.LINE_ID.getName()};
+		String sortOrder = "DESC LIMIT 1";
+		
+		
+		
+		Cursor c = resolver.query(uri, projection, null, null, sortOrder);
+		int id = 0;
+		if (c.moveToNext()) {
+			// then +1 for new id
+			id = c.getInt(c.getColumnIndex(ColumnValues.LINE_ID.getName())) + 1;
+		}
+		c.close();
+		return id;
+	}
+
+	/**
+	 * updates a row or inserts a new one
+	 * @param uri the uri for the content provider
+	 * @param values the used column values
+	 * @param where statement for finding the right update row
+	 * @param selectionArgs arguments for the selection
+	 * @return true if we update
+	 */
+	public boolean updateOrInsert(Uri uri, ContentValues values, String where, String[] selectionArgs) {
+		
+		ContentResolver resolver = ctx.getContentResolver();
+		
+		if (resolver.update(uri, values, where, selectionArgs) == 0) {
+			resolver.insert(uri, values);
+			return false;
+		}
+		
+		return true;
+	}
+
 
 }

@@ -65,7 +65,6 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 
 			JSONObject mensaObject = dataObject.getJSONObject(Tags.MENSA
 					.toString());
-
 			Iterator<String> mensaItterator = mensaObject.keys();
 
 			// iterate over days
@@ -73,7 +72,7 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 
 				String mensaKey = mensaItterator.next();
 
-				MensaDay day = new MensaDay(new Long(mensaKey.trim()) * 1000);
+				MensaDay day = new MensaDay(Long.valueOf(mensaKey.trim()) * 1000);
 
 				JSONObject mensaDayObject = mensaObject.getJSONObject(mensaKey);
 
@@ -88,7 +87,7 @@ public class JsonParser_Mensa implements JSONParser<List<MensaDay>> {
 
 					MensaLine line = new MensaLine(
 							lineConverter.containsKey(dayKey) ? lineConverter
-									.get(dayKey) : dayKey);
+									.get(dayKey) : dayKey, Mensa.ADENAUER.ordinal());
 
 					// Log.d("JsonParser_Mensa|parse", dayKey + ":");
 					JSONArray mensaLineArray = mensaDayObject
