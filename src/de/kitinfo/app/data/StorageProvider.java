@@ -9,7 +9,9 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.net.Uri;
+import android.util.Log;
 
 /**
  * @author mpease
@@ -30,7 +32,8 @@ public class StorageProvider extends ContentProvider {
 		IGNORE(2, "ignore_timer", null),
 		RESET(3, "reset", null),
 		MENSA_LINE(4, Tables.MENSA_LINE.getTable(), ColumnValues.LINE_ID.getName() + " = ?"),
-		MENSA_MEAL(5, Tables.MENSA_MEAL.getTable(), ColumnValues.MEAL_DATE.getName() + " = ? AND " + ColumnValues.MEAL_LINE.getName() + " = ?");
+		MENSA_MEAL(5, Tables.MENSA_MEAL.getTable(), ColumnValues.MEAL_DATE.getName() + " = ? AND " + ColumnValues.MEAL_LINE.getName() + " = ?"),
+		DISTINCT(6, "distinct", null);
 
 		private int code;
 		private String table;
@@ -179,14 +182,20 @@ public class StorageProvider extends ContentProvider {
 
 		if (selection != null) {
 			// check for sql injection
-			if (selection.contains(";")) {
-				return null;
+			//selection = DatabaseUtils.sqlEscapeString(selection);
+		}
+		
+		boolean distinct = false;
+		if (uri.getEncodedFragment() != null) {
+			if (uri.getEncodedFragment().equals(UriMatch.DISTINCT.getTable())) {
+				distinct = true;
 			}
 		}
+		
 		// search in database
 		Database db = new Database(getContext());
 		Cursor c = db.rawQuery(um.getTable(), projection, selection,
-				selectionArgs, sortOrder);
+				selectionArgs, sortOrder, distinct);
 
 		// check for values
 		if (c.isLast()) {
@@ -197,7 +206,7 @@ public class StorageProvider extends ContentProvider {
 
 			// new query
 			Cursor cr = db.rawQuery(um.getTable(), projection, selection,
-					selectionArgs, sortOrder);
+					selectionArgs, sortOrder, distinct);
 			return cr;
 		}
 		return c;

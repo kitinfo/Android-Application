@@ -247,11 +247,11 @@ public class Database extends SQLiteOpenHelper {
 	 * @return the cursor with the database answer.
 	 */
 	public Cursor rawQuery(String table, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
+			String[] selectionArgs, String sortOrder, boolean distinct) {
 		clean();
 		SQLiteDatabase db = getReadableDatabase();
 		
-		Cursor c = db.query(table, projection, selection, selectionArgs, null, null, sortOrder);
+		Cursor c = db.query(distinct, table, projection, selection, selectionArgs, null, null, sortOrder, null);
 		synchronized (dblist) {
 			dblist.add(this);
 		}

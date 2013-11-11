@@ -29,5 +29,7 @@ public class StorageContract {
 	public static final String MENSA_LINE_RESET_URI = MENSA_LINE_URI + "#" + UriMatch.RESET.getTable();
 	
 	public static final String MENSA_MEAL_RESET_URI = MEAL_URI + "#" + UriMatch.RESET.getTable();
+	
+	public static final String MENSA_MEAL_DISTINCT_URI = MEAL_URI + "#" + UriMatch.DISTINCT.getTable();
 
 }

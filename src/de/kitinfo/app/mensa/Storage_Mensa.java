@@ -184,7 +184,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		Uri mealUri = Uri.parse(StorageContract.MEAL_URI);
 		String selection = ColumnValues.MEAL_DATE.getName() + " = ?";
 		String[] selectionArgs = {String.valueOf(date)};
-		Cursor c = query(mealUri, null, selection, selectionArgs, "ASC");
+		Cursor c = query(mealUri, null, selection, selectionArgs, ColumnValues.MEAL_DATE.getName() + " ASC");
 		
 		while (c.moveToNext()) {
 			
@@ -504,8 +504,22 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 
 	@Override
 	public List<MensaDay> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<MensaDay> days = new LinkedList<MensaDay>();
+		
+		Uri uri = Uri.parse(StorageContract.MENSA_MEAL_DISTINCT_URI);
+		String[] projection = {ColumnValues.MEAL_DATE.getName()};
+		String sortOrder = ColumnValues.MEAL_DATE.getName() + " ASC";
+		
+		Cursor c = query(uri, projection, null, null, sortOrder);
+		
+		while (c.moveToNext()) {
+			MensaDay day = new MensaDay(c.getLong(c.getColumnIndex(ColumnValues.MEAL_DATE.getName())));
+			days.add(get(day));
+		}
+		c.close();
+		new Database(ctx).close();
+		return days;
 	}
 
 

@@ -2,8 +2,10 @@ package de.kitinfo.app.mensa;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import de.kitinfo.app.IOManager;
 import de.kitinfo.app.R;
+import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
 import de.kitinfo.app.TimeFunctions;
 
@@ -32,8 +35,16 @@ public class MensaFragment extends ListFragment implements Slide {
 
 	@Override
 	public void update() {
-		// TODO Automatisch generierter Methodenstub
-
+		
+		Activity act = getActivity();
+		if (act == null) {
+			return;
+		}
+		
+		Storage_Mensa stm = new Storage_Mensa(act.getApplicationContext());
+		if (stm != null) {
+			mensaDays = stm.getAll();
+		}
 	}
 
 	@Override
