@@ -37,7 +37,7 @@ public class Database extends SQLiteOpenHelper {
 		
 		TIMER_TABLE("timers", new ColumnValues[]{ColumnValues.TIMER_ID, ColumnValues.TIMER_TITLE, ColumnValues.TIMER_MESSAGE, ColumnValues.TIMER_DATE, ColumnValues.TIMER_IGNORE }),
 		MENSA_LINE("mensa_line", new ColumnValues[]{ColumnValues.LINE_ID, ColumnValues.LINE_NAME, ColumnValues.LINE_MENSA}),
-		MENSA_MEAL("mensa_meal", new ColumnValues[]{ColumnValues.MEAL_ID, ColumnValues.MEAL_LINE, ColumnValues.MEAL_NAME, ColumnValues.MEAL_INFO, ColumnValues.MEAL_HINT, ColumnValues.MEAL_PRICE, ColumnValues.MEAL_ADDS, ColumnValues.MEAL_DATE});
+		MENSA_MEAL("mensa_meal", new ColumnValues[]{ColumnValues.MEAL_LINE, ColumnValues.MEAL_NAME, ColumnValues.MEAL_INFO, ColumnValues.MEAL_HINT, ColumnValues.MEAL_PRICE, ColumnValues.MEAL_ADDS, ColumnValues.MEAL_TAGS ,ColumnValues.MEAL_DATE});
 		
 		private String table;
 		private ColumnValues[] columns;
@@ -94,7 +94,6 @@ public class Database extends SQLiteOpenHelper {
 		LINE_ID("id", "integer unique", 0, 1),
 		LINE_NAME("line_name", "text", 1, 1),
 		LINE_MENSA("mensaid", "integer", 2, 1),
-		MEAL_ID("id", "integer unique", 0, 2),
 		MEAL_LINE("line", "integer", 1, 2),
 		MEAL_HINT("hint", "text", 2, 2),
 		MEAL_INFO("info", "text", 3, 2),
@@ -157,7 +156,7 @@ public class Database extends SQLiteOpenHelper {
 	}
 	
 	
-	private static final int DBVERSION = 3;
+	private static final int DBVERSION = 5;
 	private static final String DBNAME = "kitinfo.db";
 	
 	/**

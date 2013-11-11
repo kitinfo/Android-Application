@@ -3,6 +3,7 @@
  */
 package de.kitinfo.app.mensa;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import de.kitinfo.app.data.Database.ColumnValues;
  */
 public class Storage_Mensa implements StorageInterface<MensaDay> {
 
-	private static final String SPLIT_SYMBOL = ";";
+	private static final String SPLIT_SYMBOL = ":";
 	private static final Mensa m = Mensa.ADENAUER;
 	private Context ctx;
 	
@@ -116,9 +117,12 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		values.put(ColumnValues.MEAL_PRICE.getName(), mm.getPrice());
 		values.put(ColumnValues.MEAL_ADDS.getName(), adds.toString());
 		values.put(ColumnValues.MEAL_DATE.getName(), date);
+		values.put(ColumnValues.MEAL_TAGS.getName(), mm.getTags(SPLIT_SYMBOL));
 		
 		return values;
 	}
+	
+	
 
 	/**
 	 * Returns a mensa day object from database with same properties as the given mensa day object (general the date)
@@ -268,7 +272,6 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 */
 	public MensaMeal convertCursorToMensaMeal(Cursor c) {
 		
-		int id = c.getInt(c.getColumnIndex(ColumnValues.MEAL_ID.getName()));
 		float price = c.getFloat(c.getColumnIndex(ColumnValues.MEAL_PRICE.getName()));
 		String adds = c.getString(c.getColumnIndex(ColumnValues.MEAL_ADDS.getName()));
 		String info = c.getString(c.getColumnIndex(ColumnValues.MEAL_INFO.getName()));
@@ -276,15 +279,21 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		String name = c.getString(c.getColumnIndex(ColumnValues.MEAL_NAME.getName()));
 		String tag = c.getString(c.getColumnIndex(ColumnValues.MEAL_TAGS.getName()));
 		
-		String[] tags = tag.split(SPLIT_SYMBOL);
-		
 		List<String> addList = new LinkedList<String>();
 		for (String a : adds.split(SPLIT_SYMBOL)) {
 			addList.add(a);
 		}
 		
 		
-		return new MensaMeal(id, tags[0].isEmpty(), tags[1].isEmpty(), tags[2].isEmpty(), tags[3].isEmpty(), tags[4].isEmpty(), tags[5].isEmpty(), tags[6].isEmpty(), name, hint, info, price, addList);
+		String[] tags = tag.split("\n");
+		
+		HashMap<String, Boolean> tagMap = new HashMap<String, Boolean>();
+		for (String t :tags) {
+			String[] tc = t.split(SPLIT_SYMBOL);
+			tagMap.put(tc[0], Boolean.parseBoolean(tc[1]));
+		}
+		
+		return new MensaMeal(tagMap, name, hint, info, price, addList);
 	}
 	
 	

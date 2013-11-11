@@ -1,21 +1,27 @@
 package de.kitinfo.app.mensa;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+
+import android.os.DropBoxManager.Entry;
 
 public class MensaMeal implements Serializable {
 
 	private static final long serialVersionUID = 6318652233903651125L;
 
-	private int id;
+	HashMap<String, Boolean> tags;
 	
-	private boolean veggie;
-	private boolean vegan;
-	private boolean bio;
-	private boolean pork;
-	private boolean fish;
-	private boolean beef;
-	private boolean nonTorturedBeef;
+	public enum Tags {
+		VEGGIE,
+		VEGAN,
+		BIO,
+		PORK,
+		FISH,
+		BEEF,
+		NONTORTUREDBEEF;
+	}
 
 	private String name;
 	private String hint;
@@ -25,18 +31,17 @@ public class MensaMeal implements Serializable {
 
 	private List<String> adds;
 
-	public MensaMeal(int id, boolean veggie, boolean vegan, boolean bio, boolean pork,
+	public MensaMeal(boolean veggie, boolean vegan, boolean bio, boolean pork,
 			boolean fish, boolean beef, boolean nTBeef, String name,
 			String hint, String info, float price, List<String> adds) {
 
-		this.id = id;
-		this.vegan = vegan;
-		this.veggie = veggie;
-		this.bio = bio;
-		this.pork = pork;
-		this.fish = fish;
-		this.beef = beef;
-		this.nonTorturedBeef = nTBeef;
+		tags.put(Tags.VEGGIE.name(), veggie);
+		tags.put(Tags.VEGAN.name(), vegan);
+		tags.put(Tags.BIO.name(), bio);
+		tags.put(Tags.PORK.name(), pork);
+		tags.put(Tags.FISH.name(), fish);
+		tags.put(Tags.BEEF.name(), beef);
+		tags.put(Tags.NONTORTUREDBEEF.name(), nTBeef);
 		this.name = name;
 		this.hint = hint;
 		this.info = info;
@@ -44,57 +49,115 @@ public class MensaMeal implements Serializable {
 		this.adds = adds;
 	}
 	
-	public int getID() {
-		return id;
+	public MensaMeal(HashMap<String, Boolean> tags, String name, String hint, String info, float price, List<String> adds) {
+		this.tags = tags;
+		this.name = name;
+		this.hint = hint;
+		this.info = info;
+		this.price = price;
+		this.adds = adds;
+	}
+	
+	/**
+	 * return the tag map as string with split symbol between key and tag
+	 * @param split split symbol
+	 * @return a string
+	 */
+	public String getTags(String split) {
+		
+		StringBuilder builder = new StringBuilder();
+		
+		for (String s : tags.keySet()) {
+			builder.append(s);
+			builder.append(split);
+			builder.append(tags.get(s));
+			builder.append("\n");
+		}
+		builder.delete(builder.lastIndexOf(split, 0), builder.length() -1);
+		
+		return builder.toString();
+	}
+	
+	public HashMap<String, Boolean> getTags() {
+		return tags;
 	}
 
 	/**
 	 * @return veggie
 	 */
 	public boolean isVeggie() {
-		return veggie;
+		
+		if (tags.containsKey(Tags.VEGGIE.name())) {
+			return tags.get(Tags.VEGGIE.name());
+		}
+		
+		return false;
 	}
 
 	/**
 	 * @return vegan
 	 */
 	public boolean isVegan() {
-		return vegan;
+		if (tags.containsKey(Tags.VEGAN.name())) {
+			return tags.get(Tags.VEGAN.name());
+		}
+		
+		return false;
 	}
 
 	/**
 	 * @return bio
 	 */
 	public boolean isBio() {
-		return bio;
+		if (tags.containsKey(Tags.BIO.name())) {
+			return tags.get(Tags.BIO.name());
+		}
+		
+		return false;
 	}
 
 	/**
 	 * @return pork
 	 */
 	public boolean isPork() {
-		return pork;
+		if (tags.containsKey(Tags.PORK.name())) {
+			return tags.get(Tags.PORK.name());
+		}
+		
+		return false;
 	}
 
 	/**
 	 * @return fish
 	 */
 	public boolean isFish() {
-		return fish;
+		if (tags.containsKey(Tags.FISH.name())) {
+			return tags.get(Tags.FISH.name());
+		}
+		
+		return false;
 	}
 
 	/**
 	 * @return beef
 	 */
 	public boolean isBeef() {
-		return beef;
+		if (tags.containsKey(Tags.BEEF.name())) {
+			return tags.get(Tags.BEEF.name());
+		}
+		
+		return false;
 	}
 
 	/**
 	 * @return nonTorturedBeef
 	 */
 	public boolean isNonTorturedBeef() {
-		return nonTorturedBeef;
+		if (tags.containsKey(Tags.NONTORTUREDBEEF.name())) {
+			return tags.get(Tags.NONTORTUREDBEEF.name());
+		}
+		
+		return false;
 	}
 
 	/**
