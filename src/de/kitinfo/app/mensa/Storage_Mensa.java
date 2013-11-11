@@ -12,6 +12,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.SparseArray;
+import android.util.SparseBooleanArray;
+import de.kitinfo.app.data.Database;
 import de.kitinfo.app.data.StorageContract;
 import de.kitinfo.app.data.StorageInterface;
 import de.kitinfo.app.data.Database.ColumnValues;
@@ -71,6 +73,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 				updateOrInsert(mensaMealUri, values, mealWhere, mealSelectionArgs);
 			}
 		}
+		new Database(ctx).close();
 	}
 	
 	/**
@@ -125,15 +128,63 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	@Override
 	public MensaDay get(MensaDay day) {
 		
+		SparseArray<List<MensaMeal>> meals = getMensaMeals(day.getDateTime());
 		
+		List<MensaLine> mensaLines = getMensaLines(meals);
+		
+		
+		MensaDay newDay = new MensaDay(day.getDateTime());
+		
+		// add lines
+		for (MensaLine ml : mensaLines) {
+			newDay.addLine(ml);
+		}
+		new Database(ctx).close();
+		return newDay;
+	}
+	
+	/**
+	 * Returns a list of mensa lines with its meals
+	 * @param meals list of meals listed by id of the line
+	 * @return list of mensa lines
+	 */
+	public List<MensaLine> getMensaLines(SparseArray<List<MensaMeal>> meals) {
+		
+		// get lines
+		List<MensaLine> mensaLines = new LinkedList<MensaLine>();
+		
+		
+		for (int i = 0; i < meals.size(); i++) {
+			int key = meals.keyAt(i);
+				
+			MensaLine ml = getMensaLine(key);
+			
+			// check if key not in list
+			if (ml == null) {
+				break;
+			}
+				
+			// add meals to list
+			for (MensaMeal mm : meals.get(key)) {
+				ml.addMeal(mm);
+			}
+		}
+		return mensaLines;
+	}
+	
+	/**
+	 * Returns a list of mensa meals by a date
+	 * @param date date in seconds
+	 * @return list of meals with key to his mensa line
+	 */
+	public SparseArray<List<MensaMeal>> getMensaMeals(long date) {
+		// get meals
+		SparseArray<List<MensaMeal>> meals = new SparseArray<List<MensaMeal>>();
 		
 		Uri mealUri = Uri.parse(StorageContract.MEAL_URI);
 		String selection = ColumnValues.MEAL_DATE.getName() + " = ?";
-		String[] selectionArgs = {String.valueOf(day.getDateTime())};
+		String[] selectionArgs = {String.valueOf(date)};
 		Cursor c = query(mealUri, null, selection, selectionArgs, "ASC");
-		
-		// get meals
-		SparseArray<List<MensaMeal>> meals = new SparseArray<List<MensaMeal>>();
 		
 		while (c.moveToNext()) {
 			
@@ -150,35 +201,8 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		}
 		
 		c.close();
-		
-		// get lines
-		List<MensaLine> mensaLines = new LinkedList<MensaLine>();
-		
-		for (int i = 0; i < meals.size(); i++) {
-			int key = meals.keyAt(i);
-			
-			MensaLine ml = getMensaLine(key);
-			
-			if (ml == null) {
-				break;
-			}
-			
-			// add meals to list
-			for (MensaMeal mm : meals.get(key)) {
-				ml.addMeal(mm);
-			}
-		}
-		
-		
-		MensaDay newDay = new MensaDay(day.getDateTime());
-		
-		// add lines
-		for (MensaLine ml : mensaLines) {
-			newDay.addLine(ml);
-		}
-		
-		
-		return newDay;
+		new Database(ctx).close();
+		return meals;
 	}
 	
 	/**
@@ -200,7 +224,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 			line = convertCursorToMensaLine(c);
 		}
 		c.close();
-		
+		new Database(ctx).close();
 		return line;
 	}
 	
@@ -269,8 +293,15 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
+		Uri uri = Uri.parse(StorageContract.MENSA_LINE_RESET_URI);
 		
+		ContentResolver resolver = ctx.getContentResolver();
+		
+		resolver.delete(uri, null, null);
+		
+		uri = Uri.parse(StorageContract.MENSA_MEAL_RESET_URI);
+		
+		resolver.delete(uri, null, null);
 	}
 	
 	
@@ -285,7 +316,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		// get highest id
 		Uri uri = Uri.parse(StorageContract.MENSA_LINE_URI);
 		String[] projection = {ColumnValues.LINE_ID.getName()};
-		String sortOrder = "DESC LIMIT 1";
+		String sortOrder = ColumnValues.LINE_ID.getName() + " DESC LIMIT 1";
 		
 		
 		
@@ -296,6 +327,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 			id = c.getInt(c.getColumnIndex(ColumnValues.LINE_ID.getName())) + 1;
 		}
 		c.close();
+		new Database(ctx).close();
 		return id;
 	}
 	
@@ -329,6 +361,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		// no object in database that fits, get next free id
 		id = getNextMensaLineID();
 		c.close();
+		new Database(ctx).close();
 		return id;
 	}
 	
@@ -356,8 +389,13 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 
 	@Override
 	public void add(List<MensaDay> days) {
+		long seconds = (long) System.currentTimeMillis() / 1000;
+		
 		for (MensaDay day : days) {
-			add(day);
+			if (!(day.getDateTime() < seconds)) {
+			
+				add(day);
+			}
 		}
 	}
 
@@ -365,8 +403,101 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 
 	@Override
 	public int delete(MensaDay t) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		// first delete meals
+		int rows = deleteMeals(t.getDateTime());
+		
+		// then clean the line table
+		rows += cleanMensaLine();
+		
+		return rows;
+	}
+	
+	/**
+	 * clean the mensa line table
+	 * @return rows affected
+	 */
+	public int cleanMensaLine() {
+		
+		Uri uri = Uri.parse(StorageContract.MEAL_URI);
+	
+		// get all used line ids
+		Cursor c = query(uri, new String[]{ColumnValues.MEAL_LINE.getName()}, null, null, null);
+		
+		SparseBooleanArray arr = new SparseBooleanArray();
+		
+		// add ids in list to sparse array
+		while (c.moveToNext()) {
+			int id = c.getInt(c.getColumnIndex(ColumnValues.MEAL_LINE.getName()));
+			
+			arr.put(id, true);
+		}
+		
+		c.close();
+		new Database(ctx).close();
+		
+		uri = Uri.parse(StorageContract.MENSA_LINE_URI);
+		
+		// get all line ids in database
+		c = query(uri, new String[]{ColumnValues.LINE_ID.getName()}, null, null, null);
+		
+		int count = 0;
+		
+		// if id not in sparse array we can delete the row
+		while (c.moveToNext()) {
+			
+			int id = c.getInt(c.getColumnIndex(ColumnValues.LINE_ID.getName()));
+			
+			if (!arr.get(id)) {
+				count += deleteLine(id);
+			}
+		}
+		c.close();
+		new Database(ctx).close();
+		return count;
+	}
+	
+	public void closeDatabase() {
+		new Database(ctx).close();
+	}
+	
+	public int deleteLine(int id) {
+		
+		Uri uri = Uri.parse(StorageContract.MENSA_LINE_URI);
+		
+		String where = ColumnValues.LINE_ID.getName() + " = ?";
+		String[] selectionArgs = {String.valueOf(id)};
+		
+		return delete(uri, where, selectionArgs);
+	}
+	
+	/**
+	 * delete meals by date
+	 * @param date date in seconds
+	 * @return affected rows
+	 */
+	public int deleteMeals(long date) {
+		
+		Uri uri = Uri.parse(StorageContract.MEAL_URI);
+		
+		String where = ColumnValues.MEAL_DATE.getName() + " = ?";
+		String[] selectionArgs = {String.valueOf(date)};
+		
+		return delete(uri, where, selectionArgs);
+	}
+	
+	/**
+	 * Deletes from database
+	 * @param uri the uri where we want to delete
+	 * @param where selection string
+	 * @param selectionArgs arguments for selection
+	 * @return affected rows
+	 */
+	public int delete(Uri uri, String where, String[] selectionArgs) {
+		
+		ContentResolver resolver = ctx.getContentResolver();
+
+		return resolver.delete(uri, where, selectionArgs);
 	}
 
 

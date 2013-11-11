@@ -75,6 +75,9 @@ public class MensaFragment extends ListFragment implements Slide {
 		mensaDays = new JsonParser_Mensa().parse(new IOManager()
 				.queryJSON(API_URL));
 
+		new Storage_Mensa(context).add(mensaDays);
+		
+		
 		// for (MensaDay day : mensaDays) {
 		// if (day.getDateTime() == TimeFunctions.getDayInMillis(System
 		// .currentTimeMillis())) {

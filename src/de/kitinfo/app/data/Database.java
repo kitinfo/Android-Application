@@ -7,20 +7,27 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.kitinfo.app.data.StorageProvider.UriMatch;
-import de.kitinfo.app.timers.TimerEvent;
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+import android.provider.OpenableColumns;
+import android.util.Log;
+import android.util.SparseArray;
 
 /**
  * @author mpease
  *
  */
+@TargetApi(Build.VERSION_CODES.FROYO)
 public class Database extends SQLiteOpenHelper {
-
+	
+	private static List<Database> dblist = new LinkedList<Database>();
 	/**
 	 * enum for getting easy access to database structure of tables
 	 * @author mpease
@@ -84,18 +91,18 @@ public class Database extends SQLiteOpenHelper {
 		TIMER_MESSAGE("message", "text", 2, 0),
 		TIMER_DATE("date", "real", 3, 0),
 		TIMER_IGNORE("ignore", "integer DEFAULT(0)", 4, 0),
-		LINE_ID("id", "integer unique", 0, 2),
-		LINE_NAME("line_name", "text", 1, 2),
-		LINE_MENSA("mensaid", "integer", 2, 2),
-		MEAL_ID("id", "integer unique", 0, 3),
-		MEAL_LINE("line", "integer", 1, 3),
-		MEAL_HINT("hint", "text", 2, 3),
-		MEAL_INFO("info", "text", 3, 3),
-		MEAL_NAME("name", "name", 4, 3),
-		MEAL_PRICE("price", "real", 5, 3),
-		MEAL_ADDS("adds", "string", 6, 3),
-		MEAL_TAGS("tags", "string", 7, 3),
-		MEAL_DATE("date", "real", 8, 3);
+		LINE_ID("id", "integer unique", 0, 1),
+		LINE_NAME("line_name", "text", 1, 1),
+		LINE_MENSA("mensaid", "integer", 2, 1),
+		MEAL_ID("id", "integer unique", 0, 2),
+		MEAL_LINE("line", "integer", 1, 2),
+		MEAL_HINT("hint", "text", 2, 2),
+		MEAL_INFO("info", "text", 3, 2),
+		MEAL_NAME("name", "name", 4, 2),
+		MEAL_PRICE("price", "real", 5, 2),
+		MEAL_ADDS("adds", "string", 6, 2),
+		MEAL_TAGS("tags", "string", 7, 2),
+		MEAL_DATE("date", "real", 8, 2);
 		
 		private String name;
 		private String type;
@@ -189,7 +196,19 @@ public class Database extends SQLiteOpenHelper {
 	 */
 	public Database(Context context) {
 		super(context, DBNAME, null, DBVERSION);
-		
+		clean();
+	}
+	
+	private int clean() {
+		synchronized (dblist) {
+			
+			if (dblist.isEmpty()) {
+				return 1;
+			}
+			dblist.get(0).close();
+			dblist.remove(0);
+			return 0;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -229,41 +248,34 @@ public class Database extends SQLiteOpenHelper {
 	 */
 	public Cursor rawQuery(String table, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
-		
+		clean();
 		SQLiteDatabase db = getReadableDatabase();
 		
-		Cursor c = db.query(table, projection, selection, selectionArgs, null, null, sortOrder);		
+		Cursor c = db.query(table, projection, selection, selectionArgs, null, null, sortOrder);
+		synchronized (dblist) {
+			dblist.add(this);
+		}
 		return c;
-	}
-	
-	/**
-	 * close the database object
-	 */
-	public void close() {
-		SQLiteDatabase db = getWritableDatabase();
-		db.close();
 	}
 
 	/**
 	 * inserts a line to given table
 	 * @param table the tables we want to insert data
 	 * @param values values in ContentValues style
-	 * @return 0 (maybe i fix it later)
+	 * @return the row id
 	 */
 	public long rawInsert(String table, ContentValues values) {
 		SQLiteDatabase db = getReadableDatabase();
 		
 		db.beginTransaction();
 		
-		if (db.updateWithOnConflict(Tables.TIMER_TABLE.getTable(), values , "id = ?", new String[]{"" + values.getAsString(ColumnValues.TIMER_ID.getName())}, SQLiteDatabase.CONFLICT_IGNORE) < 1) {
-			db.insert(Tables.TIMER_TABLE.getTable(), null, values);
-		}
+		long row = db.insertWithOnConflict(table, null, values, SQLiteDatabase.CONFLICT_IGNORE);
 		
 		db.setTransactionSuccessful();
 		db.endTransaction();
 		db.close();
 		
-		return 0;
+		return row;
 	}
 
 	/**
@@ -292,13 +304,18 @@ public class Database extends SQLiteOpenHelper {
 	 * resets the database
 	 */
 	public void reset() {
+		while (clean() != 0);
+		SQLiteDatabase db = getWritableDatabase();
+		onUpgrade(db, DBVERSION, DBVERSION);
+		db.close();
 		
-		onUpgrade(getWritableDatabase(), DBVERSION, DBVERSION);
 	}
 
 	public void drop(Tables table) {
+		while (clean() != 0);
 		SQLiteDatabase db = getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + table);
+		db.close();
 	}
 
 	public void create(Tables t, SQLiteDatabase db) {
@@ -308,26 +325,23 @@ public class Database extends SQLiteOpenHelper {
 		sb.append(t.getTable());
 		sb.append("(tableID integer primary key autoincrement, ");
 		
-		for (int i = 0; i < t.getSizeOfColumns(); i++) {
-			for (ColumnValues cv : t.getColumns()) {
-				if (cv.getPosition() == i) {
-					sb.append(cv.getName());
-					sb.append(" ");
-					sb.append(cv.getType());
-					sb.append(", ");
-					break;
-				}
-			}
+		for (ColumnValues cv : t.getColumns()) {
+			sb.append(cv.getName());
+			sb.append(" ");
+			sb.append(cv.getType());
+			sb.append(", ");
 		}
 		sb.delete(sb.lastIndexOf(", "), sb.length());
 		sb.append(")");
 
-		db.execSQL(sb.toString());	
+		Log.d("Database", sb.toString());
+		db.execSQL(sb.toString());
 	}
 	
 	public void create(Tables t) {
 		SQLiteDatabase db = getWritableDatabase();
 		create(t, db);
+		db.close();
 	}
 
 }

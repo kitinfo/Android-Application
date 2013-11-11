@@ -14,6 +14,7 @@ public class MensaLine implements Comparable<MensaLine> {
 		meals = new LinkedList<MensaMeal>();
 		this.name = name;
 		this.mensaID = mensaID;
+		this.id = -1;
 	}
 	
 	public MensaLine(String name, int id, int mensaID) {

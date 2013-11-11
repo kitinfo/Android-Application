@@ -24,12 +24,10 @@ public class StorageContract {
 	
 	public static final String MEAL_URI = PROVIDER_URI + "/" + UriMatch.MENSA_MEAL.getTable();
 	
+	public static final String TIMER_RESET_URI = TIMER_URI + "#" + UriMatch.RESET.getTable();
 	
-	/**
-	 * 
-	 */
-	public StorageContract() {
-		// TODO Auto-generated constructor stub
-	}
+	public static final String MENSA_LINE_RESET_URI = MENSA_LINE_URI + "#" + UriMatch.RESET.getTable();
+	
+	public static final String MENSA_MEAL_RESET_URI = MEAL_URI + "#" + UriMatch.RESET.getTable();
 
 }

@@ -3,6 +3,7 @@
  */
 package de.kitinfo.app.data;
 
+import de.kitinfo.app.data.Database.ColumnValues;
 import de.kitinfo.app.data.Database.Tables;
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -25,19 +26,21 @@ public class StorageProvider extends ContentProvider {
 		/**
 		 * Use this for getting timers from database
 		 */
-		TIMERS(1, Tables.TIMER_TABLE.getTable()),
-		IGNORE(2, "ignore_timer"),
-		RESET(3, "reset"),
-		MENSA_LINE(4, Tables.MENSA_LINE.getTable()),
-		MENSA_MEAL(5, Tables.MENSA_MEAL.getTable());
+		TIMERS(1, Tables.TIMER_TABLE.getTable(), ColumnValues.TIMER_ID.getName() + " = ?"),
+		IGNORE(2, "ignore_timer", null),
+		RESET(3, "reset", null),
+		MENSA_LINE(4, Tables.MENSA_LINE.getTable(), ColumnValues.LINE_ID.getName() + " = ?"),
+		MENSA_MEAL(5, Tables.MENSA_MEAL.getTable(), ColumnValues.MEAL_DATE.getName() + " = ? AND " + ColumnValues.MEAL_LINE.getName() + " = ?");
 
 		private int code;
 		private String table;
+		private String where;
 
 		// for translating uri matches
-		private UriMatch(int code, String table) {
+		private UriMatch(int code, String table, String where) {
 			this.code = code;
 			this.table = table;
+			this.where = where;
 		}
 
 		/**
@@ -72,6 +75,11 @@ public class StorageProvider extends ContentProvider {
 				}
 			}
 			return null;
+		}
+
+		public String getWhere() {
+			
+			return where;
 		}
 
 	}
@@ -140,7 +148,8 @@ public class StorageProvider extends ContentProvider {
 		if (um == UriMatch.RESET) {
 			return null;
 		}
-
+		
+		
 		// insert values
 		Database db = new Database(getContext());
 		long row = db.rawInsert(um.getTable(), values);
@@ -184,6 +193,7 @@ public class StorageProvider extends ContentProvider {
 			// get data from server
 			// getTimerFromServer(uri);
 			c.close();
+			db.close();
 
 			// new query
 			Cursor cr = db.rawQuery(um.getTable(), projection, selection,

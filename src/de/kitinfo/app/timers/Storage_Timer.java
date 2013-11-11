@@ -83,8 +83,10 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
-		ContentResolver resolver = ctx.getContentResolver();
-		resolver.insert(uri, values);
+		String where = ColumnValues.TIMER_ID.getName() + " = ?";
+		String[] selectionArgs = {String.valueOf(te.getID())};
+		
+		updateOrInsert(uri, values, where, selectionArgs);
 	}
 	
 	public ContentValues getContentValues(TimerEvent event) {
@@ -122,7 +124,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		List<TimerEvent> timers = convertTimerEvents(c);
 		
 		c.close();
-		
+		new Database(ctx).close();
 		Collections.sort(timers);
 		for (TimerEvent t : timers) {
 			Log.d("Timers", "timestamp: " + t.getDateInLong());
@@ -201,8 +203,9 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 	 */
 	public void reset() {
 		
+		Uri uri = Uri.parse(StorageContract.TIMER_RESET_URI);
+		
 		ContentResolver resolver = ctx.getContentResolver();
-		Uri uri = Uri.parse(StorageContract.RESET_URI);
 		
 		resolver.delete(uri, null, null);
 		
@@ -219,7 +222,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		
 		String[] projection = {ColumnValues.TIMER_ID.getName()};
 		String orderBy = "id ASC Limit 1";
-		
+			
 		Cursor c = resolver.query(uri, projection, null, null, orderBy);
 		
 		// get 
@@ -233,6 +236,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		}
 		
 		c.close();
+		new Database(ctx).close();
 		TimerEvent newTe = new TimerEvent(te.getTitle(), te.getMessage(), id -1, te.getDateInLong());
 		addTimerEvent(newTe);
 	}
@@ -257,5 +261,25 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 	public TimerEvent get(TimerEvent t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/**
+	 * updates a row or inserts a new one
+	 * @param uri the uri for the content provider
+	 * @param values the used column values
+	 * @param where statement for finding the right update row
+	 * @param selectionArgs arguments for the selection
+	 * @return true if we update
+	 */
+	public boolean updateOrInsert(Uri uri, ContentValues values, String where, String[] selectionArgs) {
+		
+		ContentResolver resolver = ctx.getContentResolver();
+		
+		if (resolver.update(uri, values, where, selectionArgs) == 0) {
+			resolver.insert(uri, values);
+			return false;
+		}
+		
+		return true;
 	}
 }

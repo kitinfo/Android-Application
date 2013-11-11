@@ -1,5 +1,6 @@
 package de.kitinfo.app;
 
+import de.kitinfo.app.data.Database;
 import de.kitinfo.app.data.Storage;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -41,7 +42,7 @@ public class SettingsFragment extends PreferenceFragment {
 	
 	public void resetApp() {
 		Log.d("Settings", "do reset");
-		new Storage(getActivity().getApplicationContext()).reset();
+		new Database(getActivity().getApplicationContext()).reset();
 		ReferenceManager.MA.recreate();
 	}
 	
