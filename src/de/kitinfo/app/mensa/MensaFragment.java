@@ -36,15 +36,6 @@ public class MensaFragment extends ListFragment implements Slide {
 	@Override
 	public void update() {
 		
-		Activity act = getActivity();
-		if (act == null) {
-			return;
-		}
-		
-		Storage_Mensa stm = new Storage_Mensa(act.getApplicationContext());
-		if (stm != null) {
-			mensaDays = stm.getAll();
-		}
 	}
 
 	@Override
@@ -78,15 +69,14 @@ public class MensaFragment extends ListFragment implements Slide {
 
 	@Override
 	public void updateContent(Context context) {
+		mensaDays = new Storage_Mensa(context).getAll();
 		this.setListAdapter(new MensaListAdapter(mensaDays));
 	}
 
 	@Override
 	public void querryData(Context context) {
-		mensaDays = new JsonParser_Mensa().parse(new IOManager()
-				.queryJSON(API_URL));
-
-		new Storage_Mensa(context).add(mensaDays);
+		new Storage_Mensa(context).add(new JsonParser_Mensa().parse(new IOManager()
+		.queryJSON(API_URL)));
 		
 		
 		// for (MensaDay day : mensaDays) {

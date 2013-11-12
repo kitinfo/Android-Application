@@ -166,7 +166,7 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		setAddVisibility(curSlide.isExpandable());
 
 		Log.d("MainActivity", "Main Activity created");
-
+		guiHandler.sendEmptyMessage(MSG_RELOAD_CONTENT);
 	}
 
 	@Override

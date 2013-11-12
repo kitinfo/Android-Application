@@ -12,6 +12,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import de.kitinfo.app.data.Database;
@@ -28,9 +29,11 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	private static final String SPLIT_SYMBOL = ":";
 	private static final Mensa m = Mensa.ADENAUER;
 	private Context ctx;
+	private ContentResolver resolver;
 	
 	public Storage_Mensa(Context ctx) {
 		this.ctx = ctx;
+		resolver = ctx.getContentResolver();
 	}
 	
 	
@@ -45,7 +48,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		
 		// define
 		ContentValues values;
-		String lineWhere = ColumnValues.LINE_ID.getName() + " = ? AND " + ColumnValues.LINE_MENSA.getName() + " = ?";
+		String lineWhere = ColumnValues.LINE_NAME.getName() + " = ? AND " + ColumnValues.LINE_MENSA.getName() + " = ?";
 		String mealWhere = ColumnValues.MEAL_DATE.getName() + " = ? AND " + ColumnValues.MEAL_LINE.getName() + " = ?";
 		
 		
@@ -55,7 +58,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		for (MensaLine ml : lines) {
 			values = convertLineToContentValues(ml, m);
 			
-			String[] lineArgs = {String.valueOf(values.get(ColumnValues.LINE_ID.getName())), String.valueOf(m.ordinal())};
+			String[] lineArgs = {String.valueOf(values.get(ColumnValues.LINE_NAME.getName())), String.valueOf(m.ordinal())};
 			
 			updateOrInsert(mensaLineUri, values, lineWhere, lineArgs);
 			
@@ -259,7 +262,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 * @return cursor with data
 	 */
 	private Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		
 		return resolver.query(uri, projection, selection, selectionArgs, sortOrder);
@@ -306,7 +309,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	public void reset() {
 		Uri uri = Uri.parse(StorageContract.MENSA_LINE_RESET_URI);
 		
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		resolver.delete(uri, null, null);
 		
@@ -322,7 +325,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 */
 	private int getNextMensaLineID() {
 		
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		// get highest id
 		Uri uri = Uri.parse(StorageContract.MENSA_LINE_URI);
@@ -355,7 +358,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		}
 		
 		// is there an object that fits to this data
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		Uri uri = Uri.parse(StorageContract.MENSA_LINE_URI);
 		String[] projection =  {ColumnValues.LINE_ID.getName()};
@@ -386,7 +389,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 */
 	public boolean updateOrInsert(Uri uri, ContentValues values, String where, String[] selectionArgs) {
 		
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		if (resolver.update(uri, values, where, selectionArgs) == 0) {
 			resolver.insert(uri, values);
@@ -506,8 +509,6 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 */
 	public int delete(Uri uri, String where, String[] selectionArgs) {
 		
-		ContentResolver resolver = ctx.getContentResolver();
-
 		return resolver.delete(uri, where, selectionArgs);
 	}
 
@@ -515,7 +516,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 
 	@Override
 	public List<MensaDay> getAll() {
-		
+		Log.d("Storage_Mensa|getAll()", "do it");
 		List<MensaDay> days = new LinkedList<MensaDay>();
 		
 		Uri uri = Uri.parse(StorageContract.MENSA_MEAL_DISTINCT_URI);
@@ -526,6 +527,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		
 		while (c.moveToNext()) {
 			MensaDay day = new MensaDay(c.getLong(c.getColumnIndex(ColumnValues.MEAL_DATE.getName())));
+			Log.d("Storage_Mensa|getAll()", day.getDateTime() + "");
 			days.add(get(day));
 		}
 		c.close();
