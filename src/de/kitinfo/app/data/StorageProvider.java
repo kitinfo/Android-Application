@@ -216,11 +216,10 @@ public class StorageProvider extends ContentProvider {
 
 		UriMatch um = UriMatch.findMatch(matcher.match(uri));
 		if (um == null) {
+			Log.d("StorageProvider|update", "matcher null");
 			return 0;
 		}
-		db.rawUpdate(um.getTable(), values, selection, selectionArgs);
-
-		return 0;
+		return db.rawUpdate(um.getTable(), values, selection, selectionArgs);
 	}
 
 }

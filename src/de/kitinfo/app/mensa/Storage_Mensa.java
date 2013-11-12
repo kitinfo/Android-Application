@@ -49,7 +49,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		// define
 		ContentValues values;
 		String lineWhere = ColumnValues.LINE_NAME.getName() + " = ? AND " + ColumnValues.LINE_MENSA.getName() + " = ?";
-		String mealWhere = ColumnValues.MEAL_DATE.getName() + " = ? AND " + ColumnValues.MEAL_LINE.getName() + " = ?";
+		String mealWhere = ColumnValues.MEAL_DATE.getName() + " = ? AND " + ColumnValues.MEAL_NAME.getName() + " = ?";
 		
 		
 		// insert mensa lines
@@ -57,7 +57,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		
 		for (MensaLine ml : lines) {
 			values = convertLineToContentValues(ml, m);
-			
+			int mlID = values.getAsInteger(ColumnValues.LINE_ID.getName());
 			String[] lineArgs = {String.valueOf(values.get(ColumnValues.LINE_NAME.getName())), String.valueOf(m.ordinal())};
 			
 			updateOrInsert(mensaLineUri, values, lineWhere, lineArgs);
@@ -69,9 +69,9 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 				values = convertMealToContentValues(mm, day.getDateTime());
 				
 				// put rest values in list
-				values.put(ColumnValues.MEAL_LINE.getName(), getMensaLineID(ml));
+				values.put(ColumnValues.MEAL_LINE.getName(), mlID);
 				
-				String[] mealSelectionArgs = {"" + day.getDateTime(), "" + ml.getID()};
+				String[] mealSelectionArgs = {String.valueOf(day.getDateTime()), mm.getName()};
 				
 				// database action
 				updateOrInsert(mensaMealUri, values, mealWhere, mealSelectionArgs);
@@ -103,7 +103,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 * @param date the date of the meal
 	 * @return his content values
 	 */
-	public ContentValues convertMealToContentValues(MensaMeal mm, float date) {
+	public ContentValues convertMealToContentValues(MensaMeal mm, long date) {
 		ContentValues values = new ContentValues();
 		
 		StringBuilder adds = new StringBuilder();
@@ -266,8 +266,6 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 */
 	private Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		
-		
-		
 		return resolver.query(uri, projection, selection, selectionArgs, sortOrder);
 	}
 	
@@ -388,18 +386,31 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	 * @param values the used column values
 	 * @param where statement for finding the right update row
 	 * @param selectionArgs arguments for the selection
-	 * @return true if we update
+	 * @return -1 if we insert else the rows
 	 */
-	public boolean updateOrInsert(Uri uri, ContentValues values, String where, String[] selectionArgs) {
+	public int updateOrInsert(Uri uri, ContentValues values, String where, String[] selectionArgs) {
 		
+		/*Log.d("Storage_Mensa|updateOrInsert", uri.getLastPathSegment());
 		
+		Cursor c = resolver.query(uri, null, where, selectionArgs, null);
 		
-		if (resolver.update(uri, values, where, selectionArgs) == 0) {
+		if (!c.moveToNext()) {
+			c.close();
 			resolver.insert(uri, values);
-			return false;
+			Log.d("Storage_Mensa|updateOrInsert", "-1");
+			return -1;
 		}
+		c.close();
+		Log.d("Storage_Mensa|updateOrInsert", "1");
+		return resolver.update(uri, values, where, selectionArgs);
+		*/
+		int id = resolver.update(uri, values, where, selectionArgs);
+		if (id < 1) {
+			resolver.insert(uri, values);
+			return -1;
+		}
+		return id;
 		
-		return true;
 	}
 
 

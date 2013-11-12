@@ -3,22 +3,16 @@
  */
 package de.kitinfo.app.data;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import de.kitinfo.app.data.StorageProvider.UriMatch;
 import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
-import android.provider.OpenableColumns;
 import android.util.Log;
-import android.util.SparseArray;
 
 /**
  * @author mpease
@@ -179,7 +173,7 @@ public class Database extends SQLiteOpenHelper {
 	 * @return number of rows affected
 	 */
 	public int rawUpdate(String table, ContentValues values, String whereClause, String[] whereArgs) {
-		SQLiteDatabase db = getReadableDatabase();
+		SQLiteDatabase db = getWritableDatabase();
 		db.beginTransaction();
 		int i = db.update(table, values, whereClause, whereArgs);
 		db.setTransactionSuccessful();
