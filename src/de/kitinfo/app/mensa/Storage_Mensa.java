@@ -136,8 +136,10 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 	public MensaDay get(MensaDay day) {
 		
 		SparseArray<List<MensaMeal>> meals = getMensaMeals(day.getDateTime());
+		Log.d("Storage_Mensa|get", "meals: " + meals.size());
 		
 		List<MensaLine> mensaLines = getMensaLines(meals);
+		Log.d("Storage_Mensa|get", "lines: " + mensaLines.size());
 		
 		
 		MensaDay newDay = new MensaDay(day.getDateTime());
@@ -177,6 +179,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 					ml.addMeal(mm);
 				}
 			}
+			mensaLines.add(ml);
 		}
 		return mensaLines;
 	}
@@ -532,7 +535,6 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		}
 		c.close();
 		Log.d("Storage_Mensa|getAll", "size: " + days.size());
-		//Log.d("Storage_Mensa|getAll", "size: " + days.get(0).getLines().get(0).getName());
 		return days;
 	}
 
