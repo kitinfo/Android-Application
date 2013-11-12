@@ -18,9 +18,11 @@ import de.kitinfo.app.data.Database.ColumnValues;
 public class Storage_Timer implements StorageInterface<TimerEvent> {
 
 	private Context ctx;
+	ContentResolver resolver;
 	
 	public Storage_Timer(Context ctx) {
 		this.ctx = ctx;
+		resolver = ctx.getContentResolver();
 	}
 	
 	@Override
@@ -69,7 +71,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		String where = Database.ColumnValues.TIMER_ID.getName() + " = ?";
 		String[] selectionArgs = {"" + te.getID()};
 
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		return resolver.delete(uri, where, selectionArgs);
 	}
 
@@ -109,7 +111,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
 		// get the content provider
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		
 		String[] protection = {ColumnValues.TIMER_DATE.getName(),
@@ -162,7 +164,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		resolver.update(uri, cv, where, selectionArgs);
 	}
 	
@@ -205,7 +207,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_RESET_URI);
 		
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		resolver.delete(uri, null, null);
 		
@@ -216,7 +218,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 	 * @param te timer event
 	 */
 	public void addCustomTimer(TimerEvent te) {
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		Uri uri = Uri.parse(StorageContract.TIMER_URI);
 		
@@ -273,7 +275,7 @@ public class Storage_Timer implements StorageInterface<TimerEvent> {
 	 */
 	public boolean updateOrInsert(Uri uri, ContentValues values, String where, String[] selectionArgs) {
 		
-		ContentResolver resolver = ctx.getContentResolver();
+		
 		
 		if (resolver.update(uri, values, where, selectionArgs) == 0) {
 			resolver.insert(uri, values);

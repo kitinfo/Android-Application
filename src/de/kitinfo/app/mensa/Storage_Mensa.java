@@ -170,7 +170,9 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 				
 			// add meals to list
 			for (MensaMeal mm : meals.get(key)) {
-				ml.addMeal(mm);
+				if (mm != null) {
+					ml.addMeal(mm);
+				}
 			}
 		}
 		return mensaLines;

@@ -27,7 +27,6 @@ import android.util.SparseArray;
 @TargetApi(Build.VERSION_CODES.FROYO)
 public class Database extends SQLiteOpenHelper {
 	
-	private static List<Database> dblist = new LinkedList<Database>();
 	/**
 	 * enum for getting easy access to database structure of tables
 	 * @author mpease
@@ -185,7 +184,6 @@ public class Database extends SQLiteOpenHelper {
 		int i = db.update(table, values, whereClause, whereArgs);
 		db.setTransactionSuccessful();
 		db.endTransaction();
-		db.close();
 		return i;
 	}
 
@@ -199,7 +197,7 @@ public class Database extends SQLiteOpenHelper {
 	}
 	
 	private int clean() {
-		synchronized (dblist) {
+		/*synchronized (dblist) {
 			
 			if (dblist.isEmpty()) {
 				return 1;
@@ -207,7 +205,8 @@ public class Database extends SQLiteOpenHelper {
 			dblist.get(0).close();
 			dblist.remove(0);
 			return 0;
-		}
+		}*/
+		return 0;
 	}
 
 	/* (non-Javadoc)
@@ -251,9 +250,9 @@ public class Database extends SQLiteOpenHelper {
 		SQLiteDatabase db = getReadableDatabase();
 		
 		Cursor c = db.query(distinct, table, projection, selection, selectionArgs, null, null, sortOrder, null);
-		synchronized (dblist) {
+		/*synchronized (dblist) {
 			dblist.add(this);
-		}
+		}*/
 		return c;
 	}
 
@@ -271,9 +270,7 @@ public class Database extends SQLiteOpenHelper {
 		long row = db.insertWithOnConflict(table, null, values, SQLiteDatabase.CONFLICT_IGNORE);
 		
 		db.setTransactionSuccessful();
-		db.endTransaction();
-		db.close();
-		
+		db.endTransaction();		
 		return row;
 	}
 
@@ -294,7 +291,6 @@ public class Database extends SQLiteOpenHelper {
 		
 		db.setTransactionSuccessful();
 		db.endTransaction();
-		db.close();
 		
 		return rows;
 	}
@@ -306,7 +302,6 @@ public class Database extends SQLiteOpenHelper {
 		while (clean() != 0);
 		SQLiteDatabase db = getWritableDatabase();
 		onUpgrade(db, DBVERSION, DBVERSION);
-		db.close();
 		
 	}
 
@@ -314,7 +309,6 @@ public class Database extends SQLiteOpenHelper {
 		while (clean() != 0);
 		SQLiteDatabase db = getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + table);
-		db.close();
 	}
 
 	public void create(Tables t, SQLiteDatabase db) {
@@ -340,7 +334,6 @@ public class Database extends SQLiteOpenHelper {
 	public void create(Tables t) {
 		SQLiteDatabase db = getWritableDatabase();
 		create(t, db);
-		db.close();
 	}
 
 }

@@ -1,5 +1,6 @@
 package de.kitinfo.app.mensa;
 
+import android.annotation.SuppressLint;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,17 +11,23 @@ public class MensaLine implements Comparable<MensaLine> {
 	private int id;
 	private int mensaID;
 
-	public MensaLine(String name, int mensaID) {
+	private void init() {
 		meals = new LinkedList<MensaMeal>();
+	}
+	
+	
+	public MensaLine(String name, int mensaID) {
 		this.name = name;
 		this.mensaID = mensaID;
 		this.id = -1;
+		init();
 	}
 	
 	public MensaLine(String name, int id, int mensaID) {
 		this.id = id;
 		this.name = name;
 		this.mensaID = mensaID;
+		init();
 	}
 
 	public void addMeal(MensaMeal meal) {
@@ -35,6 +42,7 @@ public class MensaLine implements Comparable<MensaLine> {
 		return name;
 	}
 
+	@SuppressLint("DefaultLocale")
 	@Override
 	public int compareTo(MensaLine other) {
 		return this.name.toLowerCase().compareTo(other.getName().toLowerCase());

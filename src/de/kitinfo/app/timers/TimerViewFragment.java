@@ -155,6 +155,7 @@ public class TimerViewFragment extends ListFragment implements Slide {
 	@Override
 	public void querryData(Context context) {
 		String timeEvents = new IOManager().queryJSON(API_URL);
+		Log.v("TimerViewFragement|querryData", timeEvents);
 		List<TimerEvent> timers = new JsonParser_TimeEvent().parse(timeEvents);
 
 		new Storage_Timer(context).add(timers);

@@ -35,6 +35,8 @@ public class MensaMeal implements Serializable {
 			boolean fish, boolean beef, boolean nTBeef, String name,
 			String hint, String info, float price, List<String> adds) {
 
+		tags = new HashMap<String, Boolean>();
+		
 		tags.put(Tags.VEGGIE.name(), veggie);
 		tags.put(Tags.VEGAN.name(), vegan);
 		tags.put(Tags.BIO.name(), bio);
@@ -71,9 +73,9 @@ public class MensaMeal implements Serializable {
 			builder.append(s);
 			builder.append(split);
 			builder.append(tags.get(s));
-			builder.append("\n");
+			builder.append('\n');
 		}
-		builder.delete(builder.lastIndexOf(split, 0), builder.length() -1);
+		builder.deleteCharAt(builder.lastIndexOf("\n"));
 		
 		return builder.toString();
 	}

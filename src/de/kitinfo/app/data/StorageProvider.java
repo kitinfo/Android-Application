@@ -22,6 +22,7 @@ public class StorageProvider extends ContentProvider {
 	private static final UriMatcher matcher = new UriMatcher(
 			TRIM_MEMORY_MODERATE);
 	public static final String AUTHORITY = "de.kitinfo.provider";
+	private Database db;
 
 	public enum UriMatch {
 
@@ -108,20 +109,19 @@ public class StorageProvider extends ContentProvider {
 		
 
 		if (um == UriMatch.RESET) {
-			Database db = new Database(getContext());
 			db.reset();
 			return 0;
 		}
+		if (uri.getEncodedFragment() != null) {
 
 		if (uri.getEncodedFragment().equals(UriMatch.RESET.getTable())) {
-			Database db = new Database(getContext());
 			Tables t = Tables.fromString(um.getTable());
 			db.drop(t);
 			db.create(t);
 			return 0;
 		}
+		}
 		
-		Database db = new Database(getContext());
 		return db.rawDelete(um.getTable(), selection, selectionArgs);
 		
 	}
@@ -154,7 +154,6 @@ public class StorageProvider extends ContentProvider {
 		
 		
 		// insert values
-		Database db = new Database(getContext());
 		long row = db.rawInsert(um.getTable(), values);
 
 		// return uri with inserted row
@@ -163,8 +162,8 @@ public class StorageProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-		// TODO Auto-generated method stub
-		return false;
+		db = new Database(getContext());
+		return true;
 	}
 
 	@Override
@@ -193,7 +192,6 @@ public class StorageProvider extends ContentProvider {
 		}
 		
 		// search in database
-		Database db = new Database(getContext());
 		Cursor c = db.rawQuery(um.getTable(), projection, selection,
 				selectionArgs, sortOrder, distinct);
 
@@ -220,8 +218,6 @@ public class StorageProvider extends ContentProvider {
 		if (um == null) {
 			return 0;
 		}
-
-		Database db = new Database(getContext());
 		db.rawUpdate(um.getTable(), values, selection, selectionArgs);
 
 		return 0;

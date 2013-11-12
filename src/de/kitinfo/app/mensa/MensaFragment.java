@@ -129,6 +129,11 @@ public class MensaFragment extends ListFragment implements Slide {
 
 		@Override
 		public int getCount() {
+			if (today == null) {
+				return 0;
+			}
+			
+			
 			return today.getLines().size();
 		}
 
