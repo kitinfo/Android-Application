@@ -370,10 +370,10 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		int id;
 		if (c.moveToNext()) {
 			id = c.getInt(c.getColumnIndex(ColumnValues.LINE_ID.getName()));
-			
+		} else {
+			// no object in database that fits, get next free id
+			id = getNextMensaLineID();
 		}
-		// no object in database that fits, get next free id
-		id = getNextMensaLineID();
 		c.close();
 		new Database(ctx).close();
 		return id;
@@ -516,7 +516,7 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 
 	@Override
 	public List<MensaDay> getAll() {
-		Log.d("Storage_Mensa|getAll()", "do it");
+		Log.d("Storage_Mensa|getAll", "do it");
 		List<MensaDay> days = new LinkedList<MensaDay>();
 		
 		Uri uri = Uri.parse(StorageContract.MENSA_MEAL_DISTINCT_URI);
@@ -527,11 +527,12 @@ public class Storage_Mensa implements StorageInterface<MensaDay> {
 		
 		while (c.moveToNext()) {
 			MensaDay day = new MensaDay(c.getLong(c.getColumnIndex(ColumnValues.MEAL_DATE.getName())));
-			Log.d("Storage_Mensa|getAll()", day.getDateTime() + "");
+			Log.d("Storage_Mensa|getAll", day.getDateTime() + "");
 			days.add(get(day));
 		}
 		c.close();
-		new Database(ctx).close();
+		Log.d("Storage_Mensa|getAll", "size: " + days.size());
+		//Log.d("Storage_Mensa|getAll", "size: " + days.get(0).getLines().get(0).getName());
 		return days;
 	}
 
