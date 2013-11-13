@@ -2,10 +2,8 @@ package de.kitinfo.app.mensa;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -16,7 +14,6 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import de.kitinfo.app.IOManager;
 import de.kitinfo.app.R;
-import de.kitinfo.app.ReferenceManager;
 import de.kitinfo.app.Slide;
 import de.kitinfo.app.TimeFunctions;
 
@@ -27,7 +24,7 @@ public class MensaFragment extends ListFragment implements Slide {
 
 	private int id;
 
-	private List<MensaDay> mensaDays;
+	private MensaDay today;
 
 	public MensaFragment() {
 		id = -3;
@@ -35,7 +32,7 @@ public class MensaFragment extends ListFragment implements Slide {
 
 	@Override
 	public void update() {
-		
+
 	}
 
 	@Override
@@ -69,16 +66,29 @@ public class MensaFragment extends ListFragment implements Slide {
 
 	@Override
 	public void updateContent(Context context) {
-		mensaDays = new Storage_Mensa(context).getAll();
-		this.setListAdapter(new MensaListAdapter(mensaDays));
+		List<MensaDay> mensaDays = new Storage_Mensa(context).getAll();
+
+		MensaDay today = null;
+		boolean found = false;
+
+		for (int i = 0; (i < mensaDays.size()) && !found; i++) {
+			if (TimeFunctions.isSameDay(System.currentTimeMillis(), mensaDays
+					.get(i).getDateTime())) {
+				found = true;
+				today = mensaDays.get(i);
+			}
+		}
+
+		if (today != null)
+			this.setListAdapter(new MensaListAdapter(today));
 	}
 
 	@Override
 	public void querryData(Context context) {
-		new Storage_Mensa(context).add(new JsonParser_Mensa().parse(new IOManager()
-		.queryJSON(API_URL)));
-		
-		
+		if (today == null)
+			new Storage_Mensa(context).add(new JsonParser_Mensa()
+					.parse(new IOManager().queryJSON(API_URL)));
+
 		// for (MensaDay day : mensaDays) {
 		// if (day.getDateTime() == TimeFunctions.getDayInMillis(System
 		// .currentTimeMillis())) {
@@ -104,17 +114,8 @@ public class MensaFragment extends ListFragment implements Slide {
 
 		private MensaDay today;
 
-		public MensaListAdapter(List<MensaDay> days) {
-			today = null;
-			boolean found = false;
-
-			for (int i = 0; (i < days.size()) && !found; i++) {
-				if (TimeFunctions.isSameDay(System.currentTimeMillis(), days
-						.get(i).getDateTime())) {
-					found = true;
-					today = days.get(i);
-				}
-			}
+		public MensaListAdapter(MensaDay today) {
+			this.today = today;
 		}
 
 		@Override
@@ -122,8 +123,7 @@ public class MensaFragment extends ListFragment implements Slide {
 			if (today == null) {
 				return 0;
 			}
-			
-			
+
 			return today.getLines().size();
 		}
 

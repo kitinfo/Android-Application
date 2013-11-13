@@ -2,25 +2,16 @@ package de.kitinfo.app.mensa;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-
-import android.os.DropBoxManager.Entry;
 
 public class MensaMeal implements Serializable {
 
 	private static final long serialVersionUID = 6318652233903651125L;
 
 	HashMap<String, Boolean> tags;
-	
+
 	public enum Tags {
-		VEGGIE,
-		VEGAN,
-		BIO,
-		PORK,
-		FISH,
-		BEEF,
-		NONTORTUREDBEEF;
+		VEGGIE, VEGAN, BIO, PORK, FISH, BEEF, NONTORTUREDBEEF;
 	}
 
 	private String name;
@@ -36,7 +27,7 @@ public class MensaMeal implements Serializable {
 			String hint, String info, float price, List<String> adds) {
 
 		tags = new HashMap<String, Boolean>();
-		
+
 		tags.put(Tags.VEGGIE.name(), veggie);
 		tags.put(Tags.VEGAN.name(), vegan);
 		tags.put(Tags.BIO.name(), bio);
@@ -50,8 +41,9 @@ public class MensaMeal implements Serializable {
 		this.price = price;
 		this.adds = adds;
 	}
-	
-	public MensaMeal(HashMap<String, Boolean> tags, String name, String hint, String info, float price, List<String> adds) {
+
+	public MensaMeal(HashMap<String, Boolean> tags, String name, String hint,
+			String info, float price, List<String> adds) {
 		this.tags = tags;
 		this.name = name;
 		this.hint = hint;
@@ -59,16 +51,18 @@ public class MensaMeal implements Serializable {
 		this.price = price;
 		this.adds = adds;
 	}
-	
+
 	/**
 	 * return the tag map as string with split symbol between key and tag
-	 * @param split split symbol
+	 * 
+	 * @param split
+	 *            split symbol
 	 * @return a string
 	 */
 	public String getTags(String split) {
-		
+
 		StringBuilder builder = new StringBuilder();
-		
+
 		for (String s : tags.keySet()) {
 			builder.append(s);
 			builder.append(split);
@@ -76,10 +70,10 @@ public class MensaMeal implements Serializable {
 			builder.append('\n');
 		}
 		builder.deleteCharAt(builder.lastIndexOf("\n"));
-		
+
 		return builder.toString();
 	}
-	
+
 	public HashMap<String, Boolean> getTags() {
 		return tags;
 	}
@@ -88,11 +82,11 @@ public class MensaMeal implements Serializable {
 	 * @return veggie
 	 */
 	public boolean isVeggie() {
-		
+
 		if (tags.containsKey(Tags.VEGGIE.name())) {
 			return tags.get(Tags.VEGGIE.name());
 		}
-		
+
 		return false;
 	}
 
@@ -103,7 +97,7 @@ public class MensaMeal implements Serializable {
 		if (tags.containsKey(Tags.VEGAN.name())) {
 			return tags.get(Tags.VEGAN.name());
 		}
-		
+
 		return false;
 	}
 
@@ -114,7 +108,7 @@ public class MensaMeal implements Serializable {
 		if (tags.containsKey(Tags.BIO.name())) {
 			return tags.get(Tags.BIO.name());
 		}
-		
+
 		return false;
 	}
 
@@ -125,7 +119,7 @@ public class MensaMeal implements Serializable {
 		if (tags.containsKey(Tags.PORK.name())) {
 			return tags.get(Tags.PORK.name());
 		}
-		
+
 		return false;
 	}
 
@@ -136,7 +130,7 @@ public class MensaMeal implements Serializable {
 		if (tags.containsKey(Tags.FISH.name())) {
 			return tags.get(Tags.FISH.name());
 		}
-		
+
 		return false;
 	}
 
@@ -147,7 +141,7 @@ public class MensaMeal implements Serializable {
 		if (tags.containsKey(Tags.BEEF.name())) {
 			return tags.get(Tags.BEEF.name());
 		}
-		
+
 		return false;
 	}
 
@@ -158,7 +152,7 @@ public class MensaMeal implements Serializable {
 		if (tags.containsKey(Tags.NONTORTUREDBEEF.name())) {
 			return tags.get(Tags.NONTORTUREDBEEF.name());
 		}
-		
+
 		return false;
 	}
 
@@ -204,8 +198,10 @@ public class MensaMeal implements Serializable {
 		for (String add : adds) {
 			addsString += add + ",";
 		}
-		addsString = "(" + addsString.substring(0, addsString.length() - 1)
-				+ ")";
+
+		if (addsString.length() > 0)
+			addsString = "(" + addsString.substring(0, addsString.length() - 1)
+					+ ")";
 		return addsString + "  " + name + " - " + hint + " for: " + price + "€";
 	}
 }

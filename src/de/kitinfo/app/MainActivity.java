@@ -3,7 +3,10 @@ package de.kitinfo.app;
 import java.util.Locale;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -322,9 +325,12 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		@Override
 		protected Object doInBackground(Void... params) {
 
-			for (int i = 0; i < ReferenceManager.SLIDES.size(); i++) {
-				ReferenceManager.SLIDES.get(i).querryData(MainActivity.this);
-				publishProgress();
+			if (isOnline()) {
+				for (int i = 0; i < ReferenceManager.SLIDES.size(); i++) {
+					new UpdateWorker().doInBackground(ReferenceManager.SLIDES
+							.get(i));
+					publishProgress();
+				}
 			}
 
 			return null;
@@ -344,6 +350,35 @@ public class MainActivity extends FragmentActivity implements Updatable {
 		@Override
 		protected void onProgressUpdate(Void... values) {
 			// Nothing TO DO
+		}
+
+		public boolean isOnline() {
+			ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo netInfo = cm.getActiveNetworkInfo();
+			if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+				return true;
+			}
+			return false;
+		}
+
+	}
+
+	private class UpdateWorker extends AsyncTask<Slide, Void, Object> {
+
+		@Override
+		protected Object doInBackground(Slide... slides) {
+
+			for (Slide slide : slides) {
+				slide.querryData(MainActivity.this);
+				publishProgress();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Object x) {
+			guiHandler.sendEmptyMessage(MSG_RELOAD_CONTENT);
+			update();
 		}
 
 	}

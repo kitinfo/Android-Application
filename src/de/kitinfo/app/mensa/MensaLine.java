@@ -1,8 +1,9 @@
 package de.kitinfo.app.mensa;
 
-import android.annotation.SuppressLint;
 import java.util.LinkedList;
 import java.util.List;
+
+import android.annotation.SuppressLint;
 
 public class MensaLine implements Comparable<MensaLine> {
 
@@ -14,15 +15,14 @@ public class MensaLine implements Comparable<MensaLine> {
 	private void init() {
 		meals = new LinkedList<MensaMeal>();
 	}
-	
-	
+
 	public MensaLine(String name, int mensaID) {
 		this.name = name;
 		this.mensaID = mensaID;
 		this.id = -1;
 		init();
 	}
-	
+
 	public MensaLine(String name, int id, int mensaID) {
 		this.id = id;
 		this.name = name;
@@ -54,10 +54,21 @@ public class MensaLine implements Comparable<MensaLine> {
 
 	/**
 	 * Returns the id of the mensa
+	 * 
 	 * @return id of the mensa
 	 */
 	public int getMensaID() {
 		return mensaID;
+	}
+
+	@Override
+	public String toString() {
+		String result = name + ":\n";
+
+		for (MensaMeal meal : meals) {
+			result += meal + "\n";
+		}
+		return result;
 	}
 
 }

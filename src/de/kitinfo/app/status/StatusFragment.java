@@ -1,11 +1,15 @@
 package de.kitinfo.app.status;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import de.kitinfo.app.IOManager;
 import de.kitinfo.app.R;
@@ -20,16 +24,16 @@ public class StatusFragment extends Fragment implements Slide {
 	private static final String TITLE = "Status";
 	private int id;
 	private boolean invalidated;
-	private String nickList;
+	private List<String> nickList;
 	private String lastMessage;
 	private String nickCount;
 
 	public StatusFragment() {
 		invalidated = true;
 		this.id = -2;
-		nickList = "";
 		lastMessage = "";
 		nickCount = "0";
+		nickList = new LinkedList<String>();
 	}
 
 	@Override
@@ -48,10 +52,6 @@ public class StatusFragment extends Fragment implements Slide {
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.status, null);
-		((TextView) v.findViewById(R.id.status_user_online)).setText(nickList);
-		((TextView) v.findViewById(R.id.status_activity)).setText(nickCount);
-		((TextView) v.findViewById(R.id.status_last_message))
-				.setText(lastMessage);
 		invalidated = false;
 		return v;
 	}
@@ -75,18 +75,6 @@ public class StatusFragment extends Fragment implements Slide {
 
 	@Override
 	public void update() {
-		if (!invalidated) {
-			View v = getView();
-
-			((TextView) v.findViewById(R.id.status_user_online))
-					.setText(nickList);
-			((TextView) v.findViewById(R.id.status_activity)).setText(nickCount
-					+ " " + getString(R.string.online));
-			((TextView) v.findViewById(R.id.status_last_message))
-					.setText(lastMessage);
-
-			v.invalidate();
-		}
 	}
 
 	@Override
@@ -120,6 +108,28 @@ public class StatusFragment extends Fragment implements Slide {
 
 	@Override
 	public void updateContent(Context context) {
+		if (!invalidated) {
+			View v = getView();
+
+			((TextView) v.findViewById(R.id.status_activity)).setText(nickCount
+					+ " " + getString(R.string.online));
+			((TextView) v.findViewById(R.id.status_last_message))
+					.setText(lastMessage);
+			LinearLayout list = (LinearLayout) v
+					.findViewById(R.id.status_user_online);
+
+			list.removeAllViews();
+
+			for (String nick : nickList) {
+				View nickView = LayoutInflater.from(this.getActivity())
+						.inflate(R.layout.status_nickname, null);
+				((TextView) nickView.findViewById(R.id.status_nickname))
+						.setText(nick);
+				list.addView(nickView);
+			}
+
+			v.invalidate();
+		}
 	}
 
 	@Override
@@ -131,13 +141,7 @@ public class StatusFragment extends Fragment implements Slide {
 
 		String nicks = new IOManager().queryJSON(NICK_LIST_URL);
 
-		nickList = "";
-
-		for (String nick : new JsonParser_Status().parseNames(nicks)) {
-			nickList += "\n" + nick;
-		}
-
-		nickList = nickList.trim();
+		nickList = new JsonParser_Status().parseNames(nicks);
 	}
 
 }

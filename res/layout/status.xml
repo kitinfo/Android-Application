@@ -74,7 +74,7 @@
 			    	android:layout_margin="5dp"
 			    	android:textColor="#313739"
 			        android:textSize="20sp"
-			        android:gravity="left"
+			        android:gravity="center_horizontal"
 			    />
 		    </LinearLayout>
 	    
@@ -97,6 +97,14 @@
 			        android:textSize="20sp"
 			    />
 			    
+			     <LinearLayout
+        			android:id="@+id/status_user_online"
+    				android:layout_margin="5dp"
+        			android:layout_width="match_parent"
+        			android:layout_height="wrap_content"
+    				android:orientation="vertical"  > 
+    			</LinearLayout> 
+			     <!-- 
 			    <TextView 
 			        android:id="@+id/status_user_online"
 			    	android:text=""
@@ -106,7 +114,7 @@
 			    	android:textColor="#313739"
 			        android:textSize="20sp"
 			        android:gravity="right"
-			    />
+			    />  -->
 		    </LinearLayout>
 	    </LinearLayout>
 	

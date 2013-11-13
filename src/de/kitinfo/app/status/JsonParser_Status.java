@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +23,7 @@ import android.util.Log;
 public class JsonParser_Status {
 	public enum Tags {
 
-		CHANNEL("channel"), USER("user"), TIME("time");
+		USER("user"), TIME("time");
 
 		private String tag;
 
@@ -42,13 +44,17 @@ public class JsonParser_Status {
 	 *            json string
 	 * @return sorted list of nicknames
 	 */
-	public String[] parseNames(String data) {
+	public List<String> parseNames(String data) {
 		data = data.replace("[\"", "");
 		data = data.replace("\"]", "");
 
 		String[] nicks = data.split("\",\"");
+		List<String> nicklist = new LinkedList<String>();
 		Arrays.sort(nicks, new StringComperator());
-		return nicks;
+		for (String nick : nicks) {
+			nicklist.add(nick);
+		}
+		return nicklist;
 	}
 
 	/**
@@ -65,9 +71,6 @@ public class JsonParser_Status {
 		try {
 			dataObject = new JSONObject(data);
 
-			String channel = android.text.Html.fromHtml(
-					dataObject.getString(Tags.CHANNEL.toString())).toString();
-
 			String user = android.text.Html.fromHtml(
 					dataObject.getString(Tags.USER.toString())).toString();
 
@@ -80,7 +83,7 @@ public class JsonParser_Status {
 					SimpleDateFormat.MEDIUM, SimpleDateFormat.MEDIUM).format(
 					date);
 
-			message = channel + ":\n" + user + " @ " + time;
+			message = user + " @ " + time;
 
 		} catch (JSONException e) {
 			Log.e("JsonParser_Status|parseLastMessage", e.toString());

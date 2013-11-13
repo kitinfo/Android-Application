@@ -27,8 +27,8 @@
     <string name="time">Time:</string>
     
     <!-- status -->
-    <string name="status_current_activity">"Crrent Activity:</string>
+    <string name="status_current_activity">"Current Activity:</string>
     <string name="status_last_message">Last Message:</string>
-    <string name="status_current_users">Current User online:</string>
+    <string name="status_current_users">Current Users online:</string>
 	<string name="online">Online</string>
 </resources>
